@@ -152,7 +152,7 @@ function App() {
                 <div className="img-container">
                   <img
                     className="headImage"
-                    src="../images/placeholder.png"
+                    src="./images/placeholder.png"
                     alt=""
                   />
                 </div>
@@ -188,7 +188,7 @@ function App() {
                     <div className="img-container">
                       <img
                         className="headImage"
-                        src="../images/placeholder.png"
+                        src="./images/placeholder.png"
                         alt=""
                       />
                     </div>
