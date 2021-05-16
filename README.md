@@ -1,4 +1,4 @@
-Text based game about Soviet Revolution
+# <strong>`Text based game about Soviet Revolution`</strong>
 
 
 # Getting Started with Create React App
