@@ -28,17 +28,11 @@ $semi-dark: rgb(117, 117, 117);
   max-width: 75%;
   margin: auto;
 }
+
 .container {
   display: grid;
-  grid-template-columns: 8% 84% 8%;
-  grid-template-areas: "info card next";
-  height: 90vh;
-}
-
-.info-container {
-  display: grid;
-  grid-template-columns: 25% 71% 4%;
-  grid-template-areas: "info-entries card close";
+  grid-template-columns: 25% 69% 6%;
+  grid-template-areas: "info-entries card next";
   max-height: 90vh;
 
   .close-btn {

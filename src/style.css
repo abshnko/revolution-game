@@ -24,22 +24,13 @@ html {
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 8% 84% 8%;
-      grid-template-columns: 8% 84% 8%;
-      grid-template-areas: "info card next";
-  height: 90vh;
-}
-
-.info-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 25% 71% 4%;
-      grid-template-columns: 25% 71% 4%;
-      grid-template-areas: "info-entries card close";
+  -ms-grid-columns: 25% 69% 6%;
+      grid-template-columns: 25% 69% 6%;
+      grid-template-areas: "info-entries card next";
   max-height: 90vh;
 }
 
-.info-container .close-btn {
+.container .close-btn {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,13 +50,11 @@ html {
   border: none;
   cursor: pointer;
   font-size: 1.7em;
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
   grid-area: close;
   margin-left: 5px;
 }
 
-.info-container .info-entries {
+.container .info-entries {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: info-entries;
@@ -74,14 +63,14 @@ html {
   overflow-y: scroll;
 }
 
-.info-container .info-entries .info-single-entry {
+.container .info-entries .info-single-entry {
   background-color: #cecece;
   margin-bottom: 2px;
   padding: 20px;
   font-size: 1.2rem;
 }
 
-.info-container .info-entries .active-entry {
+.container .info-entries .active-entry {
   background-color: #cecece;
 }
 
@@ -108,8 +97,6 @@ html {
 }
 
 .info {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: info;
   background-color: white;
   border-radius: 5px;
