@@ -14,8 +14,7 @@ function App() {
   const [infoArray, setInfoArray] = useState([]); //write infos here
   const [isShowInfo, setIsShowInfo] = useState(false);
   const [questionCounter, setQuestionCounter] = useState(1);
-  const [testCounter, setTestCounter] = useState(1); //test
-
+  const [testCounter, setTestCounter] = useState(1); //helps rerender infos for some reason
   const [isJump, setIsJump] = useState(false);
   const [jump, setJump] = useState(0);
   const [isShowQuestion, setIsShowQuestion] = useState(true);
@@ -151,11 +150,6 @@ function App() {
 
   //check infos in question
   const checkInfos = () => {
-    // if ("infos" in question[0]) {
-    //   // question[0].infos.map((singleInfo) => {
-    //   //   setInfoArray((infoArray) => [...infoArray, singleInfo.name]);
-    //   // });
-    // }
     setTestCounter(testCounter + 1);
   };
 
@@ -191,23 +185,6 @@ function App() {
                   </div>
                 );
               })}
-              {/* {isShowInfoEntries &&
-                INFOS.map((info) => {
-                  return (
-                    <>
-                      {info.infos.map((singleInfo) => {
-                        return (
-                          <div className="info-single-entry">
-                            {singleInfo.infoName}
-                          </div>
-                        );
-                      })}
-                    </>
-                  );
-                })} */}
-              {/* {infoArray.map((item) => {
-                return <>{item}</>;
-              })} */}
             </div>
             {isShowInfo && ( //show currently chosen info entry
               <div className="card" id={question[0].id}>
