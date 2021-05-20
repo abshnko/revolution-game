@@ -6,6 +6,7 @@ import data from "./data";
 import Question from "./Question";
 import { BsQuestion } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
+import placeholder from "./images/placeholder.png";
 
 function App() {
   const [index, setIndex] = useState(1000);
@@ -240,11 +241,7 @@ function App() {
                   <h2>{currentInfoDisplayed.infoName}</h2>
                 </div>
                 <div className="img-container">
-                  <img
-                    className="headImage"
-                    src="./public/images/placeholder.png"
-                    alt="img here"
-                  />
+                  <img className="headImage" src={placeholder} alt="img here" />
                 </div>
 
                 <div className="question">
@@ -256,11 +253,7 @@ function App() {
               <div className="card" id={question[0].id}>
                 <div className="year">{question[0].year}</div>
                 <div className="img-container">
-                  <img
-                    className="headImage"
-                    src="./public/images/placeholder.png"
-                    alt="img here"
-                  />
+                  <img className="headImage" src={placeholder} alt="img here" />
                 </div>
 
                 <div className="question">

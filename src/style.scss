@@ -55,13 +55,13 @@ $semi-dark: rgb(117, 117, 117);
 
   .info-entries {
     grid-area: info-entries;
-    background-color: $semi-dark;
+    background-color: $base-background;
     height: 90vh;
     overflow-y: scroll;
 
     .single-period {
       button {
-        background-color: $light-background;
+        background-color: $base-background;
         text-align: center;
         width: 100%;
         height: 3.5rem;
@@ -74,15 +74,15 @@ $semi-dark: rgb(117, 117, 117);
     }
     .info-single-entry {
       button {
-        background-color: $base-background; //specify that this is active bg
+        background-color: rgb(148, 148, 148); //specify that this is active bg
         margin-bottom: 2px;
-        padding: 0 20px 0 20px;
+        padding: 12px 20px 12px 20px;
         // color: rgb(226, 226, 226);   //specify color
-        font-size: 0.9rem;
-        height: 2.5rem;
+        font-size: 1.2rem;
+        // height: 2.8rem;
       }
       .active-entry {
-        background-color: $semi-dark;
+        background-color: $light-background;
       }
     }
   }
