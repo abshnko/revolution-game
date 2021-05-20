@@ -75,15 +75,16 @@ html {
   margin: none;
 }
 
-.container .info-entries .info-single-entry {
+.container .info-entries .info-single-entry button {
   background-color: #cecece;
   margin-bottom: 2px;
-  padding: 20px;
-  font-size: 1.2rem;
+  padding: 0 20px 0 20px;
+  font-size: 0.9rem;
+  height: 2.5rem;
 }
 
-.container .info-entries .active-entry {
-  background-color: #cecece;
+.container .info-entries .info-single-entry .active-entry {
+  background-color: #757575;
 }
 
 .info-btn {
@@ -194,6 +195,25 @@ html {
   padding: 15px 20px 50px 20px;
   height: 90vh;
   overflow-y: scroll;
+}
+
+.card .close-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: right;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.card .close-info button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.2rem;
 }
 
 .card h2 {
