@@ -14,25 +14,90 @@ function App() {
   const [infoArray, setInfoArray] = useState([]); //write infos here
   const [isShowInfo, setIsShowInfo] = useState(false);
   const [questionCounter, setQuestionCounter] = useState(1);
+  const [testCounter, setTestCounter] = useState(1); //test
+
   const [isJump, setIsJump] = useState(false);
   const [jump, setJump] = useState(0);
   const [isShowQuestion, setIsShowQuestion] = useState(true);
-  const [periodArray, setPeriodArray] = useState(["1900-1917"]);
+  const [INFOS, setINFOS] = useState([]);
+  // const [isShowInfoEntries, setIsShowInfoEntries] = useState(false);
   // console.log(typeof infoArray);
   // info object:
   // {title, text, img, isActive}
 
+  const addInfoHelper = (singleInfo) => {
+    const i = INFOS.findIndex(
+      (infoObj) => infoObj.period === question[0].period
+    );
+    console.log("index in INFOS:", i);
+    if (i !== -1) {
+      const newINFO = {
+        infoId: singleInfo.id,
+        infoName: singleInfo.name,
+        infoText: singleInfo.text,
+      };
+      var infosArray = INFOS[i].infos;
+      infosArray.push(newINFO);
+      const newObj = { ...INFOS[i], infos: infosArray };
+      const newArray = INFOS;
+      newArray[i] = newObj;
+      setINFOS(newArray);
+    } else {
+      const newINFO = {
+        infoId: singleInfo.id,
+        infoName: singleInfo.name,
+        infoText: singleInfo.text,
+      };
+      setINFOS((INFOS) => [
+        ...INFOS,
+        {
+          id: INFOS.length + 1,
+          period: question[0].period,
+          infos: [newINFO],
+          isShowEntries: true,
+        },
+      ]);
+
+      INFOS.map((INFO) => {
+        INFO.isShowEntries = false;
+      });
+    }
+  };
+
+  function addINFO() {
+    if ("infos" in question[0]) {
+      question[0].infos.map((singleInfo) => {
+        addInfoHelper(singleInfo);
+      });
+    }
+    question[0].options.map((option) => {
+      if ("infos" in option) {
+        option.infos.map((singleInfo) => {
+          addInfoHelper(singleInfo);
+        });
+      }
+    });
+  }
+
+  const setIsShowInfoEntries = (periodId) => {
+    const i = INFOS.findIndex((period) => period.id === periodId);
+    const newArray = [...INFOS];
+    const cloneObj = newArray[i];
+    const show = cloneObj.isShowEntries;
+    const newObj = { ...cloneObj, isShowEntries: !show };
+    newArray[i] = newObj;
+    setINFOS(newArray);
+    INFOS.map((INFO) => {
+      INFO.isShowEntries = false;
+    });
+  };
+
   const handleClick = () => {
     if (index !== question[0].id) setQuestionCounter(questionCounter + 1);
-
     setQuestionChanged(true);
     setQuestion(data.filter((item) => item.id === index));
     setQuestionChanged(false);
   };
-
-  // const checkInfoStatus = () => {
-  //   question[0].isInfo ? setIsInfo(true) : setIsInfo(false);
-  // };
 
   useEffect(() => {
     checkOptions();
@@ -40,12 +105,17 @@ function App() {
 
   useEffect(() => {
     checkInfos();
-    checkInfosTest();
+    addINFO();
   }, [questionCounter]);
 
   useEffect(() => {
-    console.log("array changed, new length:", infoArray.length);
-  }, [infoArray]);
+    console.log("array changed, new length:", INFOS.length);
+  }, [INFOS]);
+
+  // useEffect(() => {
+  //   // addINFO();
+  // }, [index]);
+
   const nextClick = (id, isActive, next, nextJump) => {
     if (nextJump !== 0) {
       setJump(nextJump);
@@ -75,36 +145,18 @@ function App() {
       } else {
         setIndex(question[0].options[0].next);
       }
+      // ADD if length === 0 : endgame (maybe)
     }
-  };
-
-  const setShowInfoTrue = () => {
-    setIsShowQuestion(false);
-    setIsShowInfo(true);
-  };
-  const setShowQuestionTrue = () => {
-    setIsShowInfo(false);
-    setIsShowQuestion(true);
   };
 
   //check infos in question
   const checkInfos = () => {
-    if ("info" in question[0]) {
-      question[0].info.map((singleInfo) => {
-        setInfoArray((infoArray) => [...infoArray, singleInfo]);
-      });
-    }
-  };
-
-  //check infos in options
-  const checkInfosTest = () => {
-    question[0].options.map((option) => {
-      if ("info" in option) {
-        option.info.map((singleInfo) => {
-          setInfoArray((infoArray) => [...infoArray, singleInfo]);
-        });
-      }
-    });
+    // if ("infos" in question[0]) {
+    //   // question[0].infos.map((singleInfo) => {
+    //   //   setInfoArray((infoArray) => [...infoArray, singleInfo.name]);
+    //   // });
+    // }
+    setTestCounter(testCounter + 1);
   };
 
   return (
@@ -115,16 +167,47 @@ function App() {
         <>
           <div className="container">
             <div className="info-entries">
-              <div className="perod-info-toggle">
-                {infoArray.map((info) => {
+              {" "}
+              {/*whole left column*/}
+              {INFOS.map((period) => {
+                return (
+                  <div className="single-period">
+                    <button
+                      className="period-btn"
+                      onClick={() => setIsShowInfoEntries(period.id)}
+                    >
+                      {period.period}
+                    </button>
+                    {period.isShowEntries &&
+                      period.infos.map((info) => {
+                        return (
+                          <>
+                            <div className="info-single-entry">
+                              {info.infoName}
+                            </div>
+                          </>
+                        );
+                      })}
+                  </div>
+                );
+              })}
+              {/* {isShowInfoEntries &&
+                INFOS.map((info) => {
                   return (
-                    <div className="info-single-entry">
-                      {/* {info.id - 9} */}
-                      {info.name}
-                    </div>
+                    <>
+                      {info.infos.map((singleInfo) => {
+                        return (
+                          <div className="info-single-entry">
+                            {singleInfo.infoName}
+                          </div>
+                        );
+                      })}
+                    </>
                   );
-                })}
-              </div>
+                })} */}
+              {/* {infoArray.map((item) => {
+                return <>{item}</>;
+              })} */}
             </div>
             {isShowInfo && ( //show currently chosen info entry
               <div className="card" id={question[0].id}>

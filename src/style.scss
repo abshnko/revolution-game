@@ -59,6 +59,24 @@ $semi-dark: rgb(117, 117, 117);
     height: 90vh;
     overflow-y: scroll;
 
+    .single-period {
+      button {
+        background-color: $light-background;
+        text-align: center;
+        // display: flex;
+        // justify-content: center;
+        // justify-self: center;
+        // align-items: center;
+        // align-self: flex-end;
+        width: 100%;
+        height: 3.5rem;
+        max-height: 90px;
+        font-size: 1.3em;
+        border: none;
+        cursor: pointer;
+        margin: none;
+      }
+    }
     .info-single-entry {
       background-color: $base-background; //specify that this is active bg
       margin-bottom: 2px;
@@ -217,7 +235,8 @@ h5 {
       margin-bottom: 10px;
     }
     .active {
-      border: 2px solid rgb(73, 107, 179);
+      // border: 2px solid rgb(73, 107, 179);
+      box-shadow: 0 0 5px 0px #34495e;
     }
     .option-active {
       background-color: rgb(77, 224, 205);
