@@ -2,7 +2,7 @@ const questions = [
   {
     id: 1000,
     year: "1900",
-    img: "1-family.jpg",
+    img: "1000-family.jpg",
     imgRef:
       "https://yandex.ru/images/search?text=крестьяне%20в%20российской%20империи%20в%20начале%2020%20века%20центральная%20россия&from=tabbar&pos=3&img_url=https%3A%2F%2Fsovet-ok.ru%2Fwp-content%2Fuploads%2F2018%2F03%2F7.jpg&rpt=simage&rlt_url=https%3A%2F%2Frussian7.ru%2Fwp-content%2Fuploads%2F2016%2F10%2F1-117.jpg&ogl_url=https%3A%2F%2Fsovet-ok.ru%2Fwp-content%2Fuploads%2F2018%2F03%2F7.jpg",
     text: "Вы родились в крестьянской семье в одной из губерний центральной России (cправка 1)",
@@ -31,7 +31,7 @@ const questions = [
   {
     id: 1001,
     year: "1900",
-    img: "",
+    img: "placeholder.jpg",
     imgRef: "",
     text: "I. Выберите пол",
     options: [
@@ -57,7 +57,7 @@ const questions = [
   {
     id: 1002,
     year: "1906",
-    img: "2-stolipin.jpg",
+    img: "1002-stolipin.jpg",
     imgRef:
       "https://историк.рф/history_day/9-ноября-1906-года-началась-аграрная-рефор/ ",
     text: "II. На дворе стоит 1906-ой год, а это значит, что Пётр Аркадьевич Столыпин затеял аграрную реформу (Справка2) Перед вашей семьёй становится выбор...",
@@ -120,7 +120,7 @@ const questions = [
   {
     id: 1003,
     year: "1907",
-    img: "3-school.jpg",
+    img: "1003-school.jpg",
     imgRef:
       "https://www.charmingrussia.ru/2019/11/fabrichno-zavodskije-shkoly-v-rossii.html",
     text: "III. 1907 год. Ваша семья задумалась над Вашим образованием. Какой же путь избрать для деточки? (справка 3)",

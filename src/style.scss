@@ -80,7 +80,8 @@ $semi-dark: rgb(117, 117, 117);
         font-size: 1.2rem;
         text-align: center;
         width: 100%;
-        height: 3.5rem;
+        // height: 3.5rem;
+        max-height: 4.5rem;
         border: none;
         cursor: pointer;
         margin: none;
@@ -156,8 +157,36 @@ $semi-dark: rgb(117, 117, 117);
   padding: 15px 20px 50px 20px;
   // margin: 0 auto;
   height: 90vh;
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
 
+  .spinner {
+    font-size: 100px;
+    color: grey;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transition: opacity 0.3s;
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  .infoName {
+    h2 {
+      margin-top: 0;
+    }
+  }
   .img-container {
     background-color: $base-background;
     margin: 0 30px;
@@ -179,6 +208,7 @@ $semi-dark: rgb(117, 117, 117);
   }
   .info-text {
     p {
+      //for new lines(\n) to be visible
       white-space: pre-wrap;
     }
   }
@@ -278,6 +308,7 @@ h5 {
     font-size: 1.5rem;
     font-weight: 300;
     text-align: left;
+    margin: 0;
   }
   background-color: rgb(226, 226, 226);
   margin: 0 30px;

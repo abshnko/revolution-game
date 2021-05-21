@@ -7,18 +7,20 @@ import Question from "./Question";
 import { BsQuestion } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import placeholder from "./images/placeholder.png";
+import { FaSpinner } from "react-icons/fa";
 
 function App() {
   const [index, setIndex] = useState(1000);
   const [question, setQuestion] = useState(data);
   const [questionChanged, setQuestionChanged] = useState(false);
-  const [infoArray, setInfoArray] = useState([]); //write infos here
+  const [isLoading, setIsLoading] = useState(true);
   const [isShowInfo, setIsShowInfo] = useState(false);
   const [questionCounter, setQuestionCounter] = useState(1);
   const [testCounter, setTestCounter] = useState(1); //helps rerender infos for some reason
   const [isJump, setIsJump] = useState(false);
   const [jump, setJump] = useState(0);
   const [isShowQuestion, setIsShowQuestion] = useState(true);
+  const [imgLoaded, setImgLoaded] = useState(false);
   const [INFOS, setINFOS] = useState([]);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
   // console.log(typeof infoArray);
@@ -100,6 +102,8 @@ function App() {
       setQuestionChanged(true);
       setQuestion(data.filter((item) => item.id === index));
       setQuestionChanged(false);
+      setIsLoading(true);
+      setImgLoaded(false);
     }
   };
 
@@ -110,7 +114,21 @@ function App() {
   useEffect(() => {
     checkInfos();
     addINFO();
+    setShowQuestionSatus();
+    // const time = setTimeout(() => {
+    //   if (imgLoaded) setIsLoading(false);
+    // }, 700);
+    // return () => clearTimeout(time);
   }, [questionCounter]);
+
+  useEffect(() => {
+    const time = setTimeout(() => {
+      if (imgLoaded) {
+        setIsLoading(false);
+      }
+    }, 300);
+    return () => clearTimeout(time);
+  }, [imgLoaded]);
 
   useEffect(() => {
     console.log("array changed, new length:", INFOS.length);
@@ -181,10 +199,20 @@ function App() {
     console.log(INFOS);
   };
 
+  const setShowQuestionSatus = () => {
+    if (!isLoading) {
+      setIsShowQuestion(true);
+    } else {
+      setIsShowQuestion(false);
+    }
+    setIsLoading(true);
+  };
+
   return (
     <>
       <div className="wrapper">
         {questionChanged && <h1>Loading...</h1>}
+
         {/* CARD */}
         <>
           <div className="container">
@@ -251,67 +279,86 @@ function App() {
                 </div>
               </div>
             )}
-            {isShowQuestion && !isShowInfo && (
+            {!isShowInfo && (
               <div className="card" id={question[0].id}>
-                <div className="year">{question[0].year}</div>
+                {isLoading && (
+                  <div className="spinner">
+                    <i>
+                      <FaSpinner />
+                    </i>
+                  </div>
+                )}
+                {!isLoading && <div className="year">{question[0].year}</div>}
                 <div className="img-container">
                   <img
                     className="headImage"
                     src={process.env.PUBLIC_URL + `/images/${question[0].img}`}
+                    style={!isLoading ? {} : { display: "none" }}
                     alt="img here"
+                    onLoad={() => setImgLoaded(true)}
+                    // onFail={() => setIsLoading(false)}
                   />
                 </div>
-                <div className="img-ref">
-                  <a href={question[0].imgRef}>источник</a>
-                </div>
-
-                <div className="question">
-                  <h2>{question[0].text}</h2>
-                </div>
-                {question[0].options.length > 1 && (
-                  <div className="options">
-                    <div className="option-container">
-                      {question[0].options.map((option) => {
-                        if ("nextJump" in option) {
-                          const nextJump = option.nextJump;
-                          const next = option.next;
-                          return (
-                            <button
-                              className={`option ${
-                                option.isActive ? "active" : ""
-                              }`}
-                              key={option.id}
-                              onClick={() =>
-                                nextClick(
-                                  option.id,
-                                  option.isActive,
-                                  next,
-                                  nextJump
-                                )
-                              }
-                            >
-                              {option.text}
-                            </button>
-                          );
-                        } else {
-                          const next = option.next;
-                          return (
-                            <button
-                              className={`option ${
-                                option.isActive ? "active" : ""
-                              }`}
-                              key={option.id}
-                              onClick={() =>
-                                nextClick(option.id, option.isActive, next, 0)
-                              }
-                            >
-                              {option.text}
-                            </button>
-                          );
-                        }
-                      })}
+                {!isLoading && (
+                  <>
+                    <div className="img-ref">
+                      <a href={question[0].imgRef}>источник</a>
                     </div>
-                  </div>
+
+                    <div className="question">
+                      <h2>{question[0].text}</h2>
+                    </div>
+                    {question[0].options.length > 1 && (
+                      <div className="options">
+                        <div className="option-container">
+                          {question[0].options.map((option) => {
+                            if ("nextJump" in option) {
+                              const nextJump = option.nextJump;
+                              const next = option.next;
+                              return (
+                                <button
+                                  className={`option ${
+                                    option.isActive ? "active" : ""
+                                  }`}
+                                  key={option.id}
+                                  onClick={() =>
+                                    nextClick(
+                                      option.id,
+                                      option.isActive,
+                                      next,
+                                      nextJump
+                                    )
+                                  }
+                                >
+                                  {option.text}
+                                </button>
+                              );
+                            } else {
+                              const next = option.next;
+                              return (
+                                <button
+                                  className={`option ${
+                                    option.isActive ? "active" : ""
+                                  }`}
+                                  key={option.id}
+                                  onClick={() =>
+                                    nextClick(
+                                      option.id,
+                                      option.isActive,
+                                      next,
+                                      0
+                                    )
+                                  }
+                                >
+                                  {option.text}
+                                </button>
+                              );
+                            }
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             )}
