@@ -95,10 +95,12 @@ function App() {
   };
 
   const handleClick = () => {
-    if (index !== question[0].id) setQuestionCounter(questionCounter + 1);
-    setQuestionChanged(true);
-    setQuestion(data.filter((item) => item.id === index));
-    setQuestionChanged(false);
+    if (!isShowInfo) {
+      if (index !== question[0].id) setQuestionCounter(questionCounter + 1);
+      setQuestionChanged(true);
+      setQuestion(data.filter((item) => item.id === index));
+      setQuestionChanged(false);
+    }
   };
 
   useEffect(() => {
@@ -205,9 +207,9 @@ function App() {
                             <div className="info-single-entry">
                               <button
                                 onClick={() => chooseDisplayedInfo(info.infoId)}
-                                className={
-                                  info.isActive ? "active-entry" : "inactive"
-                                }
+                                className={`info-btn ${
+                                  info.isActive ? "active-entry" : ""
+                                }`}
                               >
                                 {info.infoName}
                               </button>
@@ -240,12 +242,12 @@ function App() {
                 <div className="infoName">
                   <h2>{currentInfoDisplayed.infoName}</h2>
                 </div>
-                <div className="img-container">
+                {/* <div className="img-container">
                   <img className="headImage" src={placeholder} alt="img here" />
-                </div>
+                </div> */}
 
-                <div className="question">
-                  <h2>{currentInfoDisplayed.infoText}</h2>
+                <div className="info-text">
+                  <p>{currentInfoDisplayed.infoText}</p>
                 </div>
               </div>
             )}
@@ -253,7 +255,14 @@ function App() {
               <div className="card" id={question[0].id}>
                 <div className="year">{question[0].year}</div>
                 <div className="img-container">
-                  <img className="headImage" src={placeholder} alt="img here" />
+                  <img
+                    className="headImage"
+                    src={process.env.PUBLIC_URL + `/images/${question[0].img}`}
+                    alt="img here"
+                  />
+                </div>
+                <div className="img-ref">
+                  <a href={question[0].imgRef}>источник</a>
                 </div>
 
                 <div className="question">

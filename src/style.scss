@@ -60,26 +60,31 @@ $semi-dark: rgb(117, 117, 117);
     overflow-y: scroll;
 
     .single-period {
-      button {
+      .period-btn {
         background-color: $base-background;
         text-align: center;
         width: 100%;
         height: 3.5rem;
         max-height: 90px;
         font-size: 1.3em;
-        border: none;
+        border: 1px solid grey;
         cursor: pointer;
         margin: none;
       }
     }
     .info-single-entry {
-      button {
+      .info-btn {
         background-color: rgb(148, 148, 148); //specify that this is active bg
         margin-bottom: 2px;
         padding: 12px 20px 12px 20px;
-        // color: rgb(226, 226, 226);   //specify color
         font-size: 1.2rem;
-        // height: 2.8rem;
+        text-align: center;
+        width: 100%;
+        height: 3.5rem;
+        border: none;
+        cursor: pointer;
+        margin: none;
+        text-align: left;
       }
       .active-entry {
         background-color: $light-background;
@@ -89,21 +94,7 @@ $semi-dark: rgb(117, 117, 117);
 }
 
 // info column
-.info-btn {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  max-width: 90px;
-  height: 4rem;
-  max-height: 90px;
-  background-color: $light-background;
-  justify-self: center;
-  border: none;
-  cursor: pointer;
-  font-size: 1.7em;
-}
+
 .info {
   grid-area: info;
   background-color: rgb(255, 255, 255);
@@ -165,9 +156,32 @@ $semi-dark: rgb(117, 117, 117);
   padding: 15px 20px 50px 20px;
   // margin: 0 auto;
   height: 90vh;
-
   overflow-y: scroll;
 
+  .img-container {
+    background-color: $base-background;
+    margin: 0 30px;
+  }
+  .headImage {
+    max-height: 350px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+  .img-ref {
+    text-align: center;
+    width: 100%;
+    margin-top: 6px;
+    a {
+      text-decoration: none;
+      color: rgb(98, 98, 98);
+    }
+  }
+  .info-text {
+    p {
+      white-space: pre-wrap;
+    }
+  }
   .close-info {
     display: flex;
     text-align: right;
@@ -257,17 +271,6 @@ h5 {
     //   background-color: rgb(193, 233, 233);
     // }
   }
-}
-
-.img-container {
-  background-color: white;
-  margin: 0 30px;
-}
-
-.headImage {
-  width: 60%;
-  margin: 0 auto;
-  display: block;
 }
 
 .question {
