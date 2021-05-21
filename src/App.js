@@ -115,10 +115,9 @@ function App() {
     checkInfos();
     addINFO();
     setShowQuestionSatus();
-    // const time = setTimeout(() => {
-    //   if (imgLoaded) setIsLoading(false);
-    // }, 700);
-    // return () => clearTimeout(time);
+    if (question[0].img === "") {
+      setImgLoaded(true);
+    }
   }, [questionCounter]);
 
   useEffect(() => {
@@ -290,14 +289,26 @@ function App() {
                 )}
                 {!isLoading && <div className="year">{question[0].year}</div>}
                 <div className="img-container">
-                  <img
+                  {question[0].img !== "" ? (
+                    <img
+                      className="headImage"
+                      src={
+                        process.env.PUBLIC_URL + `/images/${question[0].img}`
+                      }
+                      style={!isLoading ? {} : { display: "none" }}
+                      alt="img here"
+                      onLoad={() => setImgLoaded(true)}
+                      // onFail={() => setIsLoading(false)}
+                    />
+                  ) : null}
+                  {/* <img
                     className="headImage"
                     src={process.env.PUBLIC_URL + `/images/${question[0].img}`}
                     style={!isLoading ? {} : { display: "none" }}
                     alt="img here"
                     onLoad={() => setImgLoaded(true)}
                     // onFail={() => setIsLoading(false)}
-                  />
+                  /> */}
                 </div>
                 {!isLoading && (
                   <>
