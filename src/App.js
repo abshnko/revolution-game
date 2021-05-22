@@ -251,20 +251,20 @@ function App() {
             {isShowInfo && ( //show currently chosen info entry
               <div className="card" id={question[0].id}>
                 <div className="close-info">
-                  <div>
-                    <button
-                      onClick={() => {
-                        setIsShowInfo(false);
-                        INFOS.map((INFO) => {
-                          INFO.infos.map((info, infoIndex) => {
-                            info.isActive = false;
-                          });
+                  <button
+                    onClick={() => {
+                      setIsShowInfo(false);
+                      INFOS.map((INFO) => {
+                        INFO.infos.map((info, infoIndex) => {
+                          info.isActive = false;
                         });
-                      }}
-                    >
+                      });
+                    }}
+                  >
+                    <i>
                       <AiOutlineClose />
-                    </button>
-                  </div>
+                    </i>
+                  </button>
                 </div>
                 <div className="infoName">
                   <h2>{currentInfoDisplayed.infoName}</h2>
@@ -298,24 +298,15 @@ function App() {
                       style={!isLoading ? {} : { display: "none" }}
                       alt="img here"
                       onLoad={() => setImgLoaded(true)}
-                      // onFail={() => setIsLoading(false)}
                     />
                   ) : null}
-                  {/* <img
-                    className="headImage"
-                    src={process.env.PUBLIC_URL + `/images/${question[0].img}`}
-                    style={!isLoading ? {} : { display: "none" }}
-                    alt="img here"
-                    onLoad={() => setImgLoaded(true)}
-                    // onFail={() => setIsLoading(false)}
-                  /> */}
                 </div>
                 {!isLoading && (
                   <>
                     <div className="img-ref">
                       <a href={question[0].imgRef}>источник</a>
                     </div>
-
+                    <div className="id-testing">current: {question[0].id}</div>
                     <div className="question">
                       <h2>{question[0].text}</h2>
                     </div>
@@ -327,42 +318,54 @@ function App() {
                               const nextJump = option.nextJump;
                               const next = option.next;
                               return (
-                                <button
-                                  className={`option ${
-                                    option.isActive ? "active" : ""
-                                  }`}
-                                  key={option.id}
-                                  onClick={() =>
-                                    nextClick(
-                                      option.id,
-                                      option.isActive,
-                                      next,
-                                      nextJump
-                                    )
-                                  }
-                                >
-                                  {option.text}
-                                </button>
+                                <>
+                                  {/*testing*/}
+                                  <div className="next-option-testing">
+                                    nextJump: {option.nextJump}
+                                  </div>
+                                  <button
+                                    className={`option ${
+                                      option.isActive ? "active" : ""
+                                    }`}
+                                    key={option.id}
+                                    onClick={() =>
+                                      nextClick(
+                                        option.id,
+                                        option.isActive,
+                                        next,
+                                        nextJump
+                                      )
+                                    }
+                                  >
+                                    {option.text}
+                                  </button>
+                                </>
                               );
                             } else {
                               const next = option.next;
                               return (
-                                <button
-                                  className={`option ${
-                                    option.isActive ? "active" : ""
-                                  }`}
-                                  key={option.id}
-                                  onClick={() =>
-                                    nextClick(
-                                      option.id,
-                                      option.isActive,
-                                      next,
-                                      0
-                                    )
-                                  }
-                                >
-                                  {option.text}
-                                </button>
+                                <>
+                                  {/*testing*/}
+                                  <div className="next-option-testing">
+                                    next: {option.next}
+                                  </div>
+                                  <button
+                                    className={`option ${
+                                      option.isActive ? "active" : ""
+                                    }`}
+                                    key={option.id}
+                                    onClick={() =>
+                                      nextClick(
+                                        option.id,
+                                        option.isActive,
+                                        next,
+                                        0
+                                      )
+                                    }
+                                  >
+                                    {option.text}
+                                  </button>
+                                </>
                               );
                             }
                           })}
