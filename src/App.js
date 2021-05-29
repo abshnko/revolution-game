@@ -1,13 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./style.css";
-// import Question from "./Question";
 import data from "./data";
-import Question from "./Question";
-import { BsQuestion } from "react-icons/bs";
-import { AiOutlineClose } from "react-icons/ai";
-import placeholder from "./images/placeholder.png";
+import Question from "./components/Question";
 import { FaSpinner } from "react-icons/fa";
+import CurrentInfo from "./components/CurrentInfo";
+import InfoColumn from "./components/InfoColumn";
 
 function App() {
   const [index, setIndex] = useState(1000);
@@ -23,16 +21,13 @@ function App() {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [INFOS, setINFOS] = useState([]);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
-  // console.log(typeof infoArray);
-  // info object:
-  // {title, text, img, isActive}
 
-  const addInfoHelper = (singleInfo) => {
+  const addInfoHelper = (singleInfo, infoAdded) => {
     const i = INFOS.findIndex(
       (infoObj) => infoObj.period === question[0].period
     );
     console.log("index in INFOS:", i);
-    if (i !== -1) {
+    if (i !== -1 && !infoAdded) {
       const newINFO = {
         infoId: singleInfo.id,
         infoName: singleInfo.name,
@@ -68,7 +63,7 @@ function App() {
     }
   };
 
-  function addINFO() {
+  const addINFO = () => {
     if ("infos" in question[0]) {
       question[0].infos.map((singleInfo) => {
         addInfoHelper(singleInfo);
@@ -81,7 +76,7 @@ function App() {
         });
       }
     });
-  }
+  };
 
   const setIsShowInfoEntries = (periodId) => {
     const i = INFOS.findIndex((period) => period.id === periodId);
@@ -98,12 +93,14 @@ function App() {
 
   const handleClick = () => {
     if (!isShowInfo) {
-      if (index !== question[0].id) setQuestionCounter(questionCounter + 1);
-      setQuestionChanged(true);
-      setQuestion(data.filter((item) => item.id === index));
-      setQuestionChanged(false);
-      setIsLoading(true);
-      setImgLoaded(false);
+      if (index !== question[0].id) {
+        setQuestionCounter(questionCounter + 1);
+        setQuestionChanged(true);
+        setQuestion(data.filter((item) => item.id === index));
+        setQuestionChanged(false);
+        setIsLoading(true);
+        setImgLoaded(false);
+      }
     }
   };
 
@@ -133,11 +130,11 @@ function App() {
     console.log("array changed, new length:", INFOS.length);
   }, [INFOS]);
 
-  const nextClick = (id, isActive, next, nextJump) => {
+  const nextClick = (id, isActive, next, nextJump, jumpFromHere) => {
     if (nextJump !== 0) {
       setJump(nextJump);
-      setIsJump(true);
     }
+    if (jumpFromHere) setIsJump(true); //вытащить if jumpFromHere === true then set
     setIndex(next);
 
     //change active option
@@ -185,6 +182,9 @@ function App() {
         setIndex(jump);
         console.log(jump);
         setIsJump(false);
+      } else if ("jumpFromHere" in question[0].options[0]) {
+        setIsJump(true);
+        setIndex(question[0].options[0].next);
       } else {
         setIndex(question[0].options[0].next);
       }
@@ -220,63 +220,21 @@ function App() {
               {/*whole left column*/}
               {INFOS.map((period) => {
                 return (
-                  <div className="single-period">
-                    <button
-                      className="period-btn"
-                      onClick={() => setIsShowInfoEntries(period.id)}
-                    >
-                      {period.period}
-                    </button>
-                    {period.isShowEntries &&
-                      period.infos.map((info) => {
-                        return (
-                          <>
-                            <div className="info-single-entry">
-                              <button
-                                onClick={() => chooseDisplayedInfo(info.infoId)}
-                                className={`info-btn ${
-                                  info.isActive ? "active-entry" : ""
-                                }`}
-                              >
-                                {info.infoName}
-                              </button>
-                            </div>
-                          </>
-                        );
-                      })}
-                  </div>
+                  <InfoColumn
+                    period={period}
+                    setIsShowInfoEntries={setIsShowInfoEntries}
+                    chooseDisplayedInfo={chooseDisplayedInfo}
+                  />
                 );
               })}
             </div>
             {isShowInfo && ( //show currently chosen info entry
-              <div className="card" id={question[0].id}>
-                <div className="close-info">
-                  <button
-                    onClick={() => {
-                      setIsShowInfo(false);
-                      INFOS.map((INFO) => {
-                        INFO.infos.map((info, infoIndex) => {
-                          info.isActive = false;
-                        });
-                      });
-                    }}
-                  >
-                    <i>
-                      <AiOutlineClose />
-                    </i>
-                  </button>
-                </div>
-                <div className="infoName">
-                  <h2>{currentInfoDisplayed.infoName}</h2>
-                </div>
-                {/* <div className="img-container">
-                  <img className="headImage" src={placeholder} alt="img here" />
-                </div> */}
-
-                <div className="info-text">
-                  <p>{currentInfoDisplayed.infoText}</p>
-                </div>
-              </div>
+              <CurrentInfo
+                question={question}
+                setIsShowInfo={setIsShowInfo}
+                INFOS={INFOS}
+                currentInfoDisplayed={currentInfoDisplayed}
+              />
             )}
             {!isShowInfo && (
               <div className="card" id={question[0].id}>
@@ -302,77 +260,7 @@ function App() {
                   ) : null}
                 </div>
                 {!isLoading && (
-                  <>
-                    <div className="img-ref">
-                      <a href={question[0].imgRef}>источник</a>
-                    </div>
-                    <div className="id-testing">current: {question[0].id}</div>
-                    <div className="question">
-                      <h2>{question[0].text}</h2>
-                    </div>
-                    {question[0].options.length > 1 && (
-                      <div className="options">
-                        <div className="option-container">
-                          {question[0].options.map((option) => {
-                            if ("nextJump" in option) {
-                              const nextJump = option.nextJump;
-                              const next = option.next;
-                              return (
-                                <>
-                                  {/*testing*/}
-                                  <div className="next-option-testing">
-                                    nextJump: {option.nextJump}
-                                  </div>
-                                  <button
-                                    className={`option ${
-                                      option.isActive ? "active" : ""
-                                    }`}
-                                    key={option.id}
-                                    onClick={() =>
-                                      nextClick(
-                                        option.id,
-                                        option.isActive,
-                                        next,
-                                        nextJump
-                                      )
-                                    }
-                                  >
-                                    {option.text}
-                                  </button>
-                                </>
-                              );
-                            } else {
-                              const next = option.next;
-                              return (
-                                <>
-                                  {/*testing*/}
-                                  <div className="next-option-testing">
-                                    next: {option.next}
-                                  </div>
-                                  <button
-                                    className={`option ${
-                                      option.isActive ? "active" : ""
-                                    }`}
-                                    key={option.id}
-                                    onClick={() =>
-                                      nextClick(
-                                        option.id,
-                                        option.isActive,
-                                        next,
-                                        0
-                                      )
-                                    }
-                                  >
-                                    {option.text}
-                                  </button>
-                                </>
-                              );
-                            }
-                          })}
-                        </div>
-                      </div>
-                    )}
-                  </>
+                  <Question question={question} nextClick={nextClick} />
                 )}
               </div>
             )}
