@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./style.css";
 import data from "./data";
 import Question from "./components/Question";
-import { FaSpinner } from "react-icons/fa";
+import Image from "./components/Image";
 import CurrentInfo from "./components/CurrentInfo";
 import InfoColumn from "./components/InfoColumn";
+import Loading from "./components/Loading";
 
 function App() {
   const [index, setIndex] = useState(1000);
@@ -21,13 +22,15 @@ function App() {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [INFOS, setINFOS] = useState([]);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
+  const INFOSRef = useRef(INFOS); //test w/ ref
 
-  const addInfoHelper = (singleInfo, infoAdded) => {
+  const addInfoHelper = (singleInfo) => {
     const i = INFOS.findIndex(
       (infoObj) => infoObj.period === question[0].period
     );
     console.log("index in INFOS:", i);
-    if (i !== -1 && !infoAdded) {
+
+    if (i !== -1) {
       const newINFO = {
         infoId: singleInfo.id,
         infoName: singleInfo.name,
@@ -40,6 +43,7 @@ function App() {
       const newArray = INFOS;
       newArray[i] = newObj;
       setINFOS(newArray);
+      checkInfos();
     } else {
       const newINFO = {
         infoId: singleInfo.id,
@@ -56,8 +60,8 @@ function App() {
           isShowEntries: true,
         },
       ]);
-
-      INFOS.map((INFO) => {
+      checkInfos();
+      INFOS.forEach((INFO) => {
         INFO.isShowEntries = false;
       });
     }
@@ -65,13 +69,13 @@ function App() {
 
   const addINFO = () => {
     if ("infos" in question[0]) {
-      question[0].infos.map((singleInfo) => {
+      question[0].infos.forEach((singleInfo) => {
         addInfoHelper(singleInfo);
       });
     }
-    question[0].options.map((option) => {
+    question[0].options.forEach((option) => {
       if ("infos" in option) {
-        option.infos.map((singleInfo) => {
+        option.infos.forEach((singleInfo) => {
           addInfoHelper(singleInfo);
         });
       }
@@ -86,7 +90,7 @@ function App() {
     const newObj = { ...cloneObj, isShowEntries: !show };
     newArray[i] = newObj;
     setINFOS(newArray);
-    INFOS.map((INFO) => {
+    INFOS.forEach((INFO) => {
       INFO.isShowEntries = false;
     });
   };
@@ -110,6 +114,7 @@ function App() {
 
   useEffect(() => {
     checkInfos();
+
     addINFO();
     setShowQuestionSatus();
     if (question[0].img === "") {
@@ -144,7 +149,7 @@ function App() {
     const objClone = [...question];
     objClone[0] = { ...question[0], options: clone };
     setQuestion(objClone);
-    question[0].options.map((option) => {
+    question[0].options.forEach((option) => {
       option.isActive = false;
     });
   };
@@ -152,10 +157,10 @@ function App() {
   const chooseDisplayedInfo = (infoId) => {
     //check active info
 
-    INFOS.map((INFO, INFOindex) => {
+    INFOS.forEach((INFO, INFOindex) => {
       const i = INFO.infos.findIndex((info) => info.infoId === infoId);
       if (i !== -1) {
-        INFO.infos.map((info, infoIndex) => {
+        INFO.infos.forEach((info, infoIndex) => {
           const arrayInfos = [...INFO.infos];
           arrayInfos[i] = { ...arrayInfos[i], isActive: true };
           setCurrentInfoDisplayed(arrayInfos[i]);
@@ -169,7 +174,7 @@ function App() {
           console.log("info is active?", info.isActive);
         });
       }
-      INFO.infos.map((info, infoIndex) => {
+      INFO.infos.forEach((info) => {
         info.isActive = false;
       });
     });
@@ -238,27 +243,13 @@ function App() {
             )}
             {!isShowInfo && (
               <div className="card" id={question[0].id}>
-                {isLoading && (
-                  <div className="spinner">
-                    <i>
-                      <FaSpinner />
-                    </i>
-                  </div>
-                )}
+                {isLoading && <Loading />}
                 {!isLoading && <div className="year">{question[0].year}</div>}
-                <div className="img-container">
-                  {question[0].img !== "" ? (
-                    <img
-                      className="headImage"
-                      src={
-                        process.env.PUBLIC_URL + `/images/${question[0].img}`
-                      }
-                      style={!isLoading ? {} : { display: "none" }}
-                      alt="img here"
-                      onLoad={() => setImgLoaded(true)}
-                    />
-                  ) : null}
-                </div>
+                <Image
+                  question={question}
+                  setImgLoaded={setImgLoaded}
+                  isLoading={isLoading}
+                />
                 {!isLoading && (
                   <Question question={question} nextClick={nextClick} />
                 )}
