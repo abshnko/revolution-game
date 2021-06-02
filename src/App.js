@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { useState, useEffect, useRef } from "react";
 import "./style.css";
 import data from "./data";
+import periods from "./periods";
 import Question from "./components/Question";
 import Image from "./components/Image";
 import CurrentInfo from "./components/CurrentInfo";
 import InfoColumn from "./components/InfoColumn";
 import Loading from "./components/Loading";
+import { INFOSReducer } from "./reducer";
+import LoseScreen from "./components/LoseScreen";
 
 function App() {
   const [index, setIndex] = useState(1000);
@@ -14,57 +17,38 @@ function App() {
   const [questionChanged, setQuestionChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isShowInfo, setIsShowInfo] = useState(false);
+  const [INFOS, setINFOS] = useState(periods);
   const [questionCounter, setQuestionCounter] = useState(1);
-  const [testCounter, setTestCounter] = useState(1); //helps rerender infos for some reason
   const [isJump, setIsJump] = useState(false);
   const [jump, setJump] = useState(0);
   const [isShowQuestion, setIsShowQuestion] = useState(true);
   const [imgLoaded, setImgLoaded] = useState(false);
-  const [INFOS, setINFOS] = useState([]);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
-  const INFOSRef = useRef(INFOS); //test w/ ref
+  const [lose, setLose] = useState(false);
+  const [grade, setGrade] = useState(0);
 
   const addInfoHelper = (singleInfo) => {
     const i = INFOS.findIndex(
       (infoObj) => infoObj.period === question[0].period
     );
     console.log("index in INFOS:", i);
+    INFOS.forEach((INFO) => {
+      INFO.isShowEntries = false;
+    });
+    const newINFO = {
+      infoId: singleInfo.id,
+      infoName: singleInfo.name,
+      infoText: singleInfo.text,
+      isActive: false,
+    };
+    var infosArray = INFOS[i].infos;
+    infosArray.push(newINFO);
+    const newObj = { ...INFOS[i], infos: infosArray, isShowEntries: true };
+    const newArray = INFOS;
+    newArray[i] = newObj;
+    setINFOS(newArray);
 
-    if (i !== -1) {
-      const newINFO = {
-        infoId: singleInfo.id,
-        infoName: singleInfo.name,
-        infoText: singleInfo.text,
-        isActive: false,
-      };
-      var infosArray = INFOS[i].infos;
-      infosArray.push(newINFO);
-      const newObj = { ...INFOS[i], infos: infosArray };
-      const newArray = INFOS;
-      newArray[i] = newObj;
-      setINFOS(newArray);
-      checkInfos();
-    } else {
-      const newINFO = {
-        infoId: singleInfo.id,
-        infoName: singleInfo.name,
-        infoText: singleInfo.text,
-        isActive: false,
-      };
-      setINFOS((INFOS) => [
-        ...INFOS,
-        {
-          id: INFOS.length + 1,
-          period: question[0].period,
-          infos: [newINFO],
-          isShowEntries: true,
-        },
-      ]);
-      checkInfos();
-      INFOS.forEach((INFO) => {
-        INFO.isShowEntries = false;
-      });
-    }
+    console.log(INFOS, "added into existed obj");
   };
 
   const addINFO = () => {
@@ -113,12 +97,13 @@ function App() {
   }, [question]);
 
   useEffect(() => {
-    checkInfos();
-
     addINFO();
     setShowQuestionSatus();
     if (question[0].img === "") {
       setImgLoaded(true);
+    }
+    if ("lose" in question[0]) {
+      setLose(true);
     }
   }, [questionCounter]);
 
@@ -139,7 +124,7 @@ function App() {
     if (nextJump !== 0) {
       setJump(nextJump);
     }
-    if (jumpFromHere) setIsJump(true); //вытащить if jumpFromHere === true then set
+    if (jumpFromHere) setIsJump(true);
     setIndex(next);
 
     //change active option
@@ -148,6 +133,7 @@ function App() {
     clone[i] = { ...clone[i], isActive: true };
     const objClone = [...question];
     objClone[0] = { ...question[0], options: clone };
+
     setQuestion(objClone);
     question[0].options.forEach((option) => {
       option.isActive = false;
@@ -156,7 +142,6 @@ function App() {
 
   const chooseDisplayedInfo = (infoId) => {
     //check active info
-
     INFOS.forEach((INFO, INFOindex) => {
       const i = INFO.infos.findIndex((info) => info.infoId === infoId);
       if (i !== -1) {
@@ -171,7 +156,6 @@ function App() {
             infos: arrayInfos,
           };
           setINFOS(INFOArrCLone);
-          console.log("info is active?", info.isActive);
         });
       }
       INFO.infos.forEach((info) => {
@@ -195,12 +179,6 @@ function App() {
       }
       // ADD if length === 0 : endgame (maybe)
     }
-  };
-
-  //helps rerendering infos for some reason
-  const checkInfos = () => {
-    setTestCounter(testCounter + 1);
-    console.log(INFOS);
   };
 
   const setShowQuestionSatus = () => {
@@ -253,14 +231,19 @@ function App() {
                 {!isLoading && (
                   <Question question={question} nextClick={nextClick} />
                 )}
+                {question[0].lose ? <LoseScreen grade={grade} /> : null}
               </div>
             )}
-            <div className="next">
-              <div className="question-number">{questionCounter}</div>
-              <button className="next-button" onClick={() => handleClick()}>
-                Далее
-              </button>
-            </div>
+
+            {/* {lose && <LoseScreen grade={grade} />} */}
+            {!lose && (
+              <div className="next">
+                <div className="question-number">{questionCounter}</div>
+                <button className="next-button" onClick={() => handleClick()}>
+                  Далее
+                </button>
+              </div>
+            )}
           </div>
         </>
       </div>
