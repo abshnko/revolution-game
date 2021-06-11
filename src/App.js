@@ -229,7 +229,11 @@ function App() {
                   isLoading={isLoading}
                 />
                 {!isLoading && (
-                  <Question question={question} nextClick={nextClick} />
+                  <Question
+                    question={question}
+                    nextClick={nextClick}
+                    chooseDisplayedInfo={chooseDisplayedInfo}
+                  />
                 )}
                 {question[0].lose ? <LoseScreen grade={grade} /> : null}
               </div>

@@ -160,6 +160,16 @@ $semi-dark: rgb(117, 117, 117);
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  .info-link {
+    color: rgb(13, 121, 155);
+    // text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .info-link:hover {
+    color: rgb(47, 173, 204);
+  }
+
   .id-testing {
     color: grey;
     font-size: 0.7em;

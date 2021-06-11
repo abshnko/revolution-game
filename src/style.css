@@ -188,6 +188,17 @@ html {
   overflow-y: scroll;
 }
 
+.card .info-link {
+  color: #0d799b;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.card .info-link:hover {
+  color: #2fadcc;
+}
+
 .card .id-testing {
   color: grey;
   font-size: 0.7em;
