@@ -25,15 +25,17 @@ const CurrentInfo = ({
           </i>
         </button>
       </div>
-      <div className="infoName">
-        <h2>{currentInfoDisplayed.infoName}</h2>
-      </div>
-      {/* <div className="img-container">
+      <div className="current-info">
+        <div className="infoName">
+          <h2>{currentInfoDisplayed.infoName}</h2>
+        </div>
+        {/* <div className="img-container">
                   <img className="headImage" src={placeholder} alt="img here" />
                 </div> */}
 
-      <div className="info-text">
-        <p>{currentInfoDisplayed.infoText}</p>
+        <div className="info-text">
+          <p>{currentInfoDisplayed.infoText}</p>
+        </div>
       </div>
     </div>
   );

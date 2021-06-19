@@ -14,18 +14,21 @@ html {
           align-items: center;
   max-height: 100vh;
   width: 100%;
+  background: url(./images/main-background.jpg) no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .wrapper {
-  max-width: 75%;
+  max-width: 85%;
   margin: auto;
 }
 
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 25% 69% 6%;
-      grid-template-columns: 25% 69% 6%;
+  -ms-grid-columns: 20% 74% 6%;
+      grid-template-columns: 20% 74% 6%;
       grid-template-areas: "info-entries card next";
   max-height: 90vh;
 }
@@ -58,25 +61,44 @@ html {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: info-entries;
-  background-color: #cecece;
   height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  /*frosted glass style*/
+  background-color: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  margin-right: 7px;
+  border-radius: 10px;
 }
 
 .container .info-entries .single-period .period-btn {
-  background-color: #cecece;
+  background-color: rgba(197, 101, 101, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   text-align: center;
   width: 100%;
   height: 3.5rem;
   max-height: 90px;
   font-size: 1.3em;
-  border: 1px solid grey;
+  border: none;
   cursor: pointer;
   margin: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 8px;
+  margin-bottom: 2px;
+}
+
+.container .info-entries .single-period .period-btn:hover {
+  background-color: rgba(233, 135, 135, 0.55);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 
 .container .info-entries .info-single-entry .info-btn {
-  background-color: #949494;
+  background-color: rgba(118, 203, 218, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   margin-bottom: 2px;
   padding: 12px 20px 12px 20px;
   font-size: 1.2rem;
@@ -87,10 +109,26 @@ html {
   cursor: pointer;
   margin: none;
   text-align: left;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 8px;
 }
 
 .container .info-entries .info-single-entry .active-entry {
   background-color: #d4d4d4;
+  background-color: rgba(182, 244, 255, 0.65);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.container .info-entries .info-single-entry .active-entry:hover {
+  background-color: rgba(182, 244, 255, 0.65);
+}
+
+.container .info-entries .info-btn:hover {
+  background-color: rgba(166, 223, 233, 0.65);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 
 .info {
@@ -128,6 +166,7 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  color: white;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -141,14 +180,23 @@ html {
   max-width: 90px;
   height: 3.5rem;
   max-height: 90px;
-  font-size: 1.3em;
+  font-size: 3em;
   border: none;
   cursor: pointer;
+  background-color: rgba(159, 255, 207, 0.65);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.next .next-button:hover {
+  background-color: rgba(147, 255, 201, 0.55);
 }
 
 .next .question-number {
-  background-color: #424242;
-  color: #c3c3c3;
+  color: white;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -167,6 +215,10 @@ html {
   max-height: 90px;
   justify-self: center;
   font-size: 1.6em;
+  background-color: rgba(3, 3, 3, 0.25);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 5px;
 }
 
 .card {
@@ -175,8 +227,7 @@ html {
   grid-area: card;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #cecece;
-  padding: 0 20px 50px 20px;
+  padding: 0 20px 20px 20px;
   height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -185,18 +236,22 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 
 .card .info-link {
-  color: #0d799b;
+  color: rgba(32, 119, 134, 0.95);
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
 .card .info-link:hover {
-  color: #2fadcc;
+  color: rgba(61, 151, 167, 0.95);
 }
 
 .card .id-testing {
@@ -206,15 +261,15 @@ html {
 }
 
 .card .spinner {
-  font-size: 100px;
-  color: grey;
+  font-size: 13rem;
+  color: rgba(108, 188, 202, 0.35);
   text-align: center;
   width: 100%;
   margin: auto;
   -webkit-animation-name: spin;
           animation-name: spin;
-  -webkit-animation-duration: 2000ms;
-          animation-duration: 2000ms;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
@@ -243,20 +298,35 @@ html {
   }
 }
 
-.card .infoName h2 {
+.card .current-info {
+  margin: 0 20px 0 20px;
+  border-radius: 10px;
+}
+
+.card .current-info .infoName h2 {
   margin: 0 0 10px 0;
 }
 
 .card .img-container {
-  background-color: #cecece;
-  margin: 0 30px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
 }
 
-.card .headImage {
-  max-height: 350px;
+.card .img-container .headImage {
   max-width: 100%;
   margin: 0 auto;
   display: block;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 0 15%;
+     object-position: 0 15%;
+  width: 1100px;
+  height: 450px;
+  -webkit-filter: grayscale(80%);
+          filter: grayscale(80%);
 }
 
 .card .img-ref {
@@ -268,11 +338,12 @@ html {
 .card .img-ref a {
   text-decoration: none;
   color: #626262;
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
 
 .card .info-text p {
   white-space: pre-wrap;
+  font-size: 1.5rem;
 }
 
 .card .close-info {
@@ -282,7 +353,7 @@ html {
           align-items: flex-end;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 20px;
+  margin: 20px 15px 0 0;
 }
 
 .card .close-info button {
@@ -292,11 +363,18 @@ html {
   background-color: transparent;
   font-size: 1.2rem;
   text-align: right;
+  padding: 0;
 }
 
 .card .close-info button i {
   font-size: 2em;
-  color: grey;
+  color: rgba(138, 138, 138, 0.85);
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.card .close-info button i:hover {
+  color: rgba(197, 38, 38, 0.85);
 }
 
 .card h2 {
@@ -308,6 +386,24 @@ html {
 .card p {
   padding: 0 40px 20px 40px;
   font-size: 19px;
+}
+
+.card .loseScreen {
+  margin: 10px 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.card .loseScreen h5 {
+  font-size: 2rem;
+  font-weight: 200;
+  text-transform: none;
+}
+
+.card .loseScreen h4 {
+  font-size: 2rem;
+  font-weight: 200;
+  text-transform: none;
 }
 
 @media only screen and (max-width: 600px) {
@@ -332,16 +428,21 @@ h4,
 h5 {
   color: #1d1d1d;
   text-transform: capitalize;
-  text-align: center;
 }
 
 .year {
   text-align: center;
   max-width: 8em;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
   font-size: 1.6em;
-  padding: 10px 10px;
-  background-color: #ebebeb;
+  padding: 10px 15px 15px 15px;
+  margin-bottom: 20px;
+  background-color: rgba(180, 180, 180, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 10% 10% 50% 50%;
+  -webkit-box-shadow: 0 8px 60px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 60px rgba(0, 0, 0, 0.3);
 }
 
 .options {
@@ -351,7 +452,6 @@ h5 {
 .options .option-container {
   text-align: left;
   margin: 20px 0;
-  background-color: #cecece;
 }
 
 .options .option-container .next-option-testing {
@@ -362,28 +462,40 @@ h5 {
 .options .option-container .option {
   padding: 15px 25px;
   border: none;
-  background-color: #e2e2e2;
+  background-color: transparent;
   color: black;
-  font-size: 15px;
   margin-right: 20px;
+  min-height: 6rem;
   width: 100%;
-  font-size: 20px;
+  border-bottom: 1px solid grey;
+  font-size: 1.25rem;
   text-align: left;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 7px;
 }
 
 .options .option-container .active {
-  -webkit-box-shadow: 0 0 5px 0px #34495e;
-          box-shadow: 0 0 5px 0px #34495e;
+  background-color: rgba(205, 236, 224, 0.75);
+  -webkit-box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
 }
 
-.options .option-container .option-active {
-  background-color: #4de0cd;
+.options .option-container .option:hover {
+  background-color: rgba(235, 235, 235, 0.35);
+  -webkit-box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+}
+
+.options .option-container .active:hover {
+  background-color: rgba(205, 236, 224, 0.75);
+  -webkit-box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
 }
 
 .question {
-  background-color: #e2e2e2;
   margin: 0 30px;
 }
 
@@ -392,6 +504,7 @@ h5 {
   font-weight: 300;
   text-align: left;
   margin: 0;
+  padding: 10px;
 }
 
 /* width */
@@ -401,16 +514,24 @@ h5 {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
+  background-color: rgba(146, 146, 146, 0.55);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+  background-color: rgba(93, 93, 93, 0.8);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 /*# sourceMappingURL=style.css.map */

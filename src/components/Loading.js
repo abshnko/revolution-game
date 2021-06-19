@@ -1,11 +1,12 @@
 import React from "react";
 import { FaSpinner } from "react-icons/fa";
+import { CgSpinner } from "react-icons/cg";
 
 function Loading(props) {
   return (
     <div className="spinner">
       <i>
-        <FaSpinner />
+        <CgSpinner />
       </i>
     </div>
   );

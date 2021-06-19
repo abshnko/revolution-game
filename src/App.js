@@ -10,6 +10,7 @@ import InfoColumn from "./components/InfoColumn";
 import Loading from "./components/Loading";
 import { INFOSReducer } from "./reducer";
 import LoseScreen from "./components/LoseScreen";
+import { BsArrowRight } from "react-icons/bs";
 
 function App() {
   const [index, setIndex] = useState(1000);
@@ -25,7 +26,7 @@ function App() {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
   const [lose, setLose] = useState(false);
-  const [grade, setGrade] = useState(0);
+  const [grade, setGrade] = useState(3);
 
   const addInfoHelper = (singleInfo) => {
     const i = INFOS.findIndex(
@@ -244,7 +245,7 @@ function App() {
               <div className="next">
                 <div className="question-number">{questionCounter}</div>
                 <button className="next-button" onClick={() => handleClick()}>
-                  Далее
+                  <BsArrowRight />
                 </button>
               </div>
             )}

@@ -59,9 +59,7 @@ const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
         <a href={question[0].imgRef}>источник</a>
       </div>
       <div className="id-testing">current: {question[0].id}</div>
-      <div className="question">
-        <h2>{checkInfosForQuestion(question)}</h2>
-      </div>
+      <div className="question">{checkInfosForQuestion(question)}</div>
       {question[0].options.length > 1 && (
         <div className="options">
           <div className="option-container">
