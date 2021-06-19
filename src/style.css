@@ -107,7 +107,6 @@ html {
   max-height: 4.5rem;
   border: none;
   cursor: pointer;
-  margin: none;
   text-align: left;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -305,6 +304,7 @@ html {
 
 .card .current-info .infoName h2 {
   margin: 0 0 10px 0;
+  text-align: center;
 }
 
 .card .img-container {

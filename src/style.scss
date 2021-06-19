@@ -108,7 +108,6 @@ $semi-dark: rgb(117, 117, 117);
         max-height: 4.5rem;
         border: none;
         cursor: pointer;
-        margin: none;
         text-align: left;
         transition: 0.3s;
         border-radius: 8px;
@@ -257,6 +256,7 @@ $semi-dark: rgb(117, 117, 117);
     .infoName {
       h2 {
         margin: 0 0 10px 0;
+        text-align: center;
       }
     }
   }
