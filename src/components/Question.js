@@ -55,10 +55,13 @@ const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
 
   return (
     <>
-      <div className="img-ref">
-        <a href={question[0].imgRef}>источник</a>
-      </div>
-      <div className="id-testing">current: {question[0].id}</div>
+      {question[0].imgRef !== "" && (
+        <div className="img-ref">
+          <a href={question[0].imgRef}>источник</a>
+        </div>
+      )}
+      {/* <div className="id-testing">current: {question[0].id}</div> */}{" "}
+      {/*testing */}
       <div className="question">{checkInfosForQuestion(question)}</div>
       {question[0].options.length > 1 && (
         <div className="options">
@@ -73,9 +76,9 @@ const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
                 return (
                   <>
                     {/*testing*/}
-                    <div className="next-option-testing">
+                    {/* <div className="next-option-testing">
                       nextJump: {option.nextJump}
-                    </div>
+                    </div> */}
                     <button
                       className={`option ${option.isActive ? "active" : ""}`}
                       key={option.id}
@@ -101,9 +104,9 @@ const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
                 return (
                   <>
                     {/*testing*/}
-                    <div className="next-option-testing">
+                    {/* <div className="next-option-testing">
                       next: {option.next}
-                    </div>
+                    </div> */}
                     <button
                       className={`option ${option.isActive ? "active" : ""}`}
                       key={option.id}

@@ -84,7 +84,6 @@ $semi-dark: rgb(117, 117, 117);
         font-size: 1.3em;
         border: none;
         cursor: pointer;
-        margin: none;
         transition: all 0.3s;
         border-radius: 8px;
         margin-bottom: 2px;
@@ -266,7 +265,7 @@ $semi-dark: rgb(117, 117, 117);
     // background-color: rgba(102, 102, 102, 0.65);
     // backdrop-filter: blur(5px);
     // border: rgba(102, 102, 102, 0.65) 5px solid;
-    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4);
+    // box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
     // padding: 5px;
     .headImage {
@@ -278,7 +277,7 @@ $semi-dark: rgb(117, 117, 117);
       object-fit: cover;
       object-position: 0 15%;
       width: 1100px;
-      height: 450px;
+      height: 350px;
       filter: grayscale(80%);
     }
   }

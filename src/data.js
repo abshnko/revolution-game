@@ -32,7 +32,7 @@ const questions = [
   {
     id: 1001,
     year: "1900",
-    img: "placeholder.jpg",
+    img: "man-or-woman.png",
     imgRef: "",
     text: "I. Выберите пол",
     options: [
