@@ -1,0 +1,24 @@
+body,
+html {
+  background-color: rgb(248, 248, 248);
+}
+
+.editing {
+  width: 100vw;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 20% 40% 40%;
+  grid-template-areas: "all-questions current-question new-question";
+
+  .all-questions {
+    border-right: 1px solid grey;
+    grid-area: "all-questions";
+  }
+  .current-question {
+    border-right: 1px solid grey;
+    grid-area: "current-question";
+  }
+  .new-question {
+    grid-area: "new-question";
+  }
+}

@@ -1,0 +1,29 @@
+body,
+html {
+  background-color: #f8f8f8;
+}
+
+.editing {
+  width: 100vw;
+  background-color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 40% 40%;
+      grid-template-columns: 20% 40% 40%;
+      grid-template-areas: "all-questions current-question new-question";
+}
+
+.editing .all-questions {
+  border-right: 1px solid grey;
+  grid-area: "all-questions";
+}
+
+.editing .current-question {
+  border-right: 1px solid grey;
+  grid-area: "current-question";
+}
+
+.editing .new-question {
+  grid-area: "new-question";
+}
+/*# sourceMappingURL=editing.css.map */
