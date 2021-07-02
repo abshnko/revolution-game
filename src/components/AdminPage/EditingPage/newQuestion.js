@@ -1,7 +1,11 @@
 import React from "react";
 
 const NewQuestion = (props) => {
-  return <h1>New question</h1>;
+  return (
+    <div className="new-question">
+      <h2>создание нового вопроса</h2>
+    </div>
+  );
 };
 
 export default NewQuestion;

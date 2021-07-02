@@ -3,8 +3,12 @@ html {
   background-color: #f8f8f8;
 }
 
+small {
+  color: #1b56d6;
+}
+
 .editing {
-  width: 100vw;
+  height: 95vh;
   background-color: white;
   display: -ms-grid;
   display: grid;
@@ -15,15 +19,98 @@ html {
 
 .editing .all-questions {
   border-right: 1px solid grey;
-  grid-area: "all-questions";
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: all-questions;
+  padding: 10px 0 10px 15px;
+}
+
+.editing .all-questions .questions {
+  height: 85vh;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.editing .all-questions .questions .question {
+  cursor: pointer;
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.editing .all-questions .questions .id {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.editing .all-questions .title-questions {
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .editing .current-question {
   border-right: 1px solid grey;
-  grid-area: "current-question";
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: current-question;
+  padding: 10px 0 10px 15px;
+}
+
+.editing .current-question .question-year {
+  font-size: 1.2rem;
+  font-style: italic;
+  border-bottom: 1px solid grey;
+  display: inline;
+}
+
+.editing .current-question .question-image {
+  margin-top: 10px;
+}
+
+.editing .current-question .question-image img {
+  max-width: 400px;
+  max-height: 200px;
+}
+
+.editing .current-question .imgRef {
+  font-size: 0.8rem;
+  max-width: 20vw;
+}
+
+.editing .current-question .question-text {
+  margin-top: 15px;
+  font-size: 1.5rem;
+}
+
+.editing .current-question .question-scroll {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.editing .current-question .question-option .option-next {
+  display: inline-block;
+}
+
+.editing .current-question .question-option .option-next button {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.editing .current-question .info {
+  padding: 0;
 }
 
 .editing .new-question {
-  grid-area: "new-question";
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: new-question;
+  padding: 10px 15px;
 }
 /*# sourceMappingURL=editing.css.map */

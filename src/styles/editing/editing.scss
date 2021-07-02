@@ -3,22 +3,98 @@ html {
   background-color: rgb(248, 248, 248);
 }
 
+small {
+  color: rgb(27, 86, 214);
+}
+
 .editing {
-  width: 100vw;
+  height: 95vh;
   background-color: white;
   display: grid;
   grid-template-columns: 20% 40% 40%;
   grid-template-areas: "all-questions current-question new-question";
 
+  //ALL
   .all-questions {
     border-right: 1px solid grey;
-    grid-area: "all-questions";
+    grid-area: all-questions;
+    padding: 10px 0 10px 15px;
+    .questions {
+      height: 85vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+
+      .question {
+        cursor: pointer;
+        margin: 0;
+        margin-bottom: 2px;
+      }
+
+      .id {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+    .title-questions {
+      position: sticky;
+    }
   }
+
+  //CURRENT
   .current-question {
     border-right: 1px solid grey;
-    grid-area: "current-question";
+    grid-area: current-question;
+    padding: 10px 0 10px 15px;
+    // height: 90vh;
+
+    .question-year {
+      font-size: 1.2rem;
+      font-style: italic;
+      border-bottom: 1px solid grey;
+      display: inline;
+    }
+
+    .question-image {
+      margin-top: 10px;
+      img {
+        max-width: 400px;
+        max-height: 200px;
+      }
+    }
+
+    .imgRef {
+      font-size: 0.8rem;
+      max-width: 20vw;
+    }
+    .question-text {
+      margin-top: 15px;
+      font-size: 1.5rem;
+    }
+    .question-scroll {
+      height: 80vh;
+      overflow-y: auto;
+    }
+    .question-option {
+      .option-next {
+        display: inline-block;
+
+        button {
+          font-size: 1.2rem;
+          cursor: pointer;
+          padding: 5px;
+          font-weight: bold;
+        }
+      }
+    }
+    .info {
+      padding: 0;
+    }
   }
+
+  //NEW
   .new-question {
-    grid-area: "new-question";
+    grid-area: new-question;
+    padding: 10px 15px;
   }
 }
