@@ -45,14 +45,15 @@ const CurrentQuestion = ({
                   alt="img here"
                 />
                 <small> изображение</small>
+                <div className="imgRef">
+                  <a href={currentQuestion.imgRef}>источник</a>
+                </div>
               </>
             ) : (
               <p style={{ color: "red" }}>изображения нет</p>
             )}
           </div>
-          <div className="imgRef">
-            <a href={currentQuestion.imgRef}>источник</a>
-          </div>
+
           <div className="question-text">{currentQuestion.text}</div>
 
           {/*options */}
@@ -67,6 +68,27 @@ const CurrentQuestion = ({
                       {option.next}
                     </button>
                   </div>
+                  {option.infos &&
+                    option.infos.map((info) => {
+                      return (
+                        <>
+                          <h4>Справка для термина из варианта ответа:</h4>
+                          <p>
+                            {info.name} <small>название справки</small>
+                          </p>
+                          <p>
+                            {info.text} <small>текст справки</small>
+                          </p>
+                          <p>
+                            {info.altText}{" "}
+                            <small>
+                              {" "}
+                              подсвечивающийся текст для нажатия на справку
+                            </small>
+                          </p>
+                        </>
+                      );
+                    })}
                 </div>
               );
             })}
@@ -79,7 +101,7 @@ const CurrentQuestion = ({
 
           {/*infos */}
           <div className="question-infos">
-            <h4>Справки:</h4>
+            <h4>Справки для терминов из вопроса:</h4>
             {currentQuestion.infos &&
               currentQuestion.infos.map((info, index) => {
                 return (
@@ -89,6 +111,12 @@ const CurrentQuestion = ({
                     </div>
                     <div className="info-text">
                       {info.text} <small>текст справки</small>
+                    </div>
+                    <div className="alt-text">
+                      {info.altText}{" "}
+                      <small>
+                        подсвечивающийся текст для нажатия на справку
+                      </small>
                     </div>
                   </div>
                 );

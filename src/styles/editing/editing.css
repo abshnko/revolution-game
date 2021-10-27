@@ -1,20 +1,20 @@
-body,
-html {
-  background-color: #f8f8f8;
-}
-
-small {
-  color: #1b56d6;
-}
-
 .editing {
-  height: 95vh;
+  height: 100vh;
   background-color: white;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 20% 40% 40%;
       grid-template-columns: 20% 40% 40%;
       grid-template-areas: "all-questions current-question new-question";
+}
+
+.editing body,
+.editing html {
+  background-color: #f8f8f8;
+}
+
+.editing small {
+  color: #1b56d6;
 }
 
 .editing .all-questions {
@@ -75,6 +75,8 @@ small {
 .editing .current-question .question-image img {
   max-width: 400px;
   max-height: 200px;
+  -webkit-filter: grayscale(80%);
+          filter: grayscale(80%);
 }
 
 .editing .current-question .imgRef {

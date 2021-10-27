@@ -1,14 +1,14 @@
-body,
-html {
-  background-color: rgb(248, 248, 248);
-}
-
-small {
-  color: rgb(27, 86, 214);
-}
-
 .editing {
-  height: 95vh;
+  body,
+  html {
+    background-color: rgb(248, 248, 248);
+  }
+
+  small {
+    color: rgb(27, 86, 214);
+  }
+
+  height: 100vh;
   background-color: white;
   display: grid;
   grid-template-columns: 20% 40% 40%;
@@ -60,6 +60,7 @@ small {
       img {
         max-width: 400px;
         max-height: 200px;
+        filter: grayscale(80%);
       }
     }
 

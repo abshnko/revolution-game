@@ -3,7 +3,7 @@ import Editing from "./EditingPage/editing";
 import "../../styles/adminPage/adminPage.css";
 
 const AdminPage = ({ questions }) => {
-  const [passwordOK, setPasswordOK] = useState(true); //change to false --- come up with better security!!!
+  const [passwordOK, setPasswordOK] = useState(true); //change to false --- JWT token
   return (
     <>
       <div className="admin-page">
