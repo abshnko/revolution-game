@@ -13,7 +13,7 @@ import LoseScreen from "./LoseScreen";
 import { BsArrowRight } from "react-icons/bs";
 
 function GamePage({ questions }) {
-  const [index, setIndex] = useState(1000);
+  const [index, setIndex] = useState(1119);
   const [question, setQuestion] = useState(questions);
   const [questionChanged, setQuestionChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -201,19 +201,19 @@ function GamePage({ questions }) {
             {/* CARD */}
             <>
               <div className="container">
-                <div className="info-entries">
-                  {" "}
-                  {/*whole left column*/}
-                  {INFOS.map((period) => {
+                {/* <div className="info-entries"> */}
+                {/*whole left column*/}
+                {/* {INFOS.map((period) => {
                     return (
                       <InfoColumn
                         period={period}
                         setIsShowInfoEntries={setIsShowInfoEntries}
                         chooseDisplayedInfo={chooseDisplayedInfo}
                       />
-                    );
-                  })}
-                </div>
+                    ); 
+                  })} */}
+                {/* </div> */}
+                <div className="timeline"></div>
                 {isShowInfo && ( //show currently chosen info entry
                   <CurrentInfo
                     question={question}
@@ -222,30 +222,90 @@ function GamePage({ questions }) {
                     currentInfoDisplayed={currentInfoDisplayed}
                   />
                 )}
-                {!isShowInfo && (
-                  <div className="card" id={question[0].id}>
+                <div className="controls">
+                  <div className="infos">INFOS</div>
+                  <div className="year">{question[0].year}</div>
+                  {!lose && (
+                    <div className="next">
+                      <button
+                        className="next-button"
+                        onClick={() => handleClick()}
+                      >
+                        <svg
+                          width="122"
+                          height="59"
+                          viewBox="0 0 122 59"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2.83008 30.1592H119.439M119.439 30.1592L74.2935 56M119.439 30.1592L74.2935 3"
+                            stroke="white"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                      <p>следующий вопрос</p>
+                    </div>
+                  )}
+                </div>
+                <div className="line">
+                  <hr />
+                </div>
+                <div className="question-number">№ {questionCounter}</div>
+                <div className="main">
+                  {!isShowInfo && (
+                    <>
+                      <div className="question">
+                        {isLoading && <Loading />}
+                        {!isLoading && (
+                          <Question
+                            question={question}
+                            nextClick={nextClick}
+                            chooseDisplayedInfo={chooseDisplayedInfo}
+                          />
+                        )}
+                      </div>
+
+                      <div className="image">
+                        <Image
+                          question={question}
+                          setImgLoaded={setImgLoaded}
+                          isLoading={isLoading}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* {!isShowInfo && (
+                  <div className="controls" id={question[0].id}>
                     {isLoading && <Loading />}
                     {!isLoading && (
                       <div className="year">{question[0].year}</div>
                     )}
-                    <Image
-                      question={question}
-                      setImgLoaded={setImgLoaded}
-                      isLoading={isLoading}
-                    />
-                    {!isLoading && (
-                      <Question
+                    <div className="main">
+                      <Image
                         question={question}
-                        nextClick={nextClick}
-                        chooseDisplayedInfo={chooseDisplayedInfo}
+                        setImgLoaded={setImgLoaded}
+                        isLoading={isLoading}
                       />
-                    )}
-                    {question[0].lose ? <LoseScreen grade={grade} /> : null}
+                      {!isLoading && (
+                        <Question
+                          question={question}
+                          nextClick={nextClick}
+                          chooseDisplayedInfo={chooseDisplayedInfo}
+                        />
+                      )}
+                      {question[0].lose ? <LoseScreen grade={grade} /> : null}
+                    </div>
                   </div>
-                )}
+                )} */}
 
                 {/* {lose && <LoseScreen grade={grade} />} */}
-                {!lose && (
+                {/* {!lose && (
                   <div className="next">
                     <div className="question-number">{questionCounter}</div>
                     <button
@@ -255,7 +315,7 @@ function GamePage({ questions }) {
                       <BsArrowRight />
                     </button>
                   </div>
-                )}
+                )} */}
               </div>
             </>
           </div>

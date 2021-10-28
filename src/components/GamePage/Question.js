@@ -55,11 +55,6 @@ const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
 
   return (
     <>
-      {question[0].imgRef !== "" && (
-        <div className="img-ref">
-          <a href={question[0].imgRef}>источник</a>
-        </div>
-      )}
       {/* <div className="id-testing">current: {question[0].id}</div> */}{" "}
       {/*testing */}
       <div className="question">{checkInfosForQuestion(question)}</div>

@@ -12,6 +12,11 @@ function Image({ question, setImgLoaded, isLoading }) {
           onLoad={() => setImgLoaded(true)}
         />
       ) : null}
+      {question[0].imgRef !== "" && (
+        <div className="img-ref">
+          <a href={question[0].imgRef}>источник</a>
+        </div>
+      )}
     </div>
   );
 }
