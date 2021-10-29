@@ -529,10 +529,22 @@ html {
     .controls {
       grid-area: controls;
       display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       grid-template-areas: "infos year next";
       text-align: center;
       .infos {
         grid-area: infos;
+        font-family: GaretBold;
+        border: 1px solid black;
+        text-align: left;
+        padding: 20px;
+        margin: 30px;
+        margin-left: 0;
+
+        .info {
+          margin-bottom: 15px;
+          cursor: pointer;
+        }
       }
       .year {
         grid-area: year;
@@ -541,6 +553,15 @@ html {
         font-weight: 850;
         font-size: 173px;
         line-height: 251px;
+        margin-top: -20px;
+        p {
+          font-family: GaretRegular;
+          font-style: normal;
+          font-weight: 300;
+          font-size: 35px;
+          line-height: 20px;
+          margin: -40px 0 20px 0;
+        }
       }
       .next {
         grid-area: next;
@@ -548,6 +569,7 @@ html {
         align-items: flex-end;
         justify-content: center;
         flex-direction: column;
+        margin-top: 30px;
         .next-button {
           border: none;
           width: 240px;

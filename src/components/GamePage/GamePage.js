@@ -142,6 +142,7 @@ function GamePage({ questions }) {
   };
 
   const chooseDisplayedInfo = (infoId) => {
+    console.log("IN");
     //check active info
     INFOS.forEach((INFO, INFOindex) => {
       const i = INFO.infos.findIndex((info) => info.infoId === infoId);
@@ -163,6 +164,7 @@ function GamePage({ questions }) {
         info.isActive = false;
       });
     });
+    console.log("OUT");
   };
 
   //check if there's more than one option = it's a question, otherwise =it's an announcement
@@ -223,8 +225,35 @@ function GamePage({ questions }) {
                   />
                 )}
                 <div className="controls">
-                  <div className="infos">INFOS</div>
-                  <div className="year">{question[0].year}</div>
+                  <div className="infos">
+                    {"infos" in question[0]
+                      ? question[0].infos.map((info) => {
+                          return (
+                            <div
+                              className="info"
+                              onClick={() => chooseDisplayedInfo(info.infoId)} //FIX
+                            >
+                              {info.name}
+                            </div>
+                          );
+                        })
+                      : null}
+
+                    {question[0].options.forEach((option) => {
+                      if ("infos" in option) {
+                        option.infos.map((info) => {
+                          console.log(info.name);
+                          return <div className="info">{info.text}</div>;
+                        });
+                      } else {
+                        console.log("NO");
+                      }
+                    })}
+                  </div>
+                  <div className="year">
+                    {question[0].year}
+                    <p>название игры</p>
+                  </div>
                   {!lose && (
                     <div className="next">
                       <button

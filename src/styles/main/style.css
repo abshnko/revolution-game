@@ -47,6 +47,8 @@ html {
   grid-area: controls;
   display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       grid-template-areas: "infos year next";
   text-align: center;
 }
@@ -55,6 +57,17 @@ html {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: infos;
+  font-family: GaretBold;
+  border: 1px solid black;
+  text-align: left;
+  padding: 20px;
+  margin: 30px;
+  margin-left: 0;
+}
+
+.game-page .container .controls .infos .info {
+  margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .game-page .container .controls .year {
@@ -66,6 +79,16 @@ html {
   font-weight: 850;
   font-size: 173px;
   line-height: 251px;
+  margin-top: -20px;
+}
+
+.game-page .container .controls .year p {
+  font-family: GaretRegular;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 35px;
+  line-height: 20px;
+  margin: -40px 0 20px 0;
 }
 
 .game-page .container .controls .next {
@@ -85,6 +108,7 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-top: 30px;
 }
 
 .game-page .container .controls .next .next-button {
