@@ -683,4 +683,121 @@ html {
       }
     }
   }
+
+  .blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    // background-color: blue;
+    backdrop-filter: blur(5px);
+    z-index: 120;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 27px;
+    padding: 30px 100px;
+    margin: 10% 20%;
+    background-color: white;
+    z-index: 130;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    .close-info {
+    }
+    .current-info {
+      margin: 50px;
+      height: 50vh;
+      position: relative;
+      margin-bottom: 5em;
+      .rect1 {
+        position: fixed;
+        width: 2em;
+        height: 3em;
+        // background-color: rgb(185, 185, 185);
+        margin-top: -1.5em;
+        margin-left: -2em;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+      }
+      .rect2 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2em;
+        height: 3em;
+        // background-color: rgb(185, 185, 185);
+        margin-top: -1.5em;
+        margin-right: -2em;
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+      }
+      .rect3 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 2em;
+        height: 3em;
+        // background-color: rgb(185, 185, 185);
+        margin-bottom: -3.5em;
+        margin-left: -2em;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+      }
+      .rect4 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 2em;
+        height: 3em;
+        // background-color: rgb(185, 185, 185);
+        margin-bottom: -3.5em;
+        margin-right: -2em;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+      }
+      .info-name {
+        font-family: GaretBold;
+        position: sticky;
+
+        h2 {
+          margin-bottom: 0;
+        }
+      }
+
+      .info-text {
+        font-family: GaretRegular;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 0 50px 0 0;
+      }
+    }
+  }
+  // Scrollbar
+  //   /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.76);
+    backdrop-filter: blur(5px);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(167, 104, 104);
+    background-color: rgba(199, 199, 199, 0.55);
+    backdrop-filter: blur(5px);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    background-color: rgba(143, 143, 143, 0.8);
+    backdrop-filter: blur(5px);
+    //   }
+  }
 }

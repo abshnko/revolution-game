@@ -8,36 +8,43 @@ const CurrentInfo = ({
   currentInfoDisplayed,
 }) => {
   return (
-    <div className="card" id={question[0].id}>
-      <div className="close-info">
-        <button
-          onClick={() => {
-            setIsShowInfo(false);
-            INFOS.map((INFO) => {
-              INFO.infos.map((info, infoIndex) => {
-                info.isActive = false;
+    <>
+      <div className="blur"></div>
+      <div className="modal" id={question[0].id}>
+        <div className="close-info">
+          <button
+            onClick={() => {
+              setIsShowInfo(false);
+              INFOS.map((INFO) => {
+                INFO.infos.map((info, infoIndex) => {
+                  info.isActive = false;
+                });
               });
-            });
-          }}
-        >
-          <i>
-            <AiOutlineClose />
-          </i>
-        </button>
-      </div>
-      <div className="current-info">
-        <div className="infoName">
-          <h2>{currentInfoDisplayed.infoName}</h2>
+            }}
+          >
+            <i>
+              <AiOutlineClose />
+            </i>
+          </button>
         </div>
-        {/* <div className="img-container">
+        <div className="current-info">
+          <div className="rect1"></div>
+          <div className="rect2"></div>
+          <div className="rect3"></div>
+          <div className="rect4"></div>
+          <div className="info-name">
+            <h2>{currentInfoDisplayed.infoName}</h2>
+          </div>
+          {/* <div className="img-container">
                   <img className="headImage" src={placeholder} alt="img here" />
                 </div> */}
 
-        <div className="info-text">
-          <p>{currentInfoDisplayed.infoText}</p>
+          <div className="info-text">
+            <p>{currentInfoDisplayed.infoText}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

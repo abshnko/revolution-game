@@ -19,6 +19,9 @@ html {
 
 .game-page {
   height: 100%;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
 }
 
 .game-page .wrapper {
@@ -239,5 +242,123 @@ html {
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+
+.game-page .blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 120;
+}
+
+.game-page .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 27px;
+  padding: 30px 100px;
+  margin: 10% 20%;
+  background-color: white;
+  z-index: 130;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.game-page .modal .current-info {
+  margin: 50px;
+  height: 50vh;
+  position: relative;
+  margin-bottom: 5em;
+}
+
+.game-page .modal .current-info .rect1 {
+  position: fixed;
+  width: 2em;
+  height: 3em;
+  margin-top: -1.5em;
+  margin-left: -2em;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.game-page .modal .current-info .rect2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2em;
+  height: 3em;
+  margin-top: -1.5em;
+  margin-right: -2em;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.game-page .modal .current-info .rect3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2em;
+  height: 3em;
+  margin-bottom: -3.5em;
+  margin-left: -2em;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.game-page .modal .current-info .rect4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2em;
+  height: 3em;
+  margin-bottom: -3.5em;
+  margin-right: -2em;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.game-page .modal .current-info .info-name {
+  font-family: GaretBold;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.game-page .modal .current-info .info-name h2 {
+  margin-bottom: 0;
+}
+
+.game-page .modal .current-info .info-text {
+  font-family: GaretRegular;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 0 50px 0 0;
+}
+
+.game-page ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.game-page ::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.76);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.game-page ::-webkit-scrollbar-thumb {
+  background: #a76868;
+  background-color: rgba(199, 199, 199, 0.55);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.game-page ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  background-color: rgba(143, 143, 143, 0.8);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 /*# sourceMappingURL=style.css.map */

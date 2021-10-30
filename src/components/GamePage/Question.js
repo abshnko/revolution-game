@@ -46,7 +46,7 @@ const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
       );
     };
     let parts = question[0].text.split(new RegExp(`(${allText.join("|")})`));
-    console.log(parts);
+    // console.log(parts);
     for (let i = 1; i < parts.length; i += 2) {
       parts[i] = l(parts, i);
     }

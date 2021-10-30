@@ -377,7 +377,7 @@ const questions = [
   },
   {
     id: 1009,
-    year: "1918 - 1922",
+    year: "1918",
     period: "1918-1922",
     img: "",
     imgRef: "",
@@ -414,7 +414,7 @@ const questions = [
   },
   {
     id: 1010,
-    year: "1918 - 1922",
+    year: "1918",
     period: "1918-1922",
     img: "",
     imgRef: "",
@@ -451,7 +451,7 @@ const questions = [
   },
   {
     id: 1011,
-    year: "1918 - 1922",
+    year: "1919",
     period: "1918-1924",
     img: "",
     imgRef: "",
@@ -470,7 +470,7 @@ const questions = [
   },
   {
     id: 1012,
-    year: "1921 - 1928",
+    year: "1921",
     period: "1922-1929", //???????
     img: "1012-nep.jpg",
     imgRef: "https://xn--h1aagokeh.xn--p1ai/wp-content/uploads/2016/12/5-4.jpg",
@@ -533,7 +533,7 @@ const questions = [
   },
   {
     id: 1013,
-    year: "1921 - 1928",
+    year: "1922",
     period: "1922-1929", //???????????
     img: "",
     imgRef: "",
@@ -570,7 +570,7 @@ const questions = [
   },
   {
     id: 1014,
-    year: "1921 - 1928",
+    year: "1922",
     period: "1922-1929",
     img: "",
     imgRef: "",
@@ -607,7 +607,7 @@ const questions = [
   },
   {
     id: 1015,
-    year: "1921 - 1928",
+    year: "1926",
     period: "1918-1924",
     img: "",
     imgRef: "",
@@ -626,7 +626,7 @@ const questions = [
   },
   {
     id: 1016,
-    year: "1928 - 1933",
+    year: "1928",
     period: "1929-1941",
     img: "1016-kolhoz.jpg",
     imgRef: "",
@@ -860,7 +860,7 @@ const questions = [
   },
   {
     id: 1024, // ------------DEATH------------
-    year: "1928 - 1934",
+    year: "1930",
     period: "1929-1941",
     img: "",
     imgRef: "",
@@ -906,7 +906,7 @@ const questions = [
   },
   {
     id: 1025, // ------------DEATH------------
-    year: "1928 - 1934",
+    year: "1929",
     period: "1928-1934",
     img: "",
     imgRef: "",
@@ -1105,7 +1105,7 @@ const questions = [
   },
   {
     id: 1031, // ------------DEATH------------
-    year: "1928 - 1934",
+    year: "1929",
     period: "1929-1941",
     img: "",
     imgRef: "",
@@ -1372,7 +1372,7 @@ const questions = [
   },
   {
     id: 1039,
-    year: "1929-1941",
+    year: "1929",
     period: "1929-1941",
     img: "1039-MTC.jpg",
     imgRef: "",
@@ -1457,7 +1457,7 @@ const questions = [
   },
   {
     id: 1042,
-    year: "1941-1945",
+    year: "1941",
     period: "1941-1945",
     img: "",
     imgRef: "",
@@ -2106,7 +2106,7 @@ const questions = [
   },
   {
     id: 1069,
-    year: "1944-1945",
+    year: "1944",
     period: "1941-1945",
     img: "",
     imgRef: "",

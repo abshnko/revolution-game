@@ -11,9 +11,10 @@ import Loading from "./Loading";
 import { INFOSReducer } from "../../reducer";
 import LoseScreen from "./LoseScreen";
 import { BsArrowRight } from "react-icons/bs";
+import InfoModal from "./InfoModal";
 
 function GamePage({ questions }) {
-  const [index, setIndex] = useState(1119);
+  const [index, setIndex] = useState(1000);
   const [question, setQuestion] = useState(questions);
   const [questionChanged, setQuestionChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +33,7 @@ function GamePage({ questions }) {
     const i = INFOS.findIndex(
       (infoObj) => infoObj.period === question[0].period
     );
-    console.log("index in INFOS:", i);
+    // console.log("index in INFOS:", i);
     INFOS.forEach((INFO) => {
       INFO.isShowEntries = false;
     });
@@ -49,7 +50,7 @@ function GamePage({ questions }) {
     newArray[i] = newObj;
     setINFOS(newArray);
 
-    console.log(INFOS, "added into existed obj");
+    // console.log(INFOS, "added into existed obj");
   };
 
   const addINFO = () => {
@@ -117,9 +118,9 @@ function GamePage({ questions }) {
     return () => clearTimeout(time);
   }, [imgLoaded]);
 
-  useEffect(() => {
-    console.log("array changed, new length:", INFOS.length);
-  }, [INFOS]);
+  //   useEffect(() => {
+  //     console.log("array changed, new length:", INFOS.length);
+  //   }, [INFOS]);
 
   const nextClick = (id, isActive, next, nextJump, jumpFromHere) => {
     if (nextJump !== 0) {
@@ -212,9 +213,10 @@ function GamePage({ questions }) {
                         setIsShowInfoEntries={setIsShowInfoEntries}
                         chooseDisplayedInfo={chooseDisplayedInfo}
                       />
-                    ); 
+                    );
                   })} */}
                 {/* </div> */}
+                {/* {isShowInfo} */}
                 <div className="timeline"></div>
                 {isShowInfo && ( //show currently chosen info entry
                   <CurrentInfo
@@ -231,7 +233,7 @@ function GamePage({ questions }) {
                           return (
                             <div
                               className="info"
-                              onClick={() => chooseDisplayedInfo(info.infoId)} //FIX
+                              onClick={() => chooseDisplayedInfo(info.id)} //FIX
                             >
                               {info.name}
                             </div>
@@ -239,14 +241,24 @@ function GamePage({ questions }) {
                         })
                       : null}
 
-                    {question[0].options.forEach((option) => {
+                    {question[0].options.map((option) => {
+                      const localInfos = [];
+                      var id = 0;
                       if ("infos" in option) {
-                        option.infos.map((info) => {
-                          console.log(info.name);
-                          return <div className="info">{info.text}</div>;
+                        option.infos.forEach((info) => {
+                          id = info.id;
+                          localInfos.push(info.name);
                         });
+                        return (
+                          <div
+                            className="info"
+                            onClick={() => chooseDisplayedInfo(id)}
+                          >
+                            {localInfos}
+                          </div>
+                        );
                       } else {
-                        console.log("NO");
+                        return null;
                       }
                     })}
                   </div>
@@ -285,28 +297,28 @@ function GamePage({ questions }) {
                 </div>
                 <div className="question-number">№ {questionCounter}</div>
                 <div className="main">
-                  {!isShowInfo && (
-                    <>
-                      <div className="question">
-                        {isLoading && <Loading />}
-                        {!isLoading && (
-                          <Question
-                            question={question}
-                            nextClick={nextClick}
-                            chooseDisplayedInfo={chooseDisplayedInfo}
-                          />
-                        )}
-                      </div>
-
-                      <div className="image">
-                        <Image
+                  {/* {!isShowInfo && ( */}
+                  <>
+                    <div className="question">
+                      {isLoading && <Loading />}
+                      {!isLoading && (
+                        <Question
                           question={question}
-                          setImgLoaded={setImgLoaded}
-                          isLoading={isLoading}
+                          nextClick={nextClick}
+                          chooseDisplayedInfo={chooseDisplayedInfo}
                         />
-                      </div>
-                    </>
-                  )}
+                      )}
+                    </div>
+
+                    <div className="image">
+                      <Image
+                        question={question}
+                        setImgLoaded={setImgLoaded}
+                        isLoading={isLoading}
+                      />
+                    </div>
+                  </>
+                  {/* )} */}
                 </div>
 
                 {/* {!isShowInfo && (
