@@ -164,6 +164,7 @@ html {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: question;
+  font-size: 23px;
 }
 
 .game-page .container .main .question .options .option-container {
@@ -180,9 +181,12 @@ html {
 }
 
 .game-page .container .main .question .options .option-container .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   font-family: GaretRegular;
   padding: 15px 25px;
-  border: 2px solid black;
+  border: 3px solid black;
   background-color: transparent;
   color: black;
   margin-right: 20px;
@@ -196,20 +200,47 @@ html {
   transition: 0.12s;
 }
 
+.game-page .container .main .question .options .option-container .option .text .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.game-page .container .main .question .options .option-container .option .text .header .number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: GaretBold;
+  font-size: 50px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.game-page .container .main .question .options .option-container .option .text .header .highlighted {
+  font-family: GaretBold;
+  margin-top: 10px;
+}
+
 .game-page .container .main .question .options .option-container .active {
-  border: 2px solid black;
+  border: 3px solid black;
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
 }
 
 .game-page .container .main .question .options .option-container .option:hover {
-  border: 2px solid black;
+  border: 3px solid black;
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
 }
 
 .game-page .container .main .question .options .option-container .active:hover {
-  border: 2px solid black;
+  border: 3px solid black;
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
 }
@@ -238,8 +269,8 @@ html {
 }
 
 .game-page .container .main .info-link {
-  text-decoration: underline;
-  cursor: pointer;
+  color: #f03d10;
+  cursor: help;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
@@ -259,8 +290,8 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  font-size: 27px;
-  padding: 30px 100px;
+  font-size: 24px;
+  padding: 30px 100px 70px 100px;
   margin: 10% 20%;
   background-color: white;
   z-index: 130;
@@ -303,7 +334,7 @@ html {
   left: 0;
   width: 2em;
   height: 3em;
-  margin-bottom: -3.5em;
+  margin-bottom: -5.5em;
   margin-left: -2em;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -315,7 +346,7 @@ html {
   right: 0;
   width: 2em;
   height: 3em;
-  margin-bottom: -3.5em;
+  margin-bottom: -5.5em;
   margin-right: -2em;
   border-bottom: 1px solid black;
   border-right: 1px solid black;

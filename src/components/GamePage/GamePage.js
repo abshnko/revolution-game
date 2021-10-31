@@ -242,24 +242,21 @@ function GamePage({ questions }) {
                       : null}
 
                     {question[0].options.map((option) => {
-                      const localInfos = [];
-                      var id = 0;
                       if ("infos" in option) {
-                        option.infos.forEach((info) => {
-                          id = info.id;
-                          localInfos.push(info.name);
+                        let infos = [];
+                        infos = option.infos.map((info) => {
+                          return (
+                            <div
+                              className="info"
+                              onClick={() => chooseDisplayedInfo(info.id)}
+                            >
+                              {info.name}
+                            </div>
+                          );
                         });
-                        return (
-                          <div
-                            className="info"
-                            onClick={() => chooseDisplayedInfo(id)}
-                          >
-                            {localInfos}
-                          </div>
-                        );
-                      } else {
-                        return null;
+                        return infos;
                       }
+                      return null;
                     })}
                   </div>
                   <div className="year">

@@ -3,9 +3,27 @@ import { BsQuestion } from "react-icons/bs";
 
 const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
   const checkInfosForOptions = (option) => {
-    if (!option.infos) return option.text;
+    if (!option.infos) {
+      let number = option.text[0];
+      const n = <div className="number">{number}</div>;
+      var text = option.text.split(/.(.+)/)[1];
+      text = text.split(/.(.+)/)[1];
+      console.log(text);
+      const header = text.split(/[.,,,:,;,!,?](.+)/);
+      const high = <div className="highlighted">{header[0]}</div>;
+      const rest = header[1];
+      const all = (
+        <div className="header">
+          {n}
+          {high}
+        </div>
+      );
+      const newText = [all, rest];
+      return <div className="text">{newText}</div>;
+    }
     let allId = option.infos.map((e) => e.id);
     let allText = option.infos.map((e) => e.altText);
+    console.log(allText);
 
     const l = (parts, i) => {
       //для верной передачи цифр
@@ -20,11 +38,60 @@ const Question = ({ question, nextClick, chooseDisplayedInfo }) => {
         </a>
       );
     };
+
+    const func = (text) => {
+      const number = text[0];
+      const n = <div className="number">{number}</div>; //NUMBER
+      let allButNumber = text.split(/.(.+)/)[1];
+      allButNumber = allButNumber.split(/.(.+)/)[1];
+      let header = allButNumber.split(/[.,,,:,;,!,?](.+)/)[0]; //HEADER
+      let theRest = allButNumber.split(/[.,,,:,;,!,?](.+)/)[1]; //REST
+      let checkHeader = header.split(new RegExp(`(${allText.join("|")})`));
+      let checkRest = theRest.split(new RegExp(`(${allText.join("|")})`));
+      //    IF LINK IN HEADER
+      if (checkHeader.length > 2) {
+        for (let i = 1; i < checkHeader.length; i += 2) {
+          checkHeader[i] = l(checkHeader, i);
+        }
+
+        let firstPart = (
+          <div className="highlighted">
+            {[checkHeader[0], checkHeader[1], checkHeader[2]]}
+          </div>
+        );
+        const all = (
+          <div className="header">
+            {n}
+            {firstPart}
+          </div>
+        );
+        checkHeader.push(theRest);
+        let final = [all, checkHeader[checkHeader.length - 1]];
+        return [final];
+      }
+      if (checkRest.length > 2) {
+        for (let i = 1; i < checkRest.length; i += 2) {
+          checkRest[i] = l(checkRest, i);
+        }
+        let firstPart = <div className="highlighted">{checkHeader[0]}</div>;
+        const all = (
+          <div className="header">
+            {n}
+            {firstPart}
+          </div>
+        );
+        let final = [all, checkRest];
+        return [final];
+      }
+    };
+
     let parts = option.text.split(new RegExp(`(${allText.join("|")})`));
     for (let i = 1; i < parts.length; i += 2) {
       parts[i] = l(parts, i);
     }
-    return parts;
+
+    const m = func(option.text);
+    return <div className="text">{m}</div>;
   };
 
   const checkInfosForQuestion = (question) => {
