@@ -1,6 +1,6 @@
 import React from "react";
 
-function Image({ question, setImgLoaded, isLoading }) {
+function Image({ question, setImgLoaded, isLoading, imgLoaded }) {
   return (
     <div className="img-container">
       {question[0].img !== "" ? (
@@ -12,7 +12,8 @@ function Image({ question, setImgLoaded, isLoading }) {
           onLoad={() => setImgLoaded(true)}
         />
       ) : null}
-      {question[0].imgRef !== "" && (
+
+      {question[0].imgRef !== "" && imgLoaded && (
         <div className="img-ref">
           <a href={question[0].imgRef}>источник</a>
         </div>

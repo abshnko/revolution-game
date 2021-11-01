@@ -504,7 +504,7 @@ html {
 // }
 
 .game-page {
-  height: 100%;
+  //   height: 100vh;
   .wrapper {
     max-width: 85%;
     margin: auto;
@@ -598,15 +598,172 @@ html {
       font-size: 28px;
     }
 
-    .main {
-      grid-area: main;
-      display: grid;
-      grid-template-columns: 63% 30%;
-      grid-template-areas: "question image";
-      gap: 7%;
+    .options-choose-sex {
       .question {
+        font-size: 30px;
+        font-family: GaretRegular;
+      }
+      .options {
+        border: 3px solid black;
+
+        .choose-images {
+          display: flex;
+          justify-content: space-evenly;
+          z-index: 120;
+          height: 45vh;
+          button {
+            background-color: transparent;
+            cursor: pointer;
+            border: none;
+          }
+          .option {
+            display: flex;
+            border: 2px solid black;
+            margin: 20px 0;
+            transition: 0.3s;
+            position: relative;
+            .rect1 {
+              position: absolute;
+              width: 3em;
+              height: 3em;
+              top: 0;
+              left: 0;
+              // background-color: rgb(185, 185, 185);
+              margin-top: -1em;
+              margin-left: -1em;
+              border-top: 1px solid black;
+              border-left: 1px solid black;
+            }
+            .rect2 {
+              position: absolute;
+              width: 3em;
+              height: 3em;
+              top: 0;
+              right: 0;
+              // background-color: rgb(185, 185, 185);
+              margin-top: -1em;
+              margin-right: -1em;
+              border-top: 1px solid black;
+              border-right: 1px solid black;
+            }
+            .rect3 {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 2em;
+              height: 3em;
+              // background-color: rgb(185, 185, 185);
+              margin-bottom: -1em;
+              margin-left: -1em;
+              border-bottom: 1px solid black;
+              border-left: 1px solid black;
+            }
+            .rect4 {
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              width: 2em;
+              height: 3em;
+              // background-color: rgb(185, 185, 185);
+              margin-bottom: -1em;
+              margin-right: -1em;
+              border-bottom: 1px solid black;
+              border-right: 1px solid black;
+            }
+
+            .number {
+              position: absolute;
+              font-family: GaretBold;
+              font-size: 60px;
+            }
+
+            .headImageChoose {
+              max-width: 100%;
+              max-height: 100%;
+            }
+          }
+          button:nth-child(1) {
+            .headImageChoose {
+              margin-left: -21px;
+              align-self: flex-end;
+            }
+          }
+          button:nth-child(2) {
+            .number {
+              margin-left: 30px;
+            }
+          }
+        }
+
+        .active {
+          border: 2px solid rgb(0, 0, 0);
+          transform: scale(1.02);
+        }
+        .option:hover {
+          border: 2px solid rgb(0, 0, 0);
+          //   background-color: rgba(235, 235, 235, 0.35);
+          //   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+          transform: scale(1.02);
+        }
+        .active:hover {
+          border: 2px solid rgb(0, 0, 0);
+          transform: scale(1.02);
+        }
+        .option:nth-child(2) {
+          .circle {
+            margin-left: 8em;
+            margin-top: 7em;
+          }
+          .headImage {
+            // margin-right: 40px;
+          }
+        }
+        .option:nth-child(1) {
+          padding-left: 0;
+          margin-right: -5em;
+          .circle {
+            margin-left: -1em;
+            margin-top: 8em;
+          }
+          .number {
+            padding-left: 30px;
+          }
+        }
+      }
+    }
+    .hidden {
+      display: none;
+    }
+
+    .main {
+      height: calc(100vh - 500px);
+      grid-area: main;
+      align-items: end;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      grid-template-areas: "question image";
+      gap: 0;
+      justify-content: space-between;
+
+      .question {
+        // display: flex;
+        // flex-direction: column;
         grid-area: question;
-        font-size: 23px;
+
+        .question {
+          h2 {
+            font-size: 40px;
+          }
+        }
+
+        .down-line {
+          hr {
+            height: 15px;
+            border: none;
+            color: black;
+            background-color: black;
+          }
+        }
 
         .options {
           .option-container {
@@ -632,7 +789,7 @@ html {
               text-align: left;
               cursor: pointer;
               margin-bottom: 15px;
-              transition: 0.12s;
+              transition: 0.25s;
 
               .text {
                 .header {
@@ -649,6 +806,7 @@ html {
                   .highlighted {
                     font-family: GaretBold;
                     margin-top: 10px;
+                    // font-size: 20px;
                   }
                 }
               }
@@ -671,28 +829,46 @@ html {
         }
       }
 
+      .arrows {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        .arrow {
+          margin-bottom: 20px;
+        }
+        .arrow:nth-child(2) {
+          margin-bottom: 0;
+        }
+      }
+
       .image {
-        margin: 0.83em auto 0 auto;
+        margin: 2em auto 0 auto;
         border-radius: 8px;
+        align-self: start;
         .headImage {
           // max-height: 25rem;
-          max-width: 100%;
+          width: 100%;
+          height: 100%;
           margin: 0 auto;
           display: block;
           //   border-radius: 8px;
           object-fit: cover;
           object-position: 0 15%;
-          width: 1100px;
-          height: 350px;
+          //   width: 1100px;
+          //   height: 350px;
           filter: grayscale(80%);
         }
         .img-container {
           .img-ref {
+            text-align: center;
             a {
               color: black;
             }
           }
         }
+      }
+      .image-down {
+        align-self: end;
       }
 
       .info-link {
@@ -702,6 +878,10 @@ html {
         cursor: help;
         transition: all 0.2s ease-in-out;
       }
+    }
+
+    .main-multiple {
+      align-items: start;
     }
   }
 

@@ -18,7 +18,6 @@ html {
 }
 
 .game-page {
-  height: 100%;
   /* Track */
   /* Handle */
   /* Handle on hover */
@@ -148,23 +147,187 @@ html {
   font-size: 28px;
 }
 
+.game-page .container .options-choose-sex .question {
+  font-size: 30px;
+  font-family: GaretRegular;
+}
+
+.game-page .container .options-choose-sex .options {
+  border: 3px solid black;
+}
+
+.game-page .container .options-choose-sex .options .choose-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  z-index: 120;
+  height: 45vh;
+}
+
+.game-page .container .options-choose-sex .options .choose-images button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.game-page .container .options-choose-sex .options .choose-images .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 2px solid black;
+  margin: 20px 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: relative;
+}
+
+.game-page .container .options-choose-sex .options .choose-images .option .rect1 {
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  top: 0;
+  left: 0;
+  margin-top: -1em;
+  margin-left: -1em;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.game-page .container .options-choose-sex .options .choose-images .option .rect2 {
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  top: 0;
+  right: 0;
+  margin-top: -1em;
+  margin-right: -1em;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.game-page .container .options-choose-sex .options .choose-images .option .rect3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2em;
+  height: 3em;
+  margin-bottom: -1em;
+  margin-left: -1em;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.game-page .container .options-choose-sex .options .choose-images .option .rect4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2em;
+  height: 3em;
+  margin-bottom: -1em;
+  margin-right: -1em;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.game-page .container .options-choose-sex .options .choose-images .option .number {
+  position: absolute;
+  font-family: GaretBold;
+  font-size: 60px;
+}
+
+.game-page .container .options-choose-sex .options .choose-images .option .headImageChoose {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.game-page .container .options-choose-sex .options .choose-images button:nth-child(1) .headImageChoose {
+  margin-left: -21px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.game-page .container .options-choose-sex .options .choose-images button:nth-child(2) .number {
+  margin-left: 30px;
+}
+
+.game-page .container .options-choose-sex .options .active {
+  border: 2px solid black;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.game-page .container .options-choose-sex .options .option:hover {
+  border: 2px solid black;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.game-page .container .options-choose-sex .options .active:hover {
+  border: 2px solid black;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.game-page .container .options-choose-sex .options .option:nth-child(2) .circle {
+  margin-left: 8em;
+  margin-top: 7em;
+}
+
+.game-page .container .options-choose-sex .options .option:nth-child(1) {
+  padding-left: 0;
+  margin-right: -5em;
+}
+
+.game-page .container .options-choose-sex .options .option:nth-child(1) .circle {
+  margin-left: -1em;
+  margin-top: 8em;
+}
+
+.game-page .container .options-choose-sex .options .option:nth-child(1) .number {
+  padding-left: 30px;
+}
+
+.game-page .container .hidden {
+  display: none;
+}
+
 .game-page .container .main {
+  height: calc(100vh - 500px);
   -ms-grid-row: 5;
   -ms-grid-column: 1;
   grid-area: main;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 63% 30%;
-      grid-template-columns: 63% 30%;
+  -ms-grid-columns: 55% 45%;
+      grid-template-columns: 55% 45%;
       grid-template-areas: "question image";
-  gap: 7%;
+  gap: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .game-page .container .main .question {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: question;
-  font-size: 23px;
+}
+
+.game-page .container .main .question .question h2 {
+  font-size: 40px;
+}
+
+.game-page .container .main .question .down-line hr {
+  height: 15px;
+  border: none;
+  color: black;
+  background-color: black;
 }
 
 .game-page .container .main .question .options .option-container {
@@ -196,8 +359,8 @@ html {
   text-align: left;
   cursor: pointer;
   margin-bottom: 15px;
-  -webkit-transition: 0.12s;
-  transition: 0.12s;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
 }
 
 .game-page .container .main .question .options .option-container .option .text .header {
@@ -245,27 +408,58 @@ html {
           transform: scale(1.04);
 }
 
+.game-page .container .main .arrows {
+  margin-top: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.game-page .container .main .arrows .arrow {
+  margin-bottom: 20px;
+}
+
+.game-page .container .main .arrows .arrow:nth-child(2) {
+  margin-bottom: 0;
+}
+
 .game-page .container .main .image {
-  margin: 0.83em auto 0 auto;
+  margin: 2em auto 0 auto;
   border-radius: 8px;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
 }
 
 .game-page .container .main .image .headImage {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 0 15%;
      object-position: 0 15%;
-  width: 1100px;
-  height: 350px;
   -webkit-filter: grayscale(80%);
           filter: grayscale(80%);
 }
 
+.game-page .container .main .image .img-container .img-ref {
+  text-align: center;
+}
+
 .game-page .container .main .image .img-container .img-ref a {
   color: black;
+}
+
+.game-page .container .main .image-down {
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
 }
 
 .game-page .container .main .info-link {
@@ -273,6 +467,12 @@ html {
   cursor: help;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+
+.game-page .container .main-multiple {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
 }
 
 .game-page .blur {

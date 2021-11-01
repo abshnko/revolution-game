@@ -12,6 +12,7 @@ import { INFOSReducer } from "../../reducer";
 import LoseScreen from "./LoseScreen";
 import { BsArrowRight } from "react-icons/bs";
 import InfoModal from "./InfoModal";
+import ChooseSex from "./ChooseSex";
 
 function GamePage({ questions }) {
   const [index, setIndex] = useState(1000);
@@ -20,7 +21,7 @@ function GamePage({ questions }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isShowInfo, setIsShowInfo] = useState(false);
   const [INFOS, setINFOS] = useState(periods);
-  const [questionCounter, setQuestionCounter] = useState(1);
+  const [questionCounter, setQuestionCounter] = useState(0);
   const [isJump, setIsJump] = useState(false);
   const [jump, setJump] = useState(0);
   const [isShowQuestion, setIsShowQuestion] = useState(true);
@@ -110,6 +111,8 @@ function GamePage({ questions }) {
   }, [questionCounter]);
 
   useEffect(() => {
+    if ("isChooseSex" in question[0]) {
+    }
     const time = setTimeout(() => {
       if (imgLoaded) {
         setIsLoading(false);
@@ -117,10 +120,6 @@ function GamePage({ questions }) {
     }, 300);
     return () => clearTimeout(time);
   }, [imgLoaded]);
-
-  //   useEffect(() => {
-  //     console.log("array changed, new length:", INFOS.length);
-  //   }, [INFOS]);
 
   const nextClick = (id, isActive, next, nextJump, jumpFromHere) => {
     if (nextJump !== 0) {
@@ -292,31 +291,57 @@ function GamePage({ questions }) {
                 <div className="line">
                   <hr />
                 </div>
-                <div className="question-number">№ {questionCounter}</div>
-                <div className="main">
+                <div className="question-number">
+                  {questionCounter !== 0
+                    ? `№${questionCounter}`
+                    : "Начало игры"}
+                </div>
+                <div
+                  className={`${
+                    !("isChooseSex" in question[0]) ? "main" : "hidden"
+                  }${question[0].options.length > 1 ? " main-multiple" : ""}`}
+                >
                   {/* {!isShowInfo && ( */}
                   <>
                     <div className="question">
                       {isLoading && <Loading />}
-                      {!isLoading && (
+                      {!isLoading && !("isChooseSex" in question[0]) && (
                         <Question
                           question={question}
                           nextClick={nextClick}
                           chooseDisplayedInfo={chooseDisplayedInfo}
+                          isLoading={isLoading}
+                          setImgLoaded={setImgLoaded}
                         />
                       )}
                     </div>
-
-                    <div className="image">
-                      <Image
-                        question={question}
-                        setImgLoaded={setImgLoaded}
-                        isLoading={isLoading}
-                      />
-                    </div>
+                    {!("isChooseSex" in question[0]) && (
+                      <div
+                        className={`image${
+                          question[0].options.length === 1 ? " image-down" : ""
+                        }`}
+                      >
+                        <Image
+                          question={question}
+                          setImgLoaded={setImgLoaded}
+                          isLoading={isLoading}
+                          imgLoaded={imgLoaded}
+                        />
+                      </div>
+                    )}
                   </>
-                  {/* )} */}
                 </div>
+                {"isChooseSex" in question[0] && (
+                  <ChooseSex
+                    question={question}
+                    isLoading={isLoading}
+                    setImgLoaded={setImgLoaded}
+                    nextClick={nextClick}
+                    imgLoaded={imgLoaded}
+                  />
+                )}
+
+                {/* )} */}
 
                 {/* {!isShowInfo && (
                   <div className="controls" id={question[0].id}>
