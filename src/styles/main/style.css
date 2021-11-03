@@ -28,10 +28,33 @@ html {
   margin: auto;
 }
 
+@media (max-width: 1400px) {
+  .game-page .wrapper {
+    max-width: 95%;
+  }
+}
+
 .game-page .container {
+  height: 100vh;
   display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 8% 22% 2% 3% 65%;
+      grid-template-rows: 8% 22% 2% 3% 65%;
       grid-template-areas: "timeline" "controls" "line" "question-number" "main";
+}
+
+@media (max-width: 1600px) {
+  .game-page .container {
+    -ms-grid-rows: 8% 17% 2% 3% 70%;
+        grid-template-rows: 8% 17% 2% 3% 70%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .container {
+    -ms-grid-rows: 8% 20% 2% 4% 66%;
+        grid-template-rows: 8% 20% 2% 4% 66%;
+  }
 }
 
 .game-page .container .timeline {
@@ -67,9 +90,21 @@ html {
   margin-left: 0;
 }
 
+@media (max-width: 1400px) {
+  .game-page .container .controls .infos {
+    font-size: 13px;
+  }
+}
+
 .game-page .container .controls .infos .info {
   margin-bottom: 15px;
   cursor: pointer;
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .controls .infos .info {
+    margin-bottom: 5px;
+  }
 }
 
 .game-page .container .controls .year {
@@ -77,11 +112,24 @@ html {
   -ms-grid-column: 2;
   grid-area: year;
   font-family: GaretBold;
-  font-style: normal;
   font-weight: 850;
   font-size: 173px;
   line-height: 251px;
   margin-top: -20px;
+}
+
+@media (max-width: 1600px) {
+  .game-page .container .controls .year {
+    font-size: 143px;
+    line-height: 221px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .controls .year {
+    font-size: 113px;
+    line-height: 191px;
+  }
 }
 
 .game-page .container .controls .year p {
@@ -91,6 +139,20 @@ html {
   font-size: 35px;
   line-height: 20px;
   margin: -40px 0 20px 0;
+}
+
+@media (max-width: 1600px) {
+  .game-page .container .controls .year p {
+    font-size: 30px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .controls .year p {
+    font-size: 20px;
+    line-height: 10px;
+  }
 }
 
 .game-page .container .controls .next {
@@ -117,14 +179,61 @@ html {
   border: none;
   width: 240px;
   height: 129px;
-  font-size: 100px;
   color: white;
   background-color: black;
   cursor: pointer;
 }
 
+@media (max-width: 1600px) {
+  .game-page .container .controls .next .next-button {
+    width: 210px;
+    height: 99px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .controls .next .next-button {
+    width: 180px;
+    height: 84px;
+  }
+}
+
+.game-page .container .controls .next .next-button svg {
+  width: 150px;
+  height: 120px;
+}
+
+@media (max-width: 1600px) {
+  .game-page .container .controls .next .next-button svg {
+    width: 150px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .controls .next .next-button svg {
+    width: 102px;
+    height: 91px;
+  }
+}
+
 .game-page .container .controls .next p {
   font-size: 23px;
+}
+
+@media (max-width: 1600px) {
+  .game-page .container .controls .next p {
+    font-size: 20.5px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .controls .next p {
+    font-size: 17px;
+    -ms-grid-column-align: start;
+        justify-self: start;
+    margin: 0 0 1em 0;
+  }
 }
 
 .game-page .container .line {
@@ -138,6 +247,7 @@ html {
   border: none;
   color: black;
   background-color: black;
+  margin: 0;
 }
 
 .game-page .container .question-number {
@@ -145,6 +255,13 @@ html {
   -ms-grid-column: 1;
   grid-area: question-number;
   font-size: 28px;
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .question-number {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
 }
 
 .game-page .container .options-choose-sex .question {
@@ -295,7 +412,6 @@ html {
 }
 
 .game-page .container .main {
-  height: calc(100vh - 500px);
   -ms-grid-row: 5;
   -ms-grid-column: 1;
   grid-area: main;
@@ -311,16 +427,42 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  overflow-y: auto;
+  overflow-x: visible;
 }
 
 .game-page .container .main .question {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: question;
 }
 
-.game-page .container .main .question .question h2 {
+.game-page .container .main .question .question-text h2 {
   font-size: 40px;
+  height: 100%;
+}
+
+@media (max-width: 1600px) {
+  .game-page .container .main .question .question-text h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .main .question .question-text h2 {
+    font-size: 20px;
+  }
+}
+
+.game-page .container .main .question .small-text h2 {
+  font-size: 30px;
 }
 
 .game-page .container .main .question .down-line hr {
@@ -363,6 +505,12 @@ html {
   transition: 0.25s;
 }
 
+@media (max-width: 1400px) {
+  .game-page .container .main .question .options .option-container .option {
+    font-size: 15px;
+  }
+}
+
 .game-page .container .main .question .options .option-container .option .text .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -374,6 +522,12 @@ html {
   margin-bottom: 20px;
 }
 
+@media (max-width: 1400px) {
+  .game-page .container .main .question .options .option-container .option .text .header {
+    gap: 20px;
+  }
+}
+
 .game-page .container .main .question .options .option-container .option .text .header .number {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -383,6 +537,12 @@ html {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
+}
+
+@media (max-width: 1400px) {
+  .game-page .container .main .question .options .option-container .option .text .header .number {
+    font-size: 40px;
+  }
 }
 
 .game-page .container .main .question .options .option-container .option .text .header .highlighted {
@@ -423,12 +583,19 @@ html {
   margin-bottom: 20px;
 }
 
+@media (max-width: 1600px) {
+  .game-page .container .main .arrows .arrow:nth-child(2) {
+    display: none;
+  }
+}
+
 .game-page .container .main .arrows .arrow:nth-child(2) {
   margin-bottom: 0;
 }
 
 .game-page .container .main .image {
-  margin: 2em auto 0 auto;
+  max-height: 100%;
+  margin: 0 auto;
   border-radius: 8px;
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
@@ -436,16 +603,28 @@ html {
 }
 
 .game-page .container .main .image .headImage {
-  width: 100%;
-  height: 100%;
+  max-width: 90%;
+  max-height: 100%;
   margin: 0 auto;
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   -o-object-position: 0 15%;
      object-position: 0 15%;
   -webkit-filter: grayscale(80%);
           filter: grayscale(80%);
+}
+
+@media (min-width: 1955px) {
+  .game-page .container .main .image .headImage {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 2220px) {
+  .game-page .container .main .image .headImage {
+    max-width: 70%;
+  }
 }
 
 .game-page .container .main .image .img-container .img-ref {

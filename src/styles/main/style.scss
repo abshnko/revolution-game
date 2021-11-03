@@ -508,10 +508,21 @@ html {
   .wrapper {
     max-width: 85%;
     margin: auto;
+    @media (max-width: 1400px) {
+      max-width: 95%;
+    }
   }
 
   .container {
+    height: 100vh;
     display: grid;
+    grid-template-rows: 8% 22% 2% 3% 65%;
+    @media (max-width: 1600px) {
+      grid-template-rows: 8% 17% 2% 3% 70%;
+    }
+    @media (max-width: 1400px) {
+      grid-template-rows: 8% 20% 2% 4% 66%;
+    }
     grid-template-areas:
       "timeline"
       "controls"
@@ -540,20 +551,33 @@ html {
         padding: 20px;
         margin: 30px;
         margin-left: 0;
+        @media (max-width: 1400px) {
+          font-size: 13px;
+        }
 
         .info {
           margin-bottom: 15px;
           cursor: pointer;
+          @media (max-width: 1400px) {
+            margin-bottom: 5px;
+          }
         }
       }
       .year {
         grid-area: year;
         font-family: GaretBold;
-        font-style: normal;
         font-weight: 850;
         font-size: 173px;
         line-height: 251px;
         margin-top: -20px;
+        @media (max-width: 1600px) {
+          font-size: 143px;
+          line-height: 221px;
+        }
+        @media (max-width: 1400px) {
+          font-size: 113px;
+          line-height: 191px;
+        }
         p {
           font-family: GaretRegular;
           font-style: normal;
@@ -561,6 +585,14 @@ html {
           font-size: 35px;
           line-height: 20px;
           margin: -40px 0 20px 0;
+          @media (max-width: 1600px) {
+            font-size: 30px;
+            line-height: 20px;
+          }
+          @media (max-width: 1400px) {
+            font-size: 20px;
+            line-height: 10px;
+          }
         }
       }
       .next {
@@ -574,13 +606,42 @@ html {
           border: none;
           width: 240px;
           height: 129px;
-          font-size: 100px;
+          //   font-size: 100px;
           color: white;
           background-color: black;
           cursor: pointer;
+
+          @media (max-width: 1600px) {
+            width: 210px;
+            height: 99px;
+          }
+          @media (max-width: 1400px) {
+            width: 180px;
+            height: 84px;
+          }
+          svg {
+            width: 150px;
+            height: 120px;
+            @media (max-width: 1600px) {
+              width: 150px;
+              height: 100px;
+            }
+            @media (max-width: 1400px) {
+              width: 102px;
+              height: 91px;
+            }
+          }
         }
         p {
           font-size: 23px;
+          @media (max-width: 1600px) {
+            font-size: 20.5px;
+          }
+          @media (max-width: 1400px) {
+            font-size: 17px;
+            justify-self: start;
+            margin: 0 0 1em 0;
+          }
         }
       }
     }
@@ -591,11 +652,16 @@ html {
         border: none;
         color: black;
         background-color: black;
+        margin: 0;
       }
     }
     .question-number {
       grid-area: question-number;
       font-size: 28px;
+      @media (max-width: 1400px) {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
     }
 
     .options-choose-sex {
@@ -736,7 +802,6 @@ html {
     }
 
     .main {
-      height: calc(100vh - 500px);
       grid-area: main;
       align-items: end;
       display: grid;
@@ -744,15 +809,29 @@ html {
       grid-template-areas: "question image";
       gap: 0;
       justify-content: space-between;
-
+      overflow-y: auto;
+      //   overflow: visible;
+      overflow-x: visible;
       .question {
-        // display: flex;
-        // flex-direction: column;
+        display: flex;
+        flex-direction: column;
         grid-area: question;
 
-        .question {
+        .question-text {
           h2 {
             font-size: 40px;
+            height: 100%;
+            @media (max-width: 1600px) {
+              font-size: 30px;
+            }
+            @media (max-width: 1400px) {
+              font-size: 20px;
+            }
+          }
+        }
+        .small-text {
+          h2 {
+            font-size: 30px;
           }
         }
 
@@ -790,6 +869,9 @@ html {
               cursor: pointer;
               margin-bottom: 15px;
               transition: 0.25s;
+              @media (max-width: 1400px) {
+                font-size: 15px;
+              }
 
               .text {
                 .header {
@@ -797,11 +879,17 @@ html {
                   justify-content: space-between;
                   gap: 40px;
                   margin-bottom: 20px;
+                  @media (max-width: 1400px) {
+                    gap: 20px;
+                  }
                   .number {
                     display: flex;
                     font-family: GaretBold;
                     font-size: 50px;
                     justify-content: start;
+                    @media (max-width: 1400px) {
+                      font-size: 40px;
+                    }
                   }
                   .highlighted {
                     font-family: GaretBold;
@@ -836,28 +924,47 @@ html {
         .arrow {
           margin-bottom: 20px;
         }
+        @media (max-width: 1600px) {
+          .arrow:nth-child(2) {
+            display: none;
+          }
+        }
         .arrow:nth-child(2) {
           margin-bottom: 0;
+          //   display: none;
         }
       }
 
       .image {
-        margin: 2em auto 0 auto;
+        max-height: 100%;
+        margin: 0 auto;
         border-radius: 8px;
         align-self: start;
         .headImage {
-          // max-height: 25rem;
-          width: 100%;
-          height: 100%;
+          max-width: 90%;
+          max-height: 100%;
           margin: 0 auto;
           display: block;
-          //   border-radius: 8px;
-          object-fit: cover;
+          object-fit: contain;
           object-position: 0 15%;
-          //   width: 1100px;
-          //   height: 350px;
           filter: grayscale(80%);
         }
+
+        @media (min-width: 1955px) {
+          .headImage {
+            max-width: 80%;
+          }
+        }
+        @media (min-width: 2220px) {
+          .headImage {
+            max-width: 70%;
+          }
+        }
+        // @media (min-width: 2660px) {
+        //   .headImage {
+        //     max-width: 60%;
+        //   }
+        // }
         .img-container {
           .img-ref {
             text-align: center;

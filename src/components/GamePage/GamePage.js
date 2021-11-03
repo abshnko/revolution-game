@@ -142,7 +142,6 @@ function GamePage({ questions }) {
   };
 
   const chooseDisplayedInfo = (infoId) => {
-    console.log("IN");
     //check active info
     INFOS.forEach((INFO, INFOindex) => {
       const i = INFO.infos.findIndex((info) => info.infoId === infoId);
@@ -164,7 +163,6 @@ function GamePage({ questions }) {
         info.isActive = false;
       });
     });
-    console.log("OUT");
   };
 
   //check if there's more than one option = it's a question, otherwise =it's an announcement
@@ -269,8 +267,8 @@ function GamePage({ questions }) {
                         onClick={() => handleClick()}
                       >
                         <svg
-                          width="122"
-                          height="59"
+                          width="100%"
+                          height="100%"
                           viewBox="0 0 122 59"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
