@@ -1,18 +1,14 @@
-import React, { useReducer } from "react";
-import { useState, useEffect, useRef } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../../styles/main/style.css";
 import periods from "../../periods";
 import Question from "./Question";
 import Image from "./Image";
 import CurrentInfo from "./CurrentInfo";
-import InfoColumn from "./InfoColumn";
 import Loading from "./Loading";
-import { INFOSReducer } from "../../reducer";
-import LoseScreen from "./LoseScreen";
-import { BsArrowRight } from "react-icons/bs";
-import InfoModal from "./InfoModal";
 import ChooseSex from "./ChooseSex";
+import LoseScreen from "./LoseScreen";
 
 function GamePage({ questions }) {
   const [index, setIndex] = useState(1000);
@@ -34,7 +30,6 @@ function GamePage({ questions }) {
     const i = INFOS.findIndex(
       (infoObj) => infoObj.period === question[0].period
     );
-    // console.log("index in INFOS:", i);
     INFOS.forEach((INFO) => {
       INFO.isShowEntries = false;
     });
@@ -50,8 +45,6 @@ function GamePage({ questions }) {
     const newArray = INFOS;
     newArray[i] = newObj;
     setINFOS(newArray);
-
-    // console.log(INFOS, "added into existed obj");
   };
 
   const addINFO = () => {
@@ -69,18 +62,18 @@ function GamePage({ questions }) {
     });
   };
 
-  const setIsShowInfoEntries = (periodId) => {
-    const i = INFOS.findIndex((period) => period.id === periodId);
-    const newArray = [...INFOS];
-    const cloneObj = newArray[i];
-    const show = cloneObj.isShowEntries;
-    const newObj = { ...cloneObj, isShowEntries: !show };
-    newArray[i] = newObj;
-    setINFOS(newArray);
-    INFOS.forEach((INFO) => {
-      INFO.isShowEntries = false;
-    });
-  };
+  //   const setIsShowInfoEntries = (periodId) => {
+  //     const i = INFOS.findIndex((period) => period.id === periodId);
+  //     const newArray = [...INFOS];
+  //     const cloneObj = newArray[i];
+  //     const show = cloneObj.isShowEntries;
+  //     const newObj = { ...cloneObj, isShowEntries: !show };
+  //     newArray[i] = newObj;
+  //     setINFOS(newArray);
+  //     INFOS.forEach((INFO) => {
+  //       INFO.isShowEntries = false;
+  //     });
+  //   };
 
   const handleClick = () => {
     if (!isShowInfo) {
@@ -197,23 +190,8 @@ function GamePage({ questions }) {
         <div className="game-page">
           <div className="wrapper">
             {questionChanged && <h1>Loading...</h1>}
-
-            {/* CARD */}
             <>
               <div className="container">
-                {/* <div className="info-entries"> */}
-                {/*whole left column*/}
-                {/* {INFOS.map((period) => {
-                    return (
-                      <InfoColumn
-                        period={period}
-                        setIsShowInfoEntries={setIsShowInfoEntries}
-                        chooseDisplayedInfo={chooseDisplayedInfo}
-                      />
-                    );
-                  })} */}
-                {/* </div> */}
-                {/* {isShowInfo} */}
                 <div className="timeline"></div>
                 {isShowInfo && ( //show currently chosen info entry
                   <CurrentInfo
@@ -299,7 +277,6 @@ function GamePage({ questions }) {
                     !("isChooseSex" in question[0]) ? "main" : "hidden"
                   }${question[0].options.length > 1 ? " main-multiple" : ""}`}
                 >
-                  {/* {!isShowInfo && ( */}
                   <>
                     <div className="question">
                       {isLoading && <Loading />}
@@ -310,6 +287,7 @@ function GamePage({ questions }) {
                           chooseDisplayedInfo={chooseDisplayedInfo}
                           isLoading={isLoading}
                           setImgLoaded={setImgLoaded}
+                          lose={lose}
                         />
                       )}
                     </div>
@@ -365,18 +343,7 @@ function GamePage({ questions }) {
                   </div>
                 )} */}
 
-                {/* {lose && <LoseScreen grade={grade} />} */}
-                {/* {!lose && (
-                  <div className="next">
-                    <div className="question-number">{questionCounter}</div>
-                    <button
-                      className="next-button"
-                      onClick={() => handleClick()}
-                    >
-                      <BsArrowRight />
-                    </button>
-                  </div>
-                )} */}
+                {/* {lose && <LoseScreen />} */}
               </div>
             </>
           </div>

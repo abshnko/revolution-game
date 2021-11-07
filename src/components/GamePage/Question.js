@@ -1,6 +1,7 @@
 import React from "react";
 import { BsQuestion } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import LoseScreen from "./LoseScreen";
 
 const Question = ({
   question,
@@ -8,6 +9,7 @@ const Question = ({
   chooseDisplayedInfo,
   isLoading,
   setImgLoaded,
+  lose,
 }) => {
   const [oneArrow, setOneArrow] = useState(false);
   const [twoArrows, setTwoArrows] = useState(false);
@@ -155,10 +157,10 @@ const Question = ({
     const main = document.getElementsByClassName("main")[0];
     const overflow = isOverflown(main);
     const questionText = document.getElementsByClassName("question-text")[0];
-    const heightOver500 = heightIsOverNpx(questionText, 500);
+    const heightOver400 = heightIsOverNpx(questionText, 400);
     if (overflow) {
-      setOneArrow(true);
-    } else if (heightOver500) {
+      heightOver400 ? setZeroArrows(true) : setOneArrow(true);
+    } else if (heightOver400) {
       setZeroArrows(true);
     } else {
       setTwoArrows(true);
@@ -298,6 +300,7 @@ const Question = ({
           </div>
         </>
       )}
+      {lose && <LoseScreen question={question} />}
       {question[0].options.length === 1 && (
         <div className="down-line">
           <hr />

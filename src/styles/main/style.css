@@ -38,22 +38,25 @@ html {
   height: 100vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 8% 22% 2% 3% 65%;
-      grid-template-rows: 8% 22% 2% 3% 65%;
+  -ms-grid-rows: 8% min-content 2% 3% 65%;
+      grid-template-rows: 8% -webkit-min-content 2% 3% 65%;
+      grid-template-rows: 8% min-content 2% 3% 65%;
       grid-template-areas: "timeline" "controls" "line" "question-number" "main";
 }
 
 @media (max-width: 1600px) {
   .game-page .container {
-    -ms-grid-rows: 8% 17% 2% 3% 70%;
-        grid-template-rows: 8% 17% 2% 3% 70%;
+    -ms-grid-rows: 8% min-content 2% 3% 70%;
+        grid-template-rows: 8% -webkit-min-content 2% 3% 70%;
+        grid-template-rows: 8% min-content 2% 3% 70%;
   }
 }
 
 @media (max-width: 1400px) {
   .game-page .container {
-    -ms-grid-rows: 8% 20% 2% 4% 66%;
-        grid-template-rows: 8% 20% 2% 4% 66%;
+    -ms-grid-rows: 8% min-content 2% 4% 66%;
+        grid-template-rows: 8% -webkit-min-content 2% 4% 66%;
+        grid-template-rows: 8% min-content 2% 4% 66%;
   }
 }
 
@@ -105,6 +108,14 @@ html {
   .game-page .container .controls .infos .info {
     margin-bottom: 5px;
   }
+}
+
+.game-page .container .controls .infos .info:hover {
+  color: #f03d10;
+}
+
+.game-page .container .controls .infos:empty {
+  display: none;
 }
 
 .game-page .container .controls .year {
@@ -429,6 +440,8 @@ html {
           justify-content: space-between;
   overflow-y: auto;
   overflow-x: visible;
+  padding-left: 50px;
+  margin-left: -50px;
 }
 
 .game-page .container .main .question {
@@ -470,6 +483,11 @@ html {
   border: none;
   color: black;
   background-color: black;
+}
+
+.game-page .container .main .question .lose-screen .announcement h2 {
+  font-size: 50px;
+  font-family: GaretBold;
 }
 
 .game-page .container .main .question .options .option-container {

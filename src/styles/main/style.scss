@@ -516,12 +516,12 @@ html {
   .container {
     height: 100vh;
     display: grid;
-    grid-template-rows: 8% 22% 2% 3% 65%;
+    grid-template-rows: 8% min-content 2% 3% 65%;
     @media (max-width: 1600px) {
-      grid-template-rows: 8% 17% 2% 3% 70%;
+      grid-template-rows: 8% min-content 2% 3% 70%;
     }
     @media (max-width: 1400px) {
-      grid-template-rows: 8% 20% 2% 4% 66%;
+      grid-template-rows: 8% min-content 2% 4% 66%;
     }
     grid-template-areas:
       "timeline"
@@ -551,6 +551,7 @@ html {
         padding: 20px;
         margin: 30px;
         margin-left: 0;
+
         @media (max-width: 1400px) {
           font-size: 13px;
         }
@@ -558,10 +559,17 @@ html {
         .info {
           margin-bottom: 15px;
           cursor: pointer;
+
           @media (max-width: 1400px) {
             margin-bottom: 5px;
           }
         }
+        .info:hover {
+          color: rgb(240, 61, 16);
+        }
+      }
+      .infos:empty {
+        display: none;
       }
       .year {
         grid-area: year;
@@ -812,6 +820,8 @@ html {
       overflow-y: auto;
       //   overflow: visible;
       overflow-x: visible;
+      padding-left: 50px;
+      margin-left: -50px;
       .question {
         display: flex;
         flex-direction: column;
@@ -841,6 +851,17 @@ html {
             border: none;
             color: black;
             background-color: black;
+          }
+        }
+        .lose-screen {
+          .announcement {
+            h2 {
+              font-size: 50px;
+              font-family: GaretBold;
+            }
+          }
+
+          .achievements {
           }
         }
 
@@ -990,6 +1011,11 @@ html {
     .main-multiple {
       align-items: start;
     }
+    // .main:after {
+    //   content: "";
+    //   display: table;
+    //   clear: both;
+    // }
   }
 
   .blur {
