@@ -155,15 +155,20 @@ const Question = ({
 
   useEffect(() => {
     const main = document.getElementsByClassName("main")[0];
-    const overflow = isOverflown(main);
+    const viewportHeight =
+      document.getElementsByTagName("body")[0].clientHeight;
+    const overflowMain = isOverflown(main);
     const questionText = document.getElementsByClassName("question-text")[0];
     const heightOver400 = heightIsOverNpx(questionText, 400);
-    if (overflow) {
+    const heightOver100 = heightIsOverNpx(questionText, 100);
+    if (overflowMain) {
       heightOver400 ? setZeroArrows(true) : setOneArrow(true);
     } else if (heightOver400) {
       setZeroArrows(true);
     } else {
-      setTwoArrows(true);
+      heightOver100 && viewportHeight <= 900
+        ? setOneArrow(true)
+        : setTwoArrows(true);
     }
 
     if (heightIsOverNpx(questionText, 700)) {

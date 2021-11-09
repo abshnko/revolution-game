@@ -9,6 +9,7 @@ import CurrentInfo from "./CurrentInfo";
 import Loading from "./Loading";
 import ChooseSex from "./ChooseSex";
 import LoseScreen from "./LoseScreen";
+import Timeline from "./Timeline";
 
 function GamePage({ questions }) {
   const [index, setIndex] = useState(1000);
@@ -24,7 +25,16 @@ function GamePage({ questions }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
   const [lose, setLose] = useState(false);
-  const [grade, setGrade] = useState(3);
+  //   const [grade, setGrade] = useState(3);
+  const [allPeriods, setAllPeriods] = useState([
+    { title: "1900-1914" },
+    { title: "" },
+    { title: "" },
+    { title: "" },
+    { title: "" },
+    { title: "" },
+    { title: "" },
+  ]);
 
   const addInfoHelper = (singleInfo) => {
     const i = INFOS.findIndex(
@@ -101,6 +111,7 @@ function GamePage({ questions }) {
     if ("lose" in question[0]) {
       setLose(true);
     }
+    console.log(INFOS);
   }, [questionCounter]);
 
   useEffect(() => {
@@ -192,7 +203,14 @@ function GamePage({ questions }) {
             {questionChanged && <h1>Loading...</h1>}
             <>
               <div className="container">
-                <div className="timeline"></div>
+                <div className="timeline">
+                  <Timeline
+                    latestPeriod={question[0].period}
+                    allPeriods={allPeriods}
+                    setAllPeriods={setAllPeriods}
+                    questionCounter={questionCounter}
+                  />
+                </div>
                 {isShowInfo && ( //show currently chosen info entry
                   <CurrentInfo
                     question={question}

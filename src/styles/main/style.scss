@@ -516,13 +516,7 @@ html {
   .container {
     height: 100vh;
     display: grid;
-    grid-template-rows: 8% min-content 2% 3% 65%;
-    @media (max-width: 1600px) {
-      grid-template-rows: 8% min-content 2% 3% 70%;
-    }
-    @media (max-width: 1400px) {
-      grid-template-rows: 8% min-content 2% 4% 66%;
-    }
+    grid-template-rows: 8% min-content 2% min-content auto;
     grid-template-areas:
       "timeline"
       "controls"
@@ -533,8 +527,46 @@ html {
     .timeline {
       grid-area: timeline;
       height: 80px;
+      width: 100%;
       margin-bottom: 10px;
-      background-color: rgb(214, 214, 214);
+      //   background-color: rgb(214, 214, 214);
+
+      #react-chrono-timeline {
+        display: none;
+      }
+      .timeline-item-title {
+        // height: 4rem;
+        font-size: 24px;
+        line-height: 30px;
+        width: 4rem;
+      }
+      //   .timeline-circle {
+      //     background-color: black;
+      //   }
+      .active {
+        background-color: transparent;
+      }
+      .active::after {
+        background-color: transparent;
+      }
+      .using-icon {
+        // height: 50px;
+        // width: 50px;
+        width: fit-content;
+        height: fit-content;
+      }
+
+      .timeline-main-wrapper {
+        margin: 0 auto;
+        width: 80vw;
+      }
+      .timeline-item-title {
+        // margin-left: -2em;
+        // text-indent: 2em;
+      }
+      //   .css-ci1l8p-TimelineMain {
+      //     margin
+      //   }
     }
 
     .controls {
@@ -555,6 +587,9 @@ html {
         @media (max-width: 1400px) {
           font-size: 13px;
         }
+        // @media (max-height: 900px) {
+        //   font-size: 13px;
+        // }
 
         .info {
           margin-bottom: 15px;
@@ -586,6 +621,10 @@ html {
           font-size: 113px;
           line-height: 191px;
         }
+        @media (max-height: 900px) {
+          font-size: 143px;
+          line-height: 221px;
+        }
         p {
           font-family: GaretRegular;
           font-style: normal;
@@ -600,6 +639,10 @@ html {
           @media (max-width: 1400px) {
             font-size: 20px;
             line-height: 10px;
+          }
+          @media (max-height: 900px) {
+            font-size: 30px;
+            line-height: 20px;
           }
         }
       }
@@ -627,6 +670,10 @@ html {
             width: 180px;
             height: 84px;
           }
+          @media (max-height: 900px) {
+            width: 210px;
+            height: 99px;
+          }
           svg {
             width: 150px;
             height: 120px;
@@ -637,6 +684,10 @@ html {
             @media (max-width: 1400px) {
               width: 102px;
               height: 91px;
+            }
+            @media (max-height: 900px) {
+              width: 150px;
+              height: 100px;
             }
           }
         }
@@ -649,6 +700,9 @@ html {
             font-size: 17px;
             justify-self: start;
             margin: 0 0 1em 0;
+          }
+          @media (max-height: 900px) {
+            font-size: 20.5px;
           }
         }
       }
@@ -666,6 +720,7 @@ html {
     .question-number {
       grid-area: question-number;
       font-size: 28px;
+      margin-bottom: 10px;
       @media (max-width: 1400px) {
         font-size: 22px;
         margin-bottom: 10px;
@@ -829,13 +884,16 @@ html {
 
         .question-text {
           h2 {
-            font-size: 40px;
+            font-size: 30px;
             height: 100%;
             @media (max-width: 1600px) {
               font-size: 30px;
             }
             @media (max-width: 1400px) {
               font-size: 20px;
+            }
+            @media (max-height: 900px) {
+              font-size: 30px;
             }
           }
         }
@@ -961,6 +1019,7 @@ html {
         margin: 0 auto;
         border-radius: 8px;
         align-self: start;
+        // overflow: hidden;
         .headImage {
           max-width: 90%;
           max-height: 100%;
@@ -980,6 +1039,10 @@ html {
           .headImage {
             max-width: 70%;
           }
+        }
+        @media (max-height: 900px) {
+          max-width: 75%;
+          //   max-height: 3rem;
         }
         // @media (min-width: 2660px) {
         //   .headImage {
@@ -1030,11 +1093,12 @@ html {
   }
   .modal {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     font-size: 24px;
     padding: 30px 100px 70px 100px;
-    margin: 10% 20%;
     background-color: white;
     z-index: 130;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -1046,7 +1110,7 @@ html {
       position: relative;
       margin-bottom: 5em;
       .rect1 {
-        position: fixed;
+        position: absolute;
         width: 2em;
         height: 3em;
         // background-color: rgb(185, 185, 185);

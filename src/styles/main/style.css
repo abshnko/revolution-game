@@ -38,26 +38,10 @@ html {
   height: 100vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 8% min-content 2% 3% 65%;
-      grid-template-rows: 8% -webkit-min-content 2% 3% 65%;
-      grid-template-rows: 8% min-content 2% 3% 65%;
+  -ms-grid-rows: 8% min-content 2% min-content auto;
+      grid-template-rows: 8% -webkit-min-content 2% -webkit-min-content auto;
+      grid-template-rows: 8% min-content 2% min-content auto;
       grid-template-areas: "timeline" "controls" "line" "question-number" "main";
-}
-
-@media (max-width: 1600px) {
-  .game-page .container {
-    -ms-grid-rows: 8% min-content 2% 3% 70%;
-        grid-template-rows: 8% -webkit-min-content 2% 3% 70%;
-        grid-template-rows: 8% min-content 2% 3% 70%;
-  }
-}
-
-@media (max-width: 1400px) {
-  .game-page .container {
-    -ms-grid-rows: 8% min-content 2% 4% 66%;
-        grid-template-rows: 8% -webkit-min-content 2% 4% 66%;
-        grid-template-rows: 8% min-content 2% 4% 66%;
-  }
 }
 
 .game-page .container .timeline {
@@ -65,8 +49,40 @@ html {
   -ms-grid-column: 1;
   grid-area: timeline;
   height: 80px;
+  width: 100%;
   margin-bottom: 10px;
-  background-color: #d6d6d6;
+}
+
+.game-page .container .timeline #react-chrono-timeline {
+  display: none;
+}
+
+.game-page .container .timeline .timeline-item-title {
+  font-size: 24px;
+  line-height: 30px;
+  width: 4rem;
+}
+
+.game-page .container .timeline .active {
+  background-color: transparent;
+}
+
+.game-page .container .timeline .active::after {
+  background-color: transparent;
+}
+
+.game-page .container .timeline .using-icon {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.game-page .container .timeline .timeline-main-wrapper {
+  margin: 0 auto;
+  width: 80vw;
 }
 
 .game-page .container .controls {
@@ -143,6 +159,13 @@ html {
   }
 }
 
+@media (max-height: 900px) {
+  .game-page .container .controls .year {
+    font-size: 143px;
+    line-height: 221px;
+  }
+}
+
 .game-page .container .controls .year p {
   font-family: GaretRegular;
   font-style: normal;
@@ -163,6 +186,13 @@ html {
   .game-page .container .controls .year p {
     font-size: 20px;
     line-height: 10px;
+  }
+}
+
+@media (max-height: 900px) {
+  .game-page .container .controls .year p {
+    font-size: 30px;
+    line-height: 20px;
   }
 }
 
@@ -209,6 +239,13 @@ html {
   }
 }
 
+@media (max-height: 900px) {
+  .game-page .container .controls .next .next-button {
+    width: 210px;
+    height: 99px;
+  }
+}
+
 .game-page .container .controls .next .next-button svg {
   width: 150px;
   height: 120px;
@@ -225,6 +262,13 @@ html {
   .game-page .container .controls .next .next-button svg {
     width: 102px;
     height: 91px;
+  }
+}
+
+@media (max-height: 900px) {
+  .game-page .container .controls .next .next-button svg {
+    width: 150px;
+    height: 100px;
   }
 }
 
@@ -247,6 +291,12 @@ html {
   }
 }
 
+@media (max-height: 900px) {
+  .game-page .container .controls .next p {
+    font-size: 20.5px;
+  }
+}
+
 .game-page .container .line {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
@@ -266,6 +316,7 @@ html {
   -ms-grid-column: 1;
   grid-area: question-number;
   font-size: 28px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1400px) {
@@ -458,7 +509,7 @@ html {
 }
 
 .game-page .container .main .question .question-text h2 {
-  font-size: 40px;
+  font-size: 30px;
   height: 100%;
 }
 
@@ -471,6 +522,12 @@ html {
 @media (max-width: 1400px) {
   .game-page .container .main .question .question-text h2 {
     font-size: 20px;
+  }
+}
+
+@media (max-height: 900px) {
+  .game-page .container .main .question .question-text h2 {
+    font-size: 30px;
   }
 }
 
@@ -645,6 +702,12 @@ html {
   }
 }
 
+@media (max-height: 900px) {
+  .game-page .container .main .image {
+    max-width: 75%;
+  }
+}
+
 .game-page .container .main .image .img-container .img-ref {
   text-align: center;
 }
@@ -685,11 +748,12 @@ html {
 
 .game-page .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   font-size: 24px;
   padding: 30px 100px 70px 100px;
-  margin: 10% 20%;
   background-color: white;
   z-index: 130;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -704,7 +768,7 @@ html {
 }
 
 .game-page .modal .current-info .rect1 {
-  position: fixed;
+  position: absolute;
   width: 2em;
   height: 3em;
   margin-top: -1.5em;
