@@ -160,15 +160,24 @@ const Question = ({
     const overflowMain = isOverflown(main);
     const questionText = document.getElementsByClassName("question-text")[0];
     const heightOver400 = heightIsOverNpx(questionText, 400);
-    const heightOver100 = heightIsOverNpx(questionText, 100);
+    const heightOver100 = heightIsOverNpx(questionText, 200);
     if (overflowMain) {
       heightOver400 ? setZeroArrows(true) : setOneArrow(true);
     } else if (heightOver400) {
       setZeroArrows(true);
     } else {
-      heightOver100 && viewportHeight <= 900
-        ? setOneArrow(true)
-        : setTwoArrows(true);
+      console.log("IIIIIIIIINNNNNNN");
+      console.log(viewportHeight);
+      if (viewportHeight <= 900) {
+        setOneArrow(true);
+      } else {
+        console.log("IN IFFFFFFFF");
+        setTwoArrows(true);
+        console.log(twoArrows);
+        console.log(zeroArrows);
+        console.log(oneArrow);
+      }
+      //   viewportHeight <= 900 ? setOneArrow(true) : setTwoArrows(true);
     }
 
     if (heightIsOverNpx(questionText, 700)) {

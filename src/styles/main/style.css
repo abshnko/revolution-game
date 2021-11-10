@@ -515,6 +515,7 @@ html {
   -ms-grid-row: 5;
   -ms-grid-column: 1;
   grid-area: main;
+  margin-bottom: 30px;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: end;
@@ -706,12 +707,6 @@ html {
 
 .game-page .container .main .arrows .arrow {
   margin-bottom: 20px;
-}
-
-@media (max-width: 1600px) {
-  .game-page .container .main .arrows .arrow:nth-child(2) {
-    display: none;
-  }
 }
 
 .game-page .container .main .arrows .arrow:nth-child(2) {

@@ -505,6 +505,7 @@ html {
 
 .game-page {
   //   height: 100vh;
+
   .wrapper {
     max-width: 85%;
     margin: auto;
@@ -515,6 +516,7 @@ html {
 
   .container {
     height: 100vh;
+
     display: grid;
     grid-template-rows: 8% min-content 2% min-content auto;
     grid-template-areas:
@@ -884,6 +886,7 @@ html {
 
     .main {
       grid-area: main;
+      margin-bottom: 30px;
       align-items: end;
       display: grid;
       grid-template-columns: 55% 45%;
@@ -1027,11 +1030,11 @@ html {
         .arrow {
           margin-bottom: 20px;
         }
-        @media (max-width: 1600px) {
-          .arrow:nth-child(2) {
-            display: none;
-          }
-        }
+        // @media (max-width: 1600px) {
+        //   .arrow:nth-child(2) {
+        //     display: none;
+        //   }
+        // }
         .arrow:nth-child(2) {
           margin-bottom: 0;
           //   display: none;
