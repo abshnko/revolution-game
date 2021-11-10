@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/revolution-game/static/css/main.86eda3d2.chunk.css",
-    "main.js": "/revolution-game/static/js/main.2adcddcb.chunk.js",
-    "main.js.map": "/revolution-game/static/js/main.2adcddcb.chunk.js.map",
+    "main.css": "/revolution-game/static/css/main.b04df991.chunk.css",
+    "main.js": "/revolution-game/static/js/main.08ee7b63.chunk.js",
+    "main.js.map": "/revolution-game/static/js/main.08ee7b63.chunk.js.map",
     "runtime-main.js": "/revolution-game/static/js/runtime-main.7d19c18b.js",
     "runtime-main.js.map": "/revolution-game/static/js/runtime-main.7d19c18b.js.map",
-    "static/js/2.9ecc1e39.chunk.js": "/revolution-game/static/js/2.9ecc1e39.chunk.js",
-    "static/js/2.9ecc1e39.chunk.js.map": "/revolution-game/static/js/2.9ecc1e39.chunk.js.map",
+    "static/js/2.12ea679d.chunk.js": "/revolution-game/static/js/2.12ea679d.chunk.js",
+    "static/js/2.12ea679d.chunk.js.map": "/revolution-game/static/js/2.12ea679d.chunk.js.map",
     "index.html": "/revolution-game/index.html",
-    "static/css/main.86eda3d2.chunk.css.map": "/revolution-game/static/css/main.86eda3d2.chunk.css.map",
-    "static/js/2.9ecc1e39.chunk.js.LICENSE.txt": "/revolution-game/static/js/2.9ecc1e39.chunk.js.LICENSE.txt",
+    "static/css/main.b04df991.chunk.css.map": "/revolution-game/static/css/main.b04df991.chunk.css.map",
+    "static/js/2.12ea679d.chunk.js.LICENSE.txt": "/revolution-game/static/js/2.12ea679d.chunk.js.LICENSE.txt",
     "static/media/style.css": "/revolution-game/static/media/Garet-Heavy.aec913e9.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.7d19c18b.js",
-    "static/js/2.9ecc1e39.chunk.js",
-    "static/css/main.86eda3d2.chunk.css",
-    "static/js/main.2adcddcb.chunk.js"
+    "static/js/2.12ea679d.chunk.js",
+    "static/css/main.b04df991.chunk.css",
+    "static/js/main.08ee7b63.chunk.js"
   ]
 }
