@@ -11,22 +11,6 @@ const CurrentInfo = ({
     <>
       <div className="blur"></div>
       <div className="modal" id={question[0].id}>
-        <div className="close-info">
-          <button
-            onClick={() => {
-              setIsShowInfo(false);
-              INFOS.map((INFO) => {
-                INFO.infos.map((info, infoIndex) => {
-                  info.isActive = false;
-                });
-              });
-            }}
-          >
-            <i>
-              <AiOutlineClose />
-            </i>
-          </button>
-        </div>
         <div className="current-info">
           <div className="rect1"></div>
           <div className="rect2"></div>
@@ -42,6 +26,20 @@ const CurrentInfo = ({
           <div className="info-text">
             <p>{currentInfoDisplayed.infoText}</p>
           </div>
+        </div>
+        <div className="close-info">
+          <button
+            onClick={() => {
+              setIsShowInfo(false);
+              INFOS.map((INFO) => {
+                INFO.infos.map((info, infoIndex) => {
+                  info.isActive = false;
+                });
+              });
+            }}
+          >
+            Понятно
+          </button>
         </div>
       </div>
     </>

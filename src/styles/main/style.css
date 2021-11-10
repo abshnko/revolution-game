@@ -115,6 +115,12 @@ html {
   }
 }
 
+@media (min-width: 2500px) {
+  .game-page .container .controls .infos {
+    font-size: 20px;
+  }
+}
+
 .game-page .container .controls .infos .info {
   margin-bottom: 15px;
   cursor: pointer;
@@ -141,8 +147,15 @@ html {
   font-family: GaretBold;
   font-weight: 850;
   font-size: 173px;
-  line-height: 251px;
+  line-height: 241px;
   margin-top: -20px;
+}
+
+@media (min-width: 2500px) {
+  .game-page .container .controls .year {
+    font-size: 190px;
+    line-height: 240px;
+  }
 }
 
 @media (max-width: 1600px) {
@@ -161,8 +174,8 @@ html {
 
 @media (max-height: 900px) {
   .game-page .container .controls .year {
-    font-size: 143px;
-    line-height: 221px;
+    font-size: 130px;
+    line-height: 200px;
   }
 }
 
@@ -170,29 +183,43 @@ html {
   font-family: GaretRegular;
   font-style: normal;
   font-weight: 300;
-  font-size: 35px;
+  font-size: 25px;
   line-height: 20px;
   margin: -40px 0 20px 0;
 }
 
-@media (max-width: 1600px) {
+@media (min-width: 2500px) {
   .game-page .container .controls .year p {
-    font-size: 30px;
+    font-size: 36px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .game-page .container .controls .year p {
+    font-size: 35px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 1650px) {
+  .game-page .container .controls .year p {
+    font-size: 22px;
     line-height: 20px;
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1450px) {
   .game-page .container .controls .year p {
     font-size: 20px;
-    line-height: 10px;
+    line-height: 20px;
   }
 }
 
 @media (max-height: 900px) {
   .game-page .container .controls .year p {
-    font-size: 30px;
-    line-height: 20px;
+    font-size: 22px;
+    line-height: 17px;
   }
 }
 
@@ -218,7 +245,7 @@ html {
 
 .game-page .container .controls .next .next-button {
   border: none;
-  width: 240px;
+  width: 210px;
   height: 129px;
   color: white;
   background-color: black;
@@ -227,73 +254,72 @@ html {
 
 @media (max-width: 1600px) {
   .game-page .container .controls .next .next-button {
-    width: 210px;
+    width: 180px;
     height: 99px;
   }
 }
 
 @media (max-width: 1400px) {
   .game-page .container .controls .next .next-button {
-    width: 180px;
+    width: 150px;
     height: 84px;
   }
 }
 
 @media (max-height: 900px) {
   .game-page .container .controls .next .next-button {
-    width: 210px;
+    width: 180px;
     height: 99px;
   }
 }
 
 .game-page .container .controls .next .next-button svg {
-  width: 150px;
+  width: 130px;
   height: 120px;
 }
 
 @media (max-width: 1600px) {
   .game-page .container .controls .next .next-button svg {
-    width: 150px;
+    width: 90px;
     height: 100px;
   }
 }
 
 @media (max-width: 1400px) {
   .game-page .container .controls .next .next-button svg {
-    width: 102px;
+    width: 70px;
     height: 91px;
   }
 }
 
 @media (max-height: 900px) {
   .game-page .container .controls .next .next-button svg {
-    width: 150px;
+    width: 100px;
     height: 100px;
   }
 }
 
 .game-page .container .controls .next p {
-  font-size: 23px;
+  font-size: 20px;
 }
 
 @media (max-width: 1600px) {
   .game-page .container .controls .next p {
-    font-size: 20.5px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 1400px) {
   .game-page .container .controls .next p {
-    font-size: 17px;
+    font-size: 14.5px;
     -ms-grid-column-align: start;
         justify-self: start;
-    margin: 0 0 1em 0;
   }
 }
 
 @media (max-height: 900px) {
   .game-page .container .controls .next p {
-    font-size: 20.5px;
+    font-size: 17px;
   }
 }
 
@@ -311,6 +337,12 @@ html {
   margin: 0;
 }
 
+@media (max-height: 900px) {
+  .game-page .container .line hr {
+    height: 12px;
+  }
+}
+
 .game-page .container .question-number {
   -ms-grid-row: 4;
   -ms-grid-column: 1;
@@ -323,6 +355,12 @@ html {
   .game-page .container .question-number {
     font-size: 22px;
     margin-bottom: 10px;
+  }
+}
+
+@media (max-height: 900px) {
+  .game-page .container .question-number {
+    font-size: 21px;
   }
 }
 
@@ -513,6 +551,12 @@ html {
   height: 100%;
 }
 
+@media (min-width: 2500px) {
+  .game-page .container .main .question .question-text h2 {
+    font-size: 50px;
+  }
+}
+
 @media (max-width: 1600px) {
   .game-page .container .main .question .question-text h2 {
     font-size: 30px;
@@ -578,6 +622,12 @@ html {
   margin-bottom: 15px;
   -webkit-transition: 0.25s;
   transition: 0.25s;
+}
+
+@media (min-width: 2500px) {
+  .game-page .container .main .question .options .option-container .option {
+    font-size: 26px;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -690,15 +740,15 @@ html {
           filter: grayscale(80%);
 }
 
-@media (min-width: 1955px) {
+@media (min-width: 2500px) {
   .game-page .container .main .image .headImage {
-    max-width: 80%;
+    max-width: 100%;
   }
 }
 
-@media (min-width: 2220px) {
+@media (min-width: 1955px) {
   .game-page .container .main .image .headImage {
-    max-width: 70%;
+    max-width: 80%;
   }
 }
 
@@ -747,17 +797,35 @@ html {
 }
 
 .game-page .modal {
+  text-align: justify;
   position: fixed;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 24px;
-  padding: 30px 100px 70px 100px;
+  padding: 30px 100px 30px 100px;
   background-color: white;
   z-index: 130;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
           box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.game-page .modal .close-info {
+  text-align: end;
+}
+
+.game-page .modal .close-info button {
+  font-family: GaretRegular;
+  margin-top: 50px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.game-page .modal .close-info button:hover {
+  color: #f03d10;
 }
 
 .game-page .modal .current-info {
@@ -821,13 +889,14 @@ html {
 
 .game-page .modal .current-info .info-name h2 {
   margin-bottom: 0;
+  text-align: center;
 }
 
 .game-page .modal .current-info .info-text {
   font-family: GaretRegular;
   height: 100%;
   overflow-y: scroll;
-  padding: 0 50px 0 0;
+  padding: 0 20px 0 0;
 }
 
 .game-page ::-webkit-scrollbar {

@@ -13,7 +13,11 @@ import Timeline from "./Timeline";
 
 function GamePage({ questions }) {
   const [index, setIndex] = useState(1000);
-  const [question, setQuestion] = useState(questions);
+  const [question, setQuestion] = useState(() => {
+    const saved = localStorage.getItem("question");
+    const initialValue = JSON.parse(saved);
+    return initialValue || questions;
+  });
   const [questionChanged, setQuestionChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isShowInfo, setIsShowInfo] = useState(false);
@@ -111,7 +115,7 @@ function GamePage({ questions }) {
     if ("lose" in question[0]) {
       setLose(true);
     }
-    console.log(INFOS);
+    localStorage.setItem("question", JSON.stringify(question));
   }, [questionCounter]);
 
   useEffect(() => {
@@ -254,7 +258,7 @@ function GamePage({ questions }) {
                   </div>
                   <div className="year">
                     {question[0].year}
-                    <p>название игры</p>
+                    <p>Человек в эпоху войн и революций</p>
                   </div>
                   {!lose && (
                     <div className="next">

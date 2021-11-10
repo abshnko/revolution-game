@@ -559,14 +559,12 @@ html {
       .timeline-main-wrapper {
         margin: 0 auto;
         width: 80vw;
+        // width: 100%;
       }
       .timeline-item-title {
         // margin-left: -2em;
         // text-indent: 2em;
       }
-      //   .css-ci1l8p-TimelineMain {
-      //     margin
-      //   }
     }
 
     .controls {
@@ -590,7 +588,9 @@ html {
         // @media (max-height: 900px) {
         //   font-size: 13px;
         // }
-
+        @media (min-width: 2500px) {
+          font-size: 20px;
+        }
         .info {
           margin-bottom: 15px;
           cursor: pointer;
@@ -611,8 +611,12 @@ html {
         font-family: GaretBold;
         font-weight: 850;
         font-size: 173px;
-        line-height: 251px;
+        line-height: 241px;
         margin-top: -20px;
+        @media (min-width: 2500px) {
+          font-size: 190px;
+          line-height: 240px;
+        }
         @media (max-width: 1600px) {
           font-size: 143px;
           line-height: 221px;
@@ -622,27 +626,35 @@ html {
           line-height: 191px;
         }
         @media (max-height: 900px) {
-          font-size: 143px;
-          line-height: 221px;
+          font-size: 130px;
+          line-height: 200px;
         }
         p {
           font-family: GaretRegular;
           font-style: normal;
           font-weight: 300;
-          font-size: 35px;
+          font-size: 25px;
           line-height: 20px;
           margin: -40px 0 20px 0;
-          @media (max-width: 1600px) {
-            font-size: 30px;
+          @media (min-width: 2500px) {
+            font-size: 36px;
+            line-height: 30px;
+          }
+          @media (min-width: 2000px) {
+            font-size: 35px;
+            line-height: 30px;
+          }
+          @media (max-width: 1650px) {
+            font-size: 22px;
             line-height: 20px;
           }
-          @media (max-width: 1400px) {
+          @media (max-width: 1450px) {
             font-size: 20px;
-            line-height: 10px;
+            line-height: 20px;
           }
           @media (max-height: 900px) {
-            font-size: 30px;
-            line-height: 20px;
+            font-size: 22px;
+            line-height: 17px;
           }
         }
       }
@@ -655,7 +667,7 @@ html {
         margin-top: 30px;
         .next-button {
           border: none;
-          width: 240px;
+          width: 210px;
           height: 129px;
           //   font-size: 100px;
           color: white;
@@ -663,46 +675,46 @@ html {
           cursor: pointer;
 
           @media (max-width: 1600px) {
-            width: 210px;
+            width: 180px;
             height: 99px;
           }
           @media (max-width: 1400px) {
-            width: 180px;
+            width: 150px;
             height: 84px;
           }
           @media (max-height: 900px) {
-            width: 210px;
+            width: 180px;
             height: 99px;
           }
           svg {
-            width: 150px;
+            width: 130px;
             height: 120px;
             @media (max-width: 1600px) {
-              width: 150px;
+              width: 90px;
               height: 100px;
             }
             @media (max-width: 1400px) {
-              width: 102px;
+              width: 70px;
               height: 91px;
             }
             @media (max-height: 900px) {
-              width: 150px;
+              width: 100px;
               height: 100px;
             }
           }
         }
         p {
-          font-size: 23px;
+          font-size: 20px;
           @media (max-width: 1600px) {
-            font-size: 20.5px;
+            font-size: 18px;
           }
           @media (max-width: 1400px) {
-            font-size: 17px;
+            font-size: 14.5px;
             justify-self: start;
-            margin: 0 0 1em 0;
+            // margin: 0 0 1em 0;
           }
           @media (max-height: 900px) {
-            font-size: 20.5px;
+            font-size: 17px;
           }
         }
       }
@@ -715,6 +727,9 @@ html {
         color: black;
         background-color: black;
         margin: 0;
+        @media (max-height: 900px) {
+          height: 12px;
+        }
       }
     }
     .question-number {
@@ -724,6 +739,9 @@ html {
       @media (max-width: 1400px) {
         font-size: 22px;
         margin-bottom: 10px;
+      }
+      @media (max-height: 900px) {
+        font-size: 21px;
       }
     }
 
@@ -886,6 +904,9 @@ html {
           h2 {
             font-size: 30px;
             height: 100%;
+            @media (min-width: 2500px) {
+              font-size: 50px;
+            }
             @media (max-width: 1600px) {
               font-size: 30px;
             }
@@ -948,6 +969,9 @@ html {
               cursor: pointer;
               margin-bottom: 15px;
               transition: 0.25s;
+              @media (min-width: 2500px) {
+                font-size: 26px;
+              }
               @media (max-width: 1400px) {
                 font-size: 15px;
               }
@@ -1029,17 +1053,22 @@ html {
           object-position: 0 15%;
           filter: grayscale(80%);
         }
+        @media (min-width: 2500px) {
+          .headImage {
+            max-width: 100%;
+          }
+        }
 
         @media (min-width: 1955px) {
           .headImage {
             max-width: 80%;
           }
         }
-        @media (min-width: 2220px) {
-          .headImage {
-            max-width: 70%;
-          }
-        }
+        // @media (min-width: 2220px) {
+        //   .headImage {
+        //     max-width: 70%;
+        //   }
+        // }
         @media (max-height: 900px) {
           max-width: 75%;
           //   max-height: 3rem;
@@ -1092,17 +1121,31 @@ html {
     z-index: 120;
   }
   .modal {
+    text-align: justify;
     position: fixed;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     font-size: 24px;
-    padding: 30px 100px 70px 100px;
+    padding: 30px 100px 30px 100px;
     background-color: white;
     z-index: 130;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
     .close-info {
+      text-align: end;
+      button {
+        font-family: GaretRegular;
+        margin-top: 50px;
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      button:hover {
+        color: rgb(240, 61, 16);
+      }
     }
     .current-info {
       margin: 50px;
@@ -1161,6 +1204,7 @@ html {
 
         h2 {
           margin-bottom: 0;
+          text-align: center;
         }
       }
 
@@ -1168,7 +1212,7 @@ html {
         font-family: GaretRegular;
         height: 100%;
         overflow-y: scroll;
-        padding: 0 50px 0 0;
+        padding: 0 20px 0 0;
       }
     }
   }

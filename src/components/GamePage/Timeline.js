@@ -69,6 +69,13 @@ const Timeline = ({
 
     return images;
   };
+
+  //   const getClientWidth = () => {
+  //     return document.getElementsByTagName("body")[0].clientWidth;
+  //   };
+  const clientWidth = document.getElementsByTagName("body")[0].clientWidth;
+  console.log(clientWidth);
+
   useEffect(() => {
     console.log("IN USE EFFECT TIMELINE");
     addNewPeriod();
@@ -80,7 +87,21 @@ const Timeline = ({
   return (
     <div style={{ width: "100%" }}>
       <Chrono
-        itemWidth="230"
+        itemWidth={
+          clientWidth >= 3500
+            ? "450"
+            : clientWidth >= 2400
+            ? "285"
+            : clientWidth >= 1920
+            ? "230"
+            : clientWidth >= 1600
+            ? "190"
+            : clientWidth >= 1440
+            ? "170"
+            : clientWidth >= 1366
+            ? "170"
+            : "130"
+        }
         hideControls={true}
         items={allPeriods}
         allowDynamicUpdate={true}
