@@ -5,13 +5,24 @@ import circle from "../../images/circle-24.png";
 import current from "../../images/current.png";
 import ReactDOMServer from "react-dom/server";
 
-const Timeline = ({
-  latestPeriod,
-  allPeriods,
-  setAllPeriods,
-  questionCounter,
-}) => {
-  const [counter, setCounter] = useState(1);
+const Timeline = ({ latestPeriod, questionCounter }) => {
+  const [counter, setCounter] = useState(() => {
+    return JSON.parse(localStorage.getItem("period-counter")) || 1;
+  });
+  const [allPeriods, setAllPeriods] = useState(() => {
+    //   const saved = JSON.parse(localStorage.getItem('periods'))
+    return (
+      JSON.parse(localStorage.getItem("periods")) || [
+        { title: "1900-1914" },
+        { title: "" },
+        { title: "" },
+        { title: "" },
+        { title: "" },
+        { title: "" },
+        { title: "" },
+      ]
+    );
+  });
   const checkIfPeriodExists = () => {
     for (var i = 0; i < allPeriods.length; i++) {
       //   const parts = latestPeriod.split("-");
@@ -22,7 +33,7 @@ const Timeline = ({
       //   );
       //   console.log(newP);
       //   const ss = ReactDOMServer.renderToString(allPeriods[i].title);
-      console.log(allPeriods[i].title.props);
+
       if (allPeriods[i].title === latestPeriod) {
         return true;
       }
@@ -42,7 +53,11 @@ const Timeline = ({
           //   );
           //   console.log(newP);
           //   allPeriods[j].title = newP;
-          allPeriods[j].title = latestPeriod;
+          //   allPeriods[j].title = latestPeriod;
+          const allPeriodsCopy = [...allPeriods];
+          console.log(allPeriodsCopy);
+          allPeriodsCopy[j].title = latestPeriod;
+          setAllPeriods(allPeriodsCopy);
           setCounter(counter + 1);
           console.log(counter);
           break;
@@ -79,7 +94,8 @@ const Timeline = ({
   useEffect(() => {
     console.log("IN USE EFFECT TIMELINE");
     addNewPeriod();
-    return () => {};
+    localStorage.setItem("periods", JSON.stringify(allPeriods));
+    localStorage.setItem("period-counter", JSON.stringify(counter));
   }, [questionCounter, counter]);
 
   const images = passImages(counter);

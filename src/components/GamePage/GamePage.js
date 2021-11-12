@@ -22,23 +22,16 @@ function GamePage({ questions }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isShowInfo, setIsShowInfo] = useState(false);
   const [INFOS, setINFOS] = useState(periods);
-  const [questionCounter, setQuestionCounter] = useState(0);
+  const [questionCounter, setQuestionCounter] = useState(() => {
+    const counter = parseInt(localStorage.getItem("question-number"));
+    return counter || 0;
+  });
   const [isJump, setIsJump] = useState(false);
   const [jump, setJump] = useState(0);
   const [isShowQuestion, setIsShowQuestion] = useState(true);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
   const [lose, setLose] = useState(false);
-  //   const [grade, setGrade] = useState(3);
-  const [allPeriods, setAllPeriods] = useState([
-    { title: "1900-1914" },
-    { title: "" },
-    { title: "" },
-    { title: "" },
-    { title: "" },
-    { title: "" },
-    { title: "" },
-  ]);
 
   const addInfoHelper = (singleInfo) => {
     const i = INFOS.findIndex(
@@ -116,6 +109,7 @@ function GamePage({ questions }) {
       setLose(true);
     }
     localStorage.setItem("question", JSON.stringify(question));
+    localStorage.setItem("question-number", JSON.stringify(questionCounter));
   }, [questionCounter]);
 
   useEffect(() => {
@@ -186,7 +180,6 @@ function GamePage({ questions }) {
       } else {
         setIndex(question[0].options[0].next);
       }
-      // ADD if length === 0 : endgame (maybe)
     }
   };
 
@@ -210,8 +203,6 @@ function GamePage({ questions }) {
                 <div className="timeline">
                   <Timeline
                     latestPeriod={question[0].period}
-                    allPeriods={allPeriods}
-                    setAllPeriods={setAllPeriods}
                     questionCounter={questionCounter}
                   />
                 </div>

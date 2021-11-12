@@ -60,7 +60,8 @@ html {
 .game-page .container .timeline .timeline-item-title {
   font-size: 24px;
   line-height: 30px;
-  width: 4rem;
+  width: 4.5rem;
+  overflow-wrap: break-word;
 }
 
 .game-page .container .timeline .active {
@@ -83,6 +84,10 @@ html {
 .game-page .container .timeline .timeline-main-wrapper {
   margin: 0 auto;
   width: 80vw;
+}
+
+.game-page .container .timeline .css-z1lsnn-Circle {
+  cursor: default;
 }
 
 .game-page .container .controls {
@@ -172,7 +177,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .controls .year {
     font-size: 130px;
     line-height: 200px;
@@ -216,7 +221,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .controls .year p {
     font-size: 22px;
     line-height: 17px;
@@ -266,7 +271,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .controls .next .next-button {
     width: 180px;
     height: 99px;
@@ -292,7 +297,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .controls .next .next-button svg {
     width: 100px;
     height: 100px;
@@ -317,7 +322,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .controls .next p {
     font-size: 17px;
   }
@@ -337,7 +342,7 @@ html {
   margin: 0;
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .line hr {
     height: 12px;
   }
@@ -358,7 +363,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .question-number {
     font-size: 21px;
   }
@@ -391,6 +396,8 @@ html {
 }
 
 .game-page .container .options-choose-sex .options .choose-images .option {
+  width: auto;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -458,6 +465,8 @@ html {
 .game-page .container .options-choose-sex .options .choose-images .option .headImageChoose {
   max-width: 100%;
   max-height: 100%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .game-page .container .options-choose-sex .options .choose-images button:nth-child(1) .headImageChoose {
@@ -570,7 +579,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .main .question .question-text h2 {
     font-size: 30px;
   }
@@ -747,7 +756,7 @@ html {
   }
 }
 
-@media (max-height: 900px) {
+@media (max-height: 1000px) {
   .game-page .container .main .image {
     max-width: 75%;
   }

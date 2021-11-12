@@ -51,7 +51,7 @@ const Question = ({
       );
     };
 
-    const func = (text) => {
+    const separateParts = (text) => {
       const number = text[0];
       const n = <div className="number">{number}</div>; //NUMBER
       let allButNumber = text.split(/.(.+)/)[1];
@@ -110,8 +110,8 @@ const Question = ({
       parts[i] = l(parts, i);
     }
 
-    const m = func(option.text);
-    return <div className="text">{m}</div>;
+    const separatedText = separateParts(option.text);
+    return <div className="text">{separatedText}</div>;
   };
 
   const checkInfosForQuestion = (question) => {
@@ -133,7 +133,6 @@ const Question = ({
       );
     };
     let parts = question[0].text.split(new RegExp(`(${allText.join("|")})`));
-    // console.log(parts);
     for (let i = 1; i < parts.length; i += 2) {
       parts[i] = l(parts, i);
     }
@@ -153,37 +152,37 @@ const Question = ({
     return clientHeight >= number;
   };
 
-  useEffect(() => {
+  const determineArrowsNumber = () => {
     const main = document.getElementsByClassName("main")[0];
     const viewportHeight =
       document.getElementsByTagName("body")[0].clientHeight;
     const overflowMain = isOverflown(main);
     const questionText = document.getElementsByClassName("question-text")[0];
     const heightOver400 = heightIsOverNpx(questionText, 400);
-    const heightOver100 = heightIsOverNpx(questionText, 200);
+    const heightOver100 = heightIsOverNpx(questionText, 100);
     if (overflowMain) {
       heightOver400 ? setZeroArrows(true) : setOneArrow(true);
     } else if (heightOver400) {
       setZeroArrows(true);
     } else {
-      console.log("IIIIIIIIINNNNNNN");
-      console.log(viewportHeight);
-      if (viewportHeight <= 900) {
-        setOneArrow(true);
-      } else {
-        console.log("IN IFFFFFFFF");
-        setTwoArrows(true);
-        console.log(twoArrows);
-        console.log(zeroArrows);
-        console.log(oneArrow);
-      }
-      //   viewportHeight <= 900 ? setOneArrow(true) : setTwoArrows(true);
+      viewportHeight <= 900 && heightOver100
+        ? setOneArrow(true)
+        : setTwoArrows(true);
     }
+  };
 
+  const determineTextSmall = () => {
+    const questionText = document.getElementsByClassName("question-text")[0];
     if (heightIsOverNpx(questionText, 700)) {
       setMakeSmallText(true);
     }
+  };
+
+  useEffect(() => {
+    determineArrowsNumber();
+    determineTextSmall();
   }, [question]);
+
   return (
     <>
       {/* <div className="id-testing">current: {question[0].id}</div> */}{" "}
@@ -253,9 +252,18 @@ const Question = ({
               {question[0].options.map((option) => {
                 if ("nextJump" in option) {
                   if ("jumpFromHere" in option) {
-                    var jumpFromHere = option.jumpFromHere;
+                    var jumpFromHere =
+                      localStorage.getItem("jump-from-here") ||
+                      option.jumpFromHere;
+                    localStorage.setItem(
+                      "jump-from-here",
+                      JSON.stringify(jumpFromHere)
+                    );
                   }
-                  const nextJump = option.nextJump;
+                  const nextJump =
+                    parseInt(localStorage.getItem("next-jump")) ||
+                    option.nextJump;
+                  localStorage.setItem("next-jump", JSON.stringify(nextJump));
                   const next = option.next;
                   return (
                     <>
@@ -282,7 +290,13 @@ const Question = ({
                   );
                 } else {
                   if ("jumpFromHere" in option) {
-                    var jumpFromHere = option.jumpFromHere;
+                    jumpFromHere =
+                      localStorage.getItem("jump-from-here") ||
+                      option.jumpFromHere;
+                    localStorage.setItem(
+                      "jump-from-here",
+                      JSON.stringify(jumpFromHere)
+                    );
                   }
                   const next = option.next;
                   return (
