@@ -726,9 +726,9 @@ html {
   max-height: 100%;
   margin: 0 auto;
   border-radius: 8px;
-  -ms-flex-item-align: start;
-      -ms-grid-row-align: start;
-      align-self: start;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .game-page .container .main .image .headImage {
@@ -740,8 +740,6 @@ html {
      object-fit: contain;
   -o-object-position: 0 15%;
      object-position: 0 15%;
-  -webkit-filter: grayscale(80%);
-          filter: grayscale(80%);
 }
 
 @media (min-width: 2500px) {

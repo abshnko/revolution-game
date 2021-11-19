@@ -1049,7 +1049,7 @@ html {
         max-height: 100%;
         margin: 0 auto;
         border-radius: 8px;
-        align-self: start;
+        align-self: center;
         // overflow: hidden;
         .headImage {
           max-width: 90%;
@@ -1058,7 +1058,7 @@ html {
           display: block;
           object-fit: contain;
           object-position: 0 15%;
-          filter: grayscale(80%);
+          //   filter: grayscale(80%);
         }
         @media (min-width: 2500px) {
           .headImage {
