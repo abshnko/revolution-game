@@ -94,8 +94,8 @@ const Timeline = ({ latestPeriod, questionCounter }) => {
   useEffect(() => {
     console.log("IN USE EFFECT TIMELINE");
     addNewPeriod();
-    localStorage.setItem("periods", JSON.stringify(allPeriods));
-    localStorage.setItem("period-counter", JSON.stringify(counter));
+    // localStorage.setItem("periods", JSON.stringify(allPeriods));
+    // localStorage.setItem("period-counter", JSON.stringify(counter));
   }, [questionCounter, counter]);
 
   const images = passImages(counter);

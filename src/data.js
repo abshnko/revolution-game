@@ -129,7 +129,7 @@ const questions = [
     id: 1003,
     year: "1907",
     period: "1900-1914",
-    img: "1003-school.jpg",
+    img: "1003-school.png",
     imgRef:
       "https://www.charmingrussia.ru/2019/11/fabrichno-zavodskije-shkoly-v-rossii.html",
     text: "Ваша семья задумалась над Вашим образованием. Какой же путь избрать для деточки?",
@@ -202,7 +202,7 @@ const questions = [
     id: 1004,
     year: "1914",
     period: "1914-1917",
-    img: "",
+    img: "1004-dads-death.png",
     imgRef: "",
     text: "1914 год. Началась Первая мировая война. Ваш батька ушёл добровольцем на фронт и погиб в Галиции. Ваша судьба теперь в ваших руках.",
     options: [

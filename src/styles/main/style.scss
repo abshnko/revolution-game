@@ -8,6 +8,7 @@
 }
 body,
 html {
+  font-family: GaretRegular;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -516,9 +517,8 @@ html {
 
   .container {
     height: 100vh;
-
     display: grid;
-    grid-template-rows: 8% min-content 2% min-content auto;
+    grid-template-rows: 8% min-content min-content min-content auto;
     grid-template-areas:
       "timeline"
       "controls"
@@ -592,6 +592,10 @@ html {
           margin-bottom: 15px;
           cursor: pointer;
 
+          svg {
+            margin-right: 15px;
+          }
+
           @media (max-width: 1400px) {
             margin-bottom: 5px;
           }
@@ -607,8 +611,8 @@ html {
         grid-area: year;
         font-family: GaretBold;
         font-weight: 850;
-        font-size: 173px;
-        line-height: 241px;
+        font-size: 153px;
+        line-height: 211px;
         margin-top: -20px;
         @media (min-width: 2500px) {
           font-size: 190px;
@@ -663,13 +667,24 @@ html {
         flex-direction: column;
         margin-top: 30px;
         .next-button {
-          border: none;
           width: 210px;
           height: 129px;
-          //   font-size: 100px;
-          color: white;
-          background-color: black;
+          border: none;
+          padding: 20px 40px;
           cursor: pointer;
+          //   transition: background 0.00000001s ease-in, border 0.01s linear;
+          background: linear-gradient(to right, black 2px, transparent 2px) 0 0,
+            linear-gradient(to right, black 2px, transparent 2px) 0 100%,
+            linear-gradient(to left, black 2px, transparent 2px) 100% 0,
+            linear-gradient(to left, black 2px, transparent 2px) 100% 100%,
+            linear-gradient(to bottom, black 2px, transparent 2px) 0 0,
+            linear-gradient(to bottom, black 2px, transparent 2px) 100% 0,
+            linear-gradient(to top, black 2px, transparent 2px) 0 100%,
+            linear-gradient(to top, black 2px, transparent 2px) 100% 100%;
+          background-repeat: no-repeat;
+          background-size: 20% 15%;
+          border: none;
+          transition: all 0.5s ease-in;
 
           @media (max-width: 1600px) {
             width: 180px;
@@ -683,22 +698,10 @@ html {
             width: 180px;
             height: 99px;
           }
-          svg {
-            width: 130px;
-            height: 120px;
-            @media (max-width: 1600px) {
-              width: 90px;
-              height: 100px;
-            }
-            @media (max-width: 1400px) {
-              width: 70px;
-              height: 91px;
-            }
-            @media (max-height: 1000px) {
-              width: 100px;
-              height: 100px;
-            }
-          }
+        }
+        .next-button:hover {
+          //   transform: scale(1.05);
+          background-size: 100% 100%;
         }
         p {
           font-size: 20px;

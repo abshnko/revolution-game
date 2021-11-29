@@ -13,11 +13,11 @@ function Image({ question, setImgLoaded, isLoading, imgLoaded }) {
         />
       ) : null}
 
-      {question[0].imgRef !== "" && imgLoaded && (
+      {/* {question[0].imgRef !== "" && imgLoaded && (
         <div className="img-ref">
           <a href={question[0].imgRef}>источник</a>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

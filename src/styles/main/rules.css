@@ -1,0 +1,156 @@
+@font-face {
+  font-family: GaretBold;
+  src: url("../../../src/fonts/Garet-Heavy.woff") format("woff");
+}
+
+@font-face {
+  font-family: RedOctoberRegular;
+  src: url("../../../src/fonts/redoctober.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: RedOctoberBold;
+  src: url("../../../src/fonts/redoctober_fat.ttf");
+}
+
+.game-page .rules {
+  max-width: 80%;
+  padding: 5rem 0;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  height: calc(100vh - 10rem);
+  -ms-grid-rows: min-content 5% 4fr;
+      grid-template-rows: -webkit-min-content 5% 4fr;
+      grid-template-rows: min-content 5% 4fr;
+      grid-template-areas: "upper-part" "hr" "description";
+}
+
+.game-page .rules .upper-part {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: upper-part;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr 1fr;
+      grid-template-columns: 1fr 5fr 1fr;
+  gap: 4rem;
+}
+
+.game-page .rules .upper-part .years div {
+  font-size: 70px;
+  margin: 0;
+  line-height: 90%;
+  letter-spacing: -0.03em;
+}
+
+.game-page .rules .upper-part .years p {
+  font-size: 30px;
+  line-height: 41px;
+  text-align: end;
+}
+
+.game-page .rules .upper-part .title {
+  font-size: 80px;
+  line-height: 121.5%;
+  text-align: center;
+  letter-spacing: 0.035em;
+  font-family: RedOctoberBold;
+}
+
+.game-page .rules .upper-part .start-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.game-page .rules .upper-part .start-button button {
+  background-color: transparent;
+  border: none;
+  padding: 20px 40px;
+  cursor: pointer;
+  background: linear-gradient(to right, black 2px, transparent 2px) 0 0, linear-gradient(to right, black 2px, transparent 2px) 0 100%, linear-gradient(to left, black 2px, transparent 2px) 100% 0, linear-gradient(to left, black 2px, transparent 2px) 100% 100%, linear-gradient(to bottom, black 2px, transparent 2px) 0 0, linear-gradient(to bottom, black 2px, transparent 2px) 100% 0, linear-gradient(to top, black 2px, transparent 2px) 0 100%, linear-gradient(to top, black 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 40px 20px;
+}
+
+.game-page .rules .upper-part .start-button p {
+  text-align: center;
+  font-size: 17px;
+}
+
+.game-page .rules .hr {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: hr;
+  height: 13px;
+  border: none;
+  background-color: black;
+  margin: 0;
+}
+
+.game-page .rules .description {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: description;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.game-page .rules .description .left {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: min-content;
+      grid-template-rows: -webkit-min-content;
+      grid-template-rows: min-content;
+      grid-template-areas: "h3" "p" "small-hr";
+}
+
+.game-page .rules .description .left h3 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: h3;
+  font-family: GaretBold;
+  font-size: 40px;
+  margin: 0;
+}
+
+.game-page .rules .description .left p {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: p;
+  font-size: 27px;
+  line-height: 130%;
+}
+
+.game-page .rules .description .left .small-hr {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: small-hr;
+  height: 13px;
+  border: none;
+  background-color: black;
+  margin: 0;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.game-page .rules .description .right {
+  font-size: 27px;
+  line-height: 130%;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+  text-align: justify;
+  letter-spacing: -0.02em;
+}
+
+.game-page .rules .description .right .red {
+  font-family: GaretBold;
+  border: 6px solid #ff2400;
+  padding: 30px;
+}
+/*# sourceMappingURL=rules.css.map */
