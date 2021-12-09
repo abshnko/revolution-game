@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../../styles/main/style.css";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Fade, Transform } from "react-animation-components";
 import periods from "../../periods";
 import Question from "./Question";
 import Image from "./Image";
@@ -14,6 +16,7 @@ import Rules from "./Rules";
 
 function GamePage({ questions }) {
   const [index, setIndex] = useState(1000);
+  const [show, setShow] = useState(false);
   const [question, setQuestion] = useState(() => {
     const saved = localStorage.getItem("question");
     const initialValue = JSON.parse(saved);
@@ -30,10 +33,16 @@ function GamePage({ questions }) {
   });
   const [isJump, setIsJump] = useState(false);
   const [jump, setJump] = useState(0);
-  const [isShowQuestion, setIsShowQuestion] = useState(true);
+  //   const [isShowQuestion, setIsShowQuestion] = useState(true);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [currentInfoDisplayed, setCurrentInfoDisplayed] = useState();
   const [lose, setLose] = useState(false);
+  const forceUpdate = useForceUpdate();
+
+  function useForceUpdate() {
+    const [state, setState] = useState(0);
+    return () => setState((state) => state + 1);
+  }
 
   const addInfoHelper = (singleInfo) => {
     const i = INFOS.findIndex(
@@ -74,29 +83,37 @@ function GamePage({ questions }) {
   const handleClick = () => {
     if (!isShowInfo) {
       if (index !== question[0].id) {
-        setQuestionCounter(questionCounter + 1);
-        setQuestionChanged(true);
-        setQuestion(questions.filter((item) => item.id === index));
-        setQuestionChanged(false);
-        setIsLoading(true);
-        setImgLoaded(false);
+        setShow(false);
+        const time = setTimeout(() => {
+          setImgLoaded(false);
+          setIsLoading(true);
+          setQuestion(questions.filter((item) => item.id === index));
+          setQuestionCounter(questionCounter + 1);
+          setQuestionChanged(true);
+          setQuestionChanged(false);
+        }, 100);
+        // return clearTimeout(time);
       }
     }
   };
 
   useEffect(() => {
     checkOptions();
+    // setShow(true);
+    console.log(question[0]);
+    console.log("NEXT JUMP: ", jump);
   }, [question]);
 
   useEffect(() => {
     addINFO();
-    setShowQuestionSatus();
+    // setShowQuestionSatus();
     if (question[0].img === "") {
       setImgLoaded(true);
     }
     if ("lose" in question[0]) {
       setLose(true);
     }
+
     // localStorage.setItem("question", JSON.stringify(question));
     // localStorage.setItem("question-number", JSON.stringify(questionCounter));
   }, [questionCounter]);
@@ -105,12 +122,16 @@ function GamePage({ questions }) {
     const time = setTimeout(() => {
       if (imgLoaded) {
         setIsLoading(false);
+        // setShow(true);
       }
-    }, 300);
+    }, 100);
     return () => clearTimeout(time);
   }, [imgLoaded]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("isLOADING: ", isLoading);
+    isLoading ? setShow(false) : setShow(true);
+  }, [isLoading]);
 
   const nextClick = (id, isActive, next, nextJump, jumpFromHere) => {
     if (nextJump !== 0) {
@@ -172,14 +193,14 @@ function GamePage({ questions }) {
     }
   };
 
-  const setShowQuestionSatus = () => {
-    if (!isLoading) {
-      setIsShowQuestion(true);
-    } else {
-      setIsShowQuestion(false);
-    }
-    setIsLoading(true);
-  };
+  //   const setShowQuestionSatus = () => {
+  //     if (!isLoading) {
+  //       setIsShowQuestion(true);
+  //     } else {
+  //       setIsShowQuestion(false);
+  //     }
+  //     setIsLoading(true);
+  //   };
 
   return (
     <>
@@ -271,7 +292,10 @@ function GamePage({ questions }) {
                       <div className="next">
                         <button
                           className="next-button"
-                          onClick={() => handleClick()}
+                          onClick={() => {
+                            handleClick();
+                            // forceUpdate();
+                          }}
                         >
                           <img
                             src={
@@ -286,58 +310,90 @@ function GamePage({ questions }) {
                   </div>
                   <div className="line">
                     <hr />
+                    {/* <button
+                      onClick={() => setShow(!show)}
+                    >{`SHOW: ${show}`}</button>
+                    <p>{`imgLoaded: ${imgLoaded}, isLoading: ${isLoading}`}</p> */}
                   </div>
                   <div className="question-number">
-                    {questionCounter !== 0
-                      ? `№${questionCounter}`
-                      : "Начало игры"}
-                  </div>
-                  <div
-                    className={`${
-                      !("isChooseSex" in question[0]) ? "main" : "hidden"
-                    }${question[0].options.length > 1 ? " main-multiple" : ""}`}
-                  >
-                    <>
-                      <div className="question">
-                        {isLoading && <Loading />}
-                        {!isLoading && !("isChooseSex" in question[0]) && (
-                          <Question
-                            question={question}
-                            nextClick={nextClick}
-                            chooseDisplayedInfo={chooseDisplayedInfo}
-                            isLoading={isLoading}
-                            setImgLoaded={setImgLoaded}
-                            lose={lose}
-                          />
-                        )}
-                      </div>
-                      {!("isChooseSex" in question[0]) && (
-                        <div
-                          className={`image${
-                            question[0].options.length === 1
-                              ? " image-down"
-                              : ""
-                          }`}
-                        >
-                          <Image
-                            question={question}
-                            setImgLoaded={setImgLoaded}
-                            isLoading={isLoading}
-                            imgLoaded={imgLoaded}
-                          />
-                        </div>
-                      )}
-                    </>
+                    {questionCounter !== 0 ? (
+                      <>
+                        <span>{questionCounter}</span> вопрос
+                      </>
+                    ) : (
+                      "Начало игры"
+                    )}
                   </div>
                   {"isChooseSex" in question[0] && (
-                    <ChooseSex
-                      question={question}
-                      isLoading={isLoading}
-                      setImgLoaded={setImgLoaded}
-                      nextClick={nextClick}
-                      imgLoaded={imgLoaded}
-                    />
+                    <CSSTransition
+                      in={show}
+                      timeout={5000}
+                      classNames="alert"
+                      //   unmountOnExit
+                    >
+                      <>
+                        {/* <Fade
+                        in
+                        enterOpacity={1}
+                        exitOpacity={0}
+                        delay={0}
+                        duration={500}
+                      > */}
+                        <ChooseSex
+                          question={question}
+                          isLoading={isLoading}
+                          setImgLoaded={setImgLoaded}
+                          nextClick={nextClick}
+                          imgLoaded={imgLoaded}
+                        />
+                        {/* </Fade> */}
+                      </>
+                    </CSSTransition>
                   )}
+                  {/* <TransitionGroup component={null}> */}
+                  <CSSTransition in={show} timeout={300} classNames="alert">
+                    <div
+                      className={`${
+                        !("isChooseSex" in question[0]) ? "main" : "hidden"
+                      }${
+                        question[0].options.length > 1 ? " main-multiple" : ""
+                      }`}
+                    >
+                      <>
+                        <div className="question">
+                          {isLoading && <Loading />}
+                          {!isLoading && !("isChooseSex" in question[0]) && (
+                            <Question
+                              question={question}
+                              nextClick={nextClick}
+                              chooseDisplayedInfo={chooseDisplayedInfo}
+                              isLoading={isLoading}
+                              setImgLoaded={setImgLoaded}
+                              lose={lose}
+                            />
+                          )}
+                        </div>
+
+                        {!("isChooseSex" in question[0]) && (
+                          <div
+                            className={`image${
+                              question[0].options.length === 1
+                                ? " image-down"
+                                : ""
+                            }`}
+                          >
+                            <Image
+                              question={question}
+                              setImgLoaded={setImgLoaded}
+                              isLoading={isLoading}
+                              imgLoaded={imgLoaded}
+                            />
+                          </div>
+                        )}
+                      </>
+                    </div>
+                  </CSSTransition>
+                  {/* </TransitionGroup> */}
 
                   {/* )} */}
 

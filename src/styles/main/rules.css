@@ -108,6 +108,36 @@
       grid-template-areas: "h3" "p" "small-hr";
 }
 
+.game-page .rules .description .left .alert-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.game-page .rules .description .left .alert-enter-active {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: opacity 600ms, -webkit-transform 600ms;
+  transition: opacity 600ms, -webkit-transform 600ms;
+  transition: opacity 600ms, transform 600ms;
+  transition: opacity 600ms, transform 600ms, -webkit-transform 600ms;
+}
+
+.game-page .rules .description .left .alert-exit {
+  opacity: 1;
+}
+
+.game-page .rules .description .left .alert-exit-active {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+}
+
 .game-page .rules .description .left h3 {
   -ms-grid-row: 1;
   -ms-grid-column: 1;

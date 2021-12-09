@@ -517,6 +517,10 @@ html {
 
   .container {
     height: 100vh;
+    overflow: hidden;
+    overflow-x: visible;
+    padding-left: 50px;
+    margin-left: -50px;
     display: grid;
     grid-template-rows: 8% min-content min-content min-content auto;
     grid-template-areas:
@@ -545,6 +549,9 @@ html {
       }
       .active {
         background-color: transparent;
+        // transform: translateX(-100px);
+        // transition: 0.5s linear infinite;
+        // animation: 0.5s linear 1s infinite alternate slidein;
       }
       .active::after {
         background-color: transparent;
@@ -561,6 +568,18 @@ html {
       }
       .css-z1lsnn-Circle {
         cursor: default;
+        // transform: translateX(-100px);
+        // transition: 0.5s linear;
+        // animation: rotate 0.5s ease-in;
+      }
+      @keyframes rotate {
+        from {
+          transform: translateY(-15px);
+        }
+
+        to {
+          transform: translateY(0);
+        }
       }
     }
 
@@ -684,7 +703,7 @@ html {
           background-repeat: no-repeat;
           background-size: 20% 15%;
           border: none;
-          transition: all 0.5s ease-in;
+          transition: all 0.4s linear;
 
           @media (max-width: 1600px) {
             width: 180px;
@@ -736,6 +755,12 @@ html {
       grid-area: question-number;
       font-size: 28px;
       margin-bottom: 10px;
+
+      span {
+        color: red;
+        font-family: GaretBold;
+        font-size: 2.5rem;
+      }
       @media (max-width: 1400px) {
         font-size: 22px;
         margin-bottom: 10px;
@@ -762,6 +787,7 @@ html {
             background-color: transparent;
             cursor: pointer;
             border: none;
+            padding: 0;
           }
           .option {
             // width: fit-content;
@@ -769,10 +795,12 @@ html {
             width: auto;
             height: auto;
             display: flex;
+
             border: 2px solid black;
             margin: 20px 0;
             transition: 0.3s;
             position: relative;
+
             .rect1 {
               position: absolute;
               width: 3em;
@@ -891,6 +919,26 @@ html {
       display: none;
     }
 
+    .alert-enter {
+      opacity: 0;
+      transform: scale(0.95);
+      //   transform: translateX(50%);
+    }
+    .alert-enter-active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: opacity 300ms, transform 300ms;
+    }
+    .alert-exit {
+      opacity: 1;
+      //   transform: translateX(0);
+    }
+    .alert-exit-active {
+      opacity: 0;
+      transform: scale(0.95);
+      //   transform: translateX(-50%);
+      transition: opacity 300ms, transform 300ms;
+    }
     .main {
       grid-area: main;
       margin-bottom: 30px;
@@ -908,6 +956,7 @@ html {
       .question {
         display: flex;
         flex-direction: column;
+        // margin-bottom: 30px;
         grid-area: question;
 
         .question-text {
@@ -936,7 +985,7 @@ html {
 
         .down-line {
           hr {
-            height: 15px;
+            height: 3px;
             border: none;
             color: black;
             background-color: black;
@@ -965,8 +1014,11 @@ html {
             }
             .option {
               display: flex;
+              flex-direction: column;
+              justify-content: space-between;
               font-family: GaretRegular;
-              padding: 15px 25px;
+              //   padding: 15px 25px;
+              padding: 0;
               border: 3px solid rgb(0, 0, 0);
               background-color: transparent;
               color: rgb(0, 0, 0);
@@ -979,6 +1031,13 @@ html {
               cursor: pointer;
               margin-bottom: 15px;
               transition: 0.25s;
+
+              .option-img {
+                // margin: -15px -25px;
+                align-self: center;
+                width: 100%;
+              }
+
               @media (min-width: 2500px) {
                 font-size: 26px;
               }
@@ -987,6 +1046,7 @@ html {
               }
 
               .text {
+                margin: 15px 25px;
                 .header {
                   display: flex;
                   justify-content: space-between;
@@ -1055,8 +1115,8 @@ html {
         align-self: center;
         // overflow: hidden;
         .headImage {
-          max-width: 90%;
-          max-height: 100%;
+          max-width: 100%;
+          max-height: 60vh;
           margin: 0 auto;
           display: block;
           object-fit: contain;
@@ -1241,14 +1301,14 @@ html {
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: rgb(167, 104, 104);
-    background-color: rgba(199, 199, 199, 0.55);
+    background-color: rgba(226, 226, 226, 0.55);
     backdrop-filter: blur(5px);
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-    background-color: rgba(143, 143, 143, 0.8);
+    // background: #555;
+    // background-color: rgba(143, 143, 143, 0.8);
     backdrop-filter: blur(5px);
     //   }
   }

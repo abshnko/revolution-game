@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import circle from "../../images/circle-24.png";
 import current from "../../images/current.png";
 import ReactDOMServer from "react-dom/server";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Timeline = ({ latestPeriod, questionCounter }) => {
   const [counter, setCounter] = useState(() => {
@@ -69,13 +70,13 @@ const Timeline = ({ latestPeriod, questionCounter }) => {
   const passImages = (counter) => {
     let images = [];
     for (let i = 0; i < counter - 1; i++) {
-      images.push(<img style={{ width: "14px" }} src={circle} alt="IMAG" />);
+      images.push(<img style={{ width: "23px" }} src={circle} alt="IMAG" />);
     }
     images.push(<img style={{ width: "30px" }} src={current} alt="question" />);
     for (let i = 0; i < 7 - counter; i++) {
       images.push(
         <img
-          style={{ width: "15px" }}
+          style={{ width: "20px" }}
           src={process.env.PUBLIC_URL + `/images/question-mark.png`}
           alt="question"
         />
@@ -99,7 +100,7 @@ const Timeline = ({ latestPeriod, questionCounter }) => {
   }, [questionCounter, counter]);
 
   const images = passImages(counter);
-  console.log(allPeriods);
+
   return (
     <div style={{ width: "100%" }}>
       <Chrono

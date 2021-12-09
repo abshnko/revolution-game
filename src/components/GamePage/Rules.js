@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/main/rules.css";
+import { CSSTransition } from "react-transition-group";
 
 const Rules = ({ setIsShowRules }) => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(true);
+  }, []);
   return (
     <div className="rules">
       <div className="upper-part">
@@ -27,7 +33,9 @@ const Rules = ({ setIsShowRules }) => {
       <hr className="hr" />
       <div className="description">
         <div className="left">
-          <h3> &laquo;Поздравляю, Вы родились в 1900 году!&raquo;</h3>
+          <CSSTransition in={show} timeout={300} classNames="alert">
+            <h3> &laquo;Поздравляю, Вы родились в 1900 году!&raquo;</h3>
+          </CSSTransition>
           <p>
             В Ваших руках жизнь человека, родившегося волею судеб в Российской
             Империи в 1900 году. От правильности Вашего выбора будет зависеть,
