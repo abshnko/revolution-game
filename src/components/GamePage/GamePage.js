@@ -12,13 +12,13 @@ function GamePage({ questions }) {
       <Router>
         <Switch>
           <div className="game-page">
-            <Route exact path="/">
+            <Route exact path={process.env.PUBLIC_URL + "/"}>
               <Rules />
             </Route>
-            <Route path="/game">
+            <Route path={process.env.PUBLIC_URL + "/game"}>
               <Gameplay questions={questions} />
             </Route>
-            <Route path="/creators">
+            <Route path={process.env.PUBLIC_URL + "/creators"}>
               <Creators />
             </Route>
           </div>

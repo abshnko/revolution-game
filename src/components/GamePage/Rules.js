@@ -22,7 +22,7 @@ const Rules = () => {
         </div>
         <div className="title">Человек в эпоху войн и революций</div>
         <div className="start-button">
-          <Link to="/game">
+          <Link to={process.env.PUBLIC_URL + "/game"}>
             <button>
               <img
                 src={process.env.PUBLIC_URL + `/images/red-arrow.png`}
@@ -49,7 +49,10 @@ const Rules = () => {
           </p>
 
           <div className="down">
-            <Link to="/creators" style={{ textDecoration: "none" }}>
+            <Link
+              to={process.env.PUBLIC_URL + "/creators"}
+              style={{ textDecoration: "none" }}
+            >
               <button className="creators">Разработчики</button>
             </Link>
             <hr className="small-hr" />
