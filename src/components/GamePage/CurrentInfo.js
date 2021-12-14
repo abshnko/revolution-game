@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const CurrentInfo = ({
