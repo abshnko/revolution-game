@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/main/rules.css";
 import { CSSTransition } from "react-transition-group";
+import { Link } from "react-router-dom";
 
-const Rules = ({ setIsShowRules }) => {
+const Rules = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -21,12 +22,15 @@ const Rules = ({ setIsShowRules }) => {
         </div>
         <div className="title">Человек в эпоху войн и революций</div>
         <div className="start-button">
-          <button onClick={() => setIsShowRules(false)}>
-            <img
-              src={process.env.PUBLIC_URL + `/images/red-arrow.png`}
-              alt="arrow"
-            />
-          </button>
+          <Link to="/game">
+            <button>
+              <img
+                src={process.env.PUBLIC_URL + `/images/red-arrow.png`}
+                alt="arrow"
+              />
+            </button>
+          </Link>
+
           <p>начать игру</p>
         </div>
       </div>
@@ -43,7 +47,13 @@ const Rules = ({ setIsShowRules }) => {
             сметен с исторической авансцены вихрем российской истории первой
             половины XX века.
           </p>
-          <hr className="small-hr" />
+
+          <div className="down">
+            <Link to="/creators" style={{ textDecoration: "none" }}>
+              <button className="creators">Разработчики</button>
+            </Link>
+            <hr className="small-hr" />
+          </div>
         </div>
         <div className="right">
           <h4 className="red">

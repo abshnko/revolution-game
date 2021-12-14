@@ -1,5 +1,7 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { useState } from "react/cjs/react.development";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const CurrentInfo = ({
   question,
@@ -7,41 +9,55 @@ const CurrentInfo = ({
   INFOS,
   currentInfoDisplayed,
 }) => {
+  const [show, setShow] = useState(false);
   return (
     <>
-      <div className="blur"></div>
+      {/* <CSSTransition
+        in={show}
+        timeout={300}
+        classNames="alert"
+        component={null}
+      > */}
       <div className="modal" id={question[0].id}>
         <div className="current-info">
-          <div className="rect1"></div>
-          <div className="rect2"></div>
-          <div className="rect3"></div>
-          <div className="rect4"></div>
           <div className="info-name">
             <h2>{currentInfoDisplayed.infoName}</h2>
           </div>
-          {/* <div className="img-container">
-                  <img className="headImage" src={placeholder} alt="img here" />
-                </div> */}
-
           <div className="info-text">
             <p>{currentInfoDisplayed.infoText}</p>
           </div>
+          <div className="hr">
+            <hr />
+          </div>
         </div>
-        <div className="close-info">
-          <button
-            onClick={() => {
-              setIsShowInfo(false);
-              INFOS.map((INFO) => {
-                INFO.infos.map((info, infoIndex) => {
-                  info.isActive = false;
-                });
-              });
-            }}
-          >
-            Понятно
-          </button>
+        <div className="right-column">
+          <div className="img">
+            {"infoImg" in currentInfoDisplayed ? (
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  `/images/${currentInfoDisplayed.infoImg}`
+                }
+                alt=""
+                onLoad={() => setShow(true)}
+              />
+            ) : null}
+          </div>
+          <div className="close-info">
+            <button
+              onClick={() => {
+                setShow(false);
+                setTimeout(() => {
+                  setIsShowInfo(false);
+                }, 100);
+              }}
+            >
+              Понятно
+            </button>
+          </div>
         </div>
       </div>
+      {/* </CSSTransition> */}
     </>
   );
 };

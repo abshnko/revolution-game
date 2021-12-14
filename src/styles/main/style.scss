@@ -921,7 +921,7 @@ html {
 
     .alert-enter {
       opacity: 0;
-      transform: scale(0.95);
+      //   transform: scale(0.95);
       //   transform: translateX(50%);
     }
     .alert-enter-active {
@@ -935,7 +935,7 @@ html {
     }
     .alert-exit-active {
       opacity: 0;
-      transform: scale(0.95);
+      //   transform: scale(0.95);
       //   transform: translateX(-50%);
       transition: opacity 300ms, transform 300ms;
     }
@@ -1191,14 +1191,23 @@ html {
     z-index: 120;
   }
   .modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: space-around;
+    justify-content: center;
+    // align-items: center;
+    justify-items: center;
     text-align: justify;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 0%;
+    height: 100vh;
+    // top: 50%;
+    // left: 50%;
+    // -webkit-transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
     font-size: 24px;
-    padding: 30px 100px 30px 100px;
+    padding: 30px 300px 0px 300px;
     background-color: white;
     z-index: 130;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -1218,10 +1227,11 @@ html {
       }
     }
     .current-info {
-      margin: 50px;
-      height: 50vh;
+      display: grid;
+      //   align-content: center;
+      //   height: 50vh;
       position: relative;
-      margin-bottom: 5em;
+      padding: 0 5rem;
       .rect1 {
         position: absolute;
         width: 2em;
@@ -1273,8 +1283,8 @@ html {
         position: sticky;
 
         h2 {
-          margin-bottom: 0;
-          text-align: center;
+          margin: 0;
+          text-align: left;
         }
       }
 
@@ -1282,7 +1292,28 @@ html {
         font-family: GaretRegular;
         height: 100%;
         overflow-y: scroll;
-        padding: 0 20px 0 0;
+        // padding: 0 20px 0 0;
+      }
+
+      hr {
+        height: 3px;
+        border: none;
+        color: black;
+        background-color: black;
+      }
+    }
+
+    .right-column {
+      display: grid;
+      align-content: center;
+
+      .img {
+        text-align: right;
+        // max-height: 60vh;
+
+        img {
+          max-height: calc(100vh - 300px);
+        }
       }
     }
   }

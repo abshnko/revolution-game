@@ -105,7 +105,7 @@
   -ms-grid-rows: min-content;
       grid-template-rows: -webkit-min-content;
       grid-template-rows: min-content;
-      grid-template-areas: "h3" "p" "small-hr";
+      grid-template-areas: "h3" "p" "creators" "down";
 }
 
 .game-page .rules .description .left .alert-enter {
@@ -155,17 +155,43 @@
   line-height: 130%;
 }
 
-.game-page .rules .description .left .small-hr {
-  -ms-grid-row: 3;
+.game-page .rules .description .left .down {
+  -ms-grid-row: 4;
   -ms-grid-column: 1;
-  grid-area: small-hr;
+  grid-area: down;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.game-page .rules .description .left .down .small-hr {
   height: 13px;
   border: none;
   background-color: black;
   margin: 0;
-  -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
+}
+
+.game-page .rules .description .left .down .creators {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: creators;
+  display: inline;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: GaretRegular;
+  margin-bottom: 5px;
+  -webkit-transition: linear 0.2s;
+  transition: linear 0.2s;
+  padding: 15px;
+  margin-left: -15px;
+}
+
+.game-page .rules .description .left .down .creators:hover {
+  background-color: #ff2400;
+  color: white;
+  margin-left: 0;
 }
 
 .game-page .rules .description .right {

@@ -543,8 +543,6 @@ html {
 
 .game-page .container .alert-enter {
   opacity: 0;
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
 }
 
 .game-page .container .alert-enter-active {
@@ -563,8 +561,6 @@ html {
 
 .game-page .container .alert-exit-active {
   opacity: 0;
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
   -webkit-transition: opacity 300ms, -webkit-transform 300ms;
   transition: opacity 300ms, -webkit-transform 300ms;
   transition: opacity 300ms, transform 300ms;
@@ -868,14 +864,23 @@ html {
 }
 
 .game-page .modal {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
   text-align: justify;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  top: 0%;
+  left: 0%;
+  height: 100vh;
   font-size: 24px;
-  padding: 30px 100px 30px 100px;
+  padding: 30px 300px 0px 300px;
   background-color: white;
   z-index: 130;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -900,10 +905,10 @@ html {
 }
 
 .game-page .modal .current-info {
-  margin: 50px;
-  height: 50vh;
+  display: -ms-grid;
+  display: grid;
   position: relative;
-  margin-bottom: 5em;
+  padding: 0 5rem;
 }
 
 .game-page .modal .current-info .rect1 {
@@ -959,15 +964,36 @@ html {
 }
 
 .game-page .modal .current-info .info-name h2 {
-  margin-bottom: 0;
-  text-align: center;
+  margin: 0;
+  text-align: left;
 }
 
 .game-page .modal .current-info .info-text {
   font-family: GaretRegular;
   height: 100%;
   overflow-y: scroll;
-  padding: 0 20px 0 0;
+}
+
+.game-page .modal .current-info hr {
+  height: 3px;
+  border: none;
+  color: black;
+  background-color: black;
+}
+
+.game-page .modal .right-column {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.game-page .modal .right-column .img {
+  text-align: right;
+}
+
+.game-page .modal .right-column .img img {
+  max-height: calc(100vh - 300px);
 }
 
 .game-page ::-webkit-scrollbar {
