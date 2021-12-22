@@ -895,6 +895,13 @@ html button {
   z-index: 130;
 }
 
+@media (max-width: 1500px) {
+  .game-page .modal {
+    -ms-grid-columns: 45% 45%;
+        grid-template-columns: 45% 45%;
+  }
+}
+
 .game-page .modal .close-info {
   text-align: end;
 }
@@ -919,6 +926,12 @@ html button {
   padding: 0 5rem;
 }
 
+@media (max-width: 1500px) {
+  .game-page .modal .current-info {
+    padding: 0 2rem 0 1rem;
+  }
+}
+
 .game-page .modal .current-info .info-name {
   font-family: GaretBold;
   position: -webkit-sticky;
@@ -930,10 +943,22 @@ html button {
   text-align: left;
 }
 
+@media (max-width: 1500px) {
+  .game-page .modal .current-info .info-name h2 {
+    font-size: 28px;
+  }
+}
+
 .game-page .modal .current-info .info-text {
   font-family: GaretRegular;
   height: 100%;
   overflow-y: scroll;
+}
+
+@media (max-width: 1500px) {
+  .game-page .modal .current-info .info-text {
+    font-size: 20px;
+  }
 }
 
 .game-page .modal .current-info hr {
@@ -957,6 +982,12 @@ html button {
 .game-page .modal .right-column .img img {
   max-height: calc(100vh - 300px);
   width: 100%;
+}
+
+@media (max-width: 1500px) {
+  .game-page .modal .right-column .img img {
+    width: 80%;
+  }
 }
 
 .game-page .no-img-modal {
