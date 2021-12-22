@@ -30,15 +30,25 @@
       gap: 4rem;
       .years {
         div {
-          font-size: 70px;
+          font-size: 60px;
           margin: 0;
           line-height: 90%;
           letter-spacing: -0.03em;
+
+          @media (max-width: 1800px) {
+          }
+          @media (max-width: 1400px) {
+            font-size: 40px;
+          }
         }
         p {
-          font-size: 30px;
+          font-size: 25px;
           line-height: 41px;
-          text-align: end;
+          text-align: start;
+          @media (max-width: 1400px) {
+            font-size: 20px;
+            line-height: 30px;
+          }
         }
       }
       .title {
@@ -47,6 +57,12 @@
         text-align: center;
         letter-spacing: 0.035em;
         font-family: RedOctoberBold;
+        @media (max-width: 1900px) {
+          font-size: 60px;
+        }
+        @media (max-width: 1400px) {
+          font-size: 50px;
+        }
       }
       .start-button {
         text-align: center;

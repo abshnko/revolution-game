@@ -38,16 +38,29 @@
 }
 
 .game-page .rules .upper-part .years div {
-  font-size: 70px;
+  font-size: 60px;
   margin: 0;
   line-height: 90%;
   letter-spacing: -0.03em;
 }
 
+@media (max-width: 1400px) {
+  .game-page .rules .upper-part .years div {
+    font-size: 40px;
+  }
+}
+
 .game-page .rules .upper-part .years p {
-  font-size: 30px;
+  font-size: 25px;
   line-height: 41px;
-  text-align: end;
+  text-align: start;
+}
+
+@media (max-width: 1400px) {
+  .game-page .rules .upper-part .years p {
+    font-size: 20px;
+    line-height: 30px;
+  }
 }
 
 .game-page .rules .upper-part .title {
@@ -56,6 +69,18 @@
   text-align: center;
   letter-spacing: 0.035em;
   font-family: RedOctoberBold;
+}
+
+@media (max-width: 1900px) {
+  .game-page .rules .upper-part .title {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .game-page .rules .upper-part .title {
+    font-size: 50px;
+  }
 }
 
 .game-page .rules .upper-part .start-button {
