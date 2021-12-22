@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/revolution-game/static/css/main.6f86ff28.chunk.css",
+    "main.css": "/revolution-game/static/css/main.74cb9539.chunk.css",
     "main.js": "/revolution-game/static/js/main.68117edf.chunk.js",
     "main.js.map": "/revolution-game/static/js/main.68117edf.chunk.js.map",
     "runtime-main.js": "/revolution-game/static/js/runtime-main.f3073411.js",
@@ -8,7 +8,7 @@
     "static/js/2.4e8e844f.chunk.js": "/revolution-game/static/js/2.4e8e844f.chunk.js",
     "static/js/2.4e8e844f.chunk.js.map": "/revolution-game/static/js/2.4e8e844f.chunk.js.map",
     "index.html": "/revolution-game/index.html",
-    "static/css/main.6f86ff28.chunk.css.map": "/revolution-game/static/css/main.6f86ff28.chunk.css.map",
+    "static/css/main.74cb9539.chunk.css.map": "/revolution-game/static/css/main.74cb9539.chunk.css.map",
     "static/js/2.4e8e844f.chunk.js.LICENSE.txt": "/revolution-game/static/js/2.4e8e844f.chunk.js.LICENSE.txt",
     "static/media/style.css": "/revolution-game/static/media/Garet-Book.92b5d25e.woff",
     "static/media/rules.css": "/revolution-game/static/media/redoctober_fat.083e6bcb.ttf"
@@ -16,7 +16,7 @@
   "entrypoints": [
     "static/js/runtime-main.f3073411.js",
     "static/js/2.4e8e844f.chunk.js",
-    "static/css/main.6f86ff28.chunk.css",
+    "static/css/main.74cb9539.chunk.css",
     "static/js/main.68117edf.chunk.js"
   ]
 }
