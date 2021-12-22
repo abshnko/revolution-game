@@ -18,6 +18,11 @@ html {
   font-family: GaretRegular;
 }
 
+body button,
+html button {
+  cursor: pointer;
+}
+
 .game-page {
   /* Track */
   /* Handle */
@@ -289,8 +294,8 @@ html {
   background-repeat: no-repeat;
   background-size: 20% 15%;
   border: none;
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
+  -webkit-transition: all 0.6s linear;
+  transition: all 0.6s linear;
 }
 
 @media (max-width: 1600px) {
@@ -314,7 +319,7 @@ html {
   }
 }
 
-.game-page .container .controls .next .next-button:hover {
+.game-page .container .controls .next .next-button-changed {
   background-size: 100% 100%;
 }
 
@@ -485,15 +490,21 @@ html {
 
 .game-page .container .options-choose-sex .options .choose-images .option .headImageChoose {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 90%;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
 
 .game-page .container .options-choose-sex .options .choose-images button:nth-child(1) .headImageChoose {
-  margin-left: -21px;
+  margin-left: -24px;
   -ms-flex-item-align: end;
       align-self: flex-end;
+}
+
+@media (max-height: 1000px) {
+  .game-page .container .options-choose-sex .options .choose-images button:nth-child(1) .headImageChoose {
+    margin-left: -18px;
+  }
 }
 
 .game-page .container .options-choose-sex .options .choose-images button:nth-child(2) .number {
@@ -866,8 +877,8 @@ html {
 .game-page .modal {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 40% 40%;
+      grid-template-columns: 40% 40%;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
   -webkit-box-pack: center;
@@ -880,11 +891,8 @@ html {
   left: 0%;
   height: 100vh;
   font-size: 24px;
-  padding: 30px 300px 0px 300px;
   background-color: white;
   z-index: 130;
-  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .game-page .modal .close-info {
@@ -909,52 +917,6 @@ html {
   display: grid;
   position: relative;
   padding: 0 5rem;
-}
-
-.game-page .modal .current-info .rect1 {
-  position: absolute;
-  width: 2em;
-  height: 3em;
-  margin-top: -1.5em;
-  margin-left: -2em;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-}
-
-.game-page .modal .current-info .rect2 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2em;
-  height: 3em;
-  margin-top: -1.5em;
-  margin-right: -2em;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-}
-
-.game-page .modal .current-info .rect3 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 2em;
-  height: 3em;
-  margin-bottom: -5.5em;
-  margin-left: -2em;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-}
-
-.game-page .modal .current-info .rect4 {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 2em;
-  height: 3em;
-  margin-bottom: -5.5em;
-  margin-right: -2em;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
 }
 
 .game-page .modal .current-info .info-name {
@@ -994,6 +956,97 @@ html {
 
 .game-page .modal .right-column .img img {
   max-height: calc(100vh - 300px);
+  width: 100%;
+}
+
+.game-page .no-img-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  text-align: justify;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 100vh;
+  font-size: 24px;
+  background-color: white;
+  z-index: 130;
+}
+
+.game-page .no-img-modal .close-info {
+  width: 70%;
+  margin: 0 auto;
+  text-align: end;
+}
+
+.game-page .no-img-modal .close-info button {
+  font-family: GaretRegular;
+  margin-top: 50px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.game-page .no-img-modal .close-info button:hover {
+  color: #f03d10;
+}
+
+.game-page .no-img-modal .current-info {
+  max-width: 70%;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  padding: 5rem;
+}
+
+.game-page .no-img-modal .current-info .info-name {
+  font-family: GaretBold;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.game-page .no-img-modal .current-info .info-name h2 {
+  margin: 0;
+  text-align: left;
+}
+
+.game-page .no-img-modal .current-info .info-text {
+  font-family: GaretRegular;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.game-page .no-img-modal .current-info hr {
+  height: 3px;
+  border: none;
+  color: black;
+  background-color: black;
+}
+
+.game-page .no-img-modal .right-column {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.game-page .no-img-modal .right-column .img {
+  text-align: right;
+}
+
+.game-page .no-img-modal .right-column .img img {
+  max-height: calc(100vh - 300px);
+  width: 100%;
 }
 
 .game-page ::-webkit-scrollbar {

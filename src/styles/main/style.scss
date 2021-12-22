@@ -13,6 +13,9 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: GaretRegular;
+  button {
+    cursor: pointer;
+  }
   // max-height: 100vh;
 }
 
@@ -703,7 +706,7 @@ html {
           background-repeat: no-repeat;
           background-size: 20% 15%;
           border: none;
-          transition: all 0.4s linear;
+          transition: all 0.6s linear;
 
           @media (max-width: 1600px) {
             width: 180px;
@@ -718,10 +721,14 @@ html {
             height: 99px;
           }
         }
-        .next-button:hover {
-          //   transform: scale(1.05);
+
+        .next-button-changed {
           background-size: 100% 100%;
         }
+        // .next-button:hover {
+        //   //   transform: scale(1.05);
+        //   background-size: 100% 100%;
+        // }
         p {
           font-size: 20px;
           @media (max-width: 1600px) {
@@ -862,14 +869,18 @@ html {
               //   min-width: 100%;
               //   min-height: 100%;
               max-width: 100%;
-              max-height: 100%;
+              max-height: 90%;
               align-self: flex-end;
             }
           }
           button:nth-child(1) {
             .headImageChoose {
-              margin-left: -21px;
+              margin-left: -24px;
               align-self: flex-end;
+
+              @media (max-height: 1000px) {
+                margin-left: -18px;
+              }
             }
           }
           button:nth-child(2) {
@@ -1192,7 +1203,7 @@ html {
   }
   .modal {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 40%;
     align-content: space-around;
     justify-content: center;
     // align-items: center;
@@ -1207,10 +1218,9 @@ html {
     // -webkit-transform: translate(-50%, -50%);
     // transform: translate(-50%, -50%);
     font-size: 24px;
-    padding: 30px 300px 0px 300px;
+    // padding: 30px 300px 0px 300px;
     background-color: white;
     z-index: 130;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     .close-info {
       text-align: end;
@@ -1232,52 +1242,7 @@ html {
       //   height: 50vh;
       position: relative;
       padding: 0 5rem;
-      .rect1 {
-        position: absolute;
-        width: 2em;
-        height: 3em;
-        // background-color: rgb(185, 185, 185);
-        margin-top: -1.5em;
-        margin-left: -2em;
-        border-top: 1px solid black;
-        border-left: 1px solid black;
-      }
-      .rect2 {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 2em;
-        height: 3em;
-        // background-color: rgb(185, 185, 185);
-        margin-top: -1.5em;
-        margin-right: -2em;
-        border-top: 1px solid black;
-        border-right: 1px solid black;
-      }
-      .rect3 {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 2em;
-        height: 3em;
-        // background-color: rgb(185, 185, 185);
-        margin-bottom: -5.5em;
-        margin-left: -2em;
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
-      }
-      .rect4 {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 2em;
-        height: 3em;
-        // background-color: rgb(185, 185, 185);
-        margin-bottom: -5.5em;
-        margin-right: -2em;
-        border-bottom: 1px solid black;
-        border-right: 1px solid black;
-      }
+
       .info-name {
         font-family: GaretBold;
         position: sticky;
@@ -1313,10 +1278,96 @@ html {
 
         img {
           max-height: calc(100vh - 300px);
+          width: 100%;
         }
       }
     }
   }
+
+  .no-img-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    text-align: justify;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 100vh;
+    font-size: 24px;
+    background-color: white;
+    z-index: 130;
+    // padding: 100px 0;
+
+    .close-info {
+      width: 70%;
+      //   max-height: 80%;
+      margin: 0 auto;
+      text-align: end;
+      button {
+        font-family: GaretRegular;
+        margin-top: 50px;
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      button:hover {
+        color: rgb(240, 61, 16);
+      }
+    }
+    .current-info {
+      max-width: 70%;
+      //   max-height: 80%;
+      margin: 0 auto;
+      display: grid;
+      //   align-content: center;
+      //   height: 50vh;
+      position: relative;
+      padding: 5rem;
+      //   padding-bottom: 1rem;
+
+      .info-name {
+        font-family: GaretBold;
+        position: sticky;
+
+        h2 {
+          margin: 0;
+          text-align: left;
+        }
+      }
+
+      .info-text {
+        font-family: GaretRegular;
+        height: 100%;
+        overflow-y: scroll;
+        // padding: 0 20px 0 0;
+      }
+
+      hr {
+        height: 3px;
+        border: none;
+        color: black;
+        background-color: black;
+      }
+    }
+
+    .right-column {
+      display: grid;
+      align-content: center;
+
+      .img {
+        text-align: right;
+        // max-height: 60vh;
+
+        img {
+          max-height: calc(100vh - 300px);
+          width: 100%;
+        }
+      }
+    }
+  }
+
   // Scrollbar
   //   /* width */
   ::-webkit-scrollbar {

@@ -24,6 +24,7 @@ const Gameplay = ({ questions }) => {
   });
   const [questionChanged, setQuestionChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [indexChanged, setIndexChanged] = useState(false);
   const [isShowInfo, setIsShowInfo] = useState(false);
   const [INFOS, setINFOS] = useState(periods);
   const [questionCounter, setQuestionCounter] = useState(() => {
@@ -57,12 +58,15 @@ const Gameplay = ({ questions }) => {
       infoImg: singleInfo.img,
       isActive: false,
     };
-    var infosArray = INFOS[i].infos;
+    if (i !== -1) {
+      var infosArray = INFOS[i].infos;
+    }
     infosArray.push(newINFO);
     const newObj = { ...INFOS[i], infos: infosArray, isShowEntries: true };
     const newArray = INFOS;
     newArray[i] = newObj;
     setINFOS(newArray);
+    console.log(INFOS);
   };
 
   const addINFO = () => {
@@ -91,6 +95,7 @@ const Gameplay = ({ questions }) => {
           setQuestionCounter(questionCounter + 1);
           setQuestionChanged(true);
           setQuestionChanged(false);
+          setIndexChanged(false);
         }, 100);
         // return clearTimeout(time);
       }
@@ -151,6 +156,7 @@ const Gameplay = ({ questions }) => {
     question[0].options.forEach((option) => {
       option.isActive = false;
     });
+    setIndexChanged(true);
   };
 
   const chooseDisplayedInfo = (infoId) => {
@@ -279,10 +285,13 @@ const Gameplay = ({ questions }) => {
             {!lose && (
               <div className="next">
                 <button
-                  className="next-button"
+                  className={`next-button ${
+                    indexChanged || question[0].options.length === 1
+                      ? "next-button-changed"
+                      : ""
+                  }`}
                   onClick={() => {
                     handleClick();
-                    // forceUpdate();
                   }}
                 >
                   <img

@@ -1,5 +1,4 @@
 import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
@@ -10,6 +9,7 @@ const CurrentInfo = ({
   currentInfoDisplayed,
 }) => {
   const [show, setShow] = useState(false);
+  const style = currentInfoDisplayed.infoImg !== "" ? "modal" : "no-img-modal";
   return (
     <>
       {/* <CSSTransition
@@ -18,7 +18,7 @@ const CurrentInfo = ({
         classNames="alert"
         component={null}
       > */}
-      <div className="modal" id={question[0].id}>
+      <div className={`${style}`} id={question[0].id}>
         <div className="current-info">
           <div className="info-name">
             <h2>{currentInfoDisplayed.infoName}</h2>
