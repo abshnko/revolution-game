@@ -152,7 +152,7 @@
             margin: 0;
           }
 
-          .creators {
+          .creators-button {
             grid-area: creators;
             display: inline;
             background-color: transparent;
@@ -165,7 +165,7 @@
             padding: 15px;
             margin-left: -15px;
           }
-          .creators:hover {
+          .creators-button:hover {
             background-color: #ff2400;
             color: white;
             margin-left: 0;

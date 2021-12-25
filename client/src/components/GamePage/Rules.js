@@ -53,7 +53,7 @@ const Rules = () => {
               to={process.env.PUBLIC_URL + "/creators"}
               style={{ textDecoration: "none" }}
             >
-              <button className="creators">Команда проекта</button>
+              <button className="creators-button">Команда проекта</button>
             </Link>
             <hr className="small-hr" />
           </div>

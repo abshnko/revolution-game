@@ -3,7 +3,7 @@
   height: 100vh;
   max-width: 80%;
   margin: auto;
-  grid-template-rows: min-content min-content min-content min-content min-content min-content min-content;
+  grid-template-rows: min-content auto auto min-content;
   grid-template-columns: 1fr 1fr;
   column-gap: 100px;
   row-gap: 50px;

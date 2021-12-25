@@ -427,7 +427,7 @@ html button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 2px solid black;
+  border: 3px solid black;
   margin: 20px 0;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -512,19 +512,13 @@ html button {
 }
 
 .game-page .container .options-choose-sex .options .active {
-  border: 2px solid black;
+  border: 3px solid #f03d10 !important;
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
 
 .game-page .container .options-choose-sex .options .option:hover {
-  border: 2px solid black;
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
-}
-
-.game-page .container .options-choose-sex .options .active:hover {
-  border: 2px solid black;
+  border: 3px solid #f03d10;
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
@@ -762,19 +756,19 @@ html button {
 }
 
 .game-page .container .main .question .options .option-container .active {
-  border: 3px solid black;
+  border: 3px solid #f03d10;
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
 }
 
 .game-page .container .main .question .options .option-container .option:hover {
-  border: 3px solid black;
+  border: 3px solid #f03d10;
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
 }
 
 .game-page .container .main .question .options .option-container .active:hover {
-  border: 3px solid black;
+  border: 3px solid #f03d10;
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
 }

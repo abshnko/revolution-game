@@ -803,7 +803,7 @@ html {
             height: auto;
             display: flex;
 
-            border: 2px solid black;
+            border: 3px solid black;
             margin: 20px 0;
             transition: 0.3s;
             position: relative;
@@ -891,19 +891,19 @@ html {
         }
 
         .active {
-          border: 2px solid rgb(0, 0, 0);
+          border: 3px solid rgb(240, 61, 16) !important;
           transform: scale(1.02);
         }
         .option:hover {
-          border: 2px solid rgb(0, 0, 0);
+          border: 3px solid rgb(240, 61, 16);
           //   background-color: rgba(235, 235, 235, 0.35);
           //   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
           transform: scale(1.02);
         }
-        .active:hover {
-          border: 2px solid rgb(0, 0, 0);
-          transform: scale(1.02);
-        }
+        // .active:hover {
+        //   border: 3px solid rgb(240, 61, 16);
+        //   transform: scale(1.02);
+        // }
         .option:nth-child(2) {
           .circle {
             margin-left: 8em;
@@ -1084,17 +1084,17 @@ html {
               }
             }
             .active {
-              border: 3px solid rgb(0, 0, 0);
+              border: 3px solid rgb(240, 61, 16);
               transform: scale(1.04);
             }
             .option:hover {
-              border: 3px solid rgb(0, 0, 0);
+              border: 3px solid rgb(240, 61, 16);
               //   background-color: rgba(235, 235, 235, 0.35);
               //   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
               transform: scale(1.04);
             }
             .active:hover {
-              border: 3px solid rgb(0, 0, 0);
+              border: 3px solid rgb(240, 61, 16);
               transform: scale(1.04);
             }
           }
