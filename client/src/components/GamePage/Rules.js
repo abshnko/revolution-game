@@ -20,7 +20,7 @@ const Rules = ({ adminMode }) => {
           </div>
           <p>Правила игры</p>
         </div>
-        <div className="title">Человек в эпоху войн и революций</div>
+        <div className="title">Человек в эпоху войн и&nbsp;революций</div>
         <div className="start-button">
           <Link to={process.env.PUBLIC_URL + "/game"}>
             <button>
@@ -33,12 +33,18 @@ const Rules = ({ adminMode }) => {
 
           <p>начать игру</p>
         </div>
+        <div className="start-button">
+          <Link to={process.env.PUBLIC_URL + "/admin"}>admin</Link>
+        </div>
       </div>
       <hr className="hr" />
       <div className="description">
         <div className="left">
           <CSSTransition in={show} timeout={300} classNames="alert">
-            <h3> &laquo;Поздравляю, Вы родились в 1900 году!&raquo;</h3>
+            <h3>
+              &laquo;Поздравляю,
+              <br /> Вы родились в 1900 году!&raquo;
+            </h3>
           </CSSTransition>
           <p>
             В Ваших руках жизнь человека, родившегося волею судеб
