@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
+import FileBase from "react-file-base64";
 
-function Image({ question, setImgLoaded, isLoading, imgLoaded }) {
+function Image({ question, setImgLoaded, isLoading, imgLoaded, adminMode }) {
+  const [imageState, setImageState] = useState(question[0].img);
+  const handleSubmit = () => {};
   return (
     <div className="img-container">
       {question[0].img !== "" ? (
@@ -11,7 +15,21 @@ function Image({ question, setImgLoaded, isLoading, imgLoaded }) {
           alt="img here"
           onLoad={() => setImgLoaded(true)}
         />
-      ) : null}
+      ) : (
+        //get rid of adminMode here
+        adminMode && (
+          <>
+            <form action="" onSubmit={handleSubmit}>
+              <FileBase
+                type="file"
+                multipple={false}
+                onDone={({ base64 }) => setImageState(base64)}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </>
+        )
+      )}
 
       {/* {question[0].imgRef !== "" && imgLoaded && (
         <div className="img-ref">

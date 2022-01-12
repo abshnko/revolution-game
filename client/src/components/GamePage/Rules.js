@@ -33,9 +33,9 @@ const Rules = ({ adminMode }) => {
 
           <p>начать игру</p>
         </div>
-        <div className="start-button">
+        {/* <div className="start-button">
           <Link to={process.env.PUBLIC_URL + "/admin"}>admin</Link>
-        </div>
+        </div> */}
       </div>
       <hr className="hr" />
       <div className="description">

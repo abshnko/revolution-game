@@ -7,7 +7,7 @@ const Creators = () => {
       {/* <div className="creators-title"> */}
       <h3 className="title">Команда проекта</h3>
       <h5 className="subtitle">
-        человек в эпоху<br></br>войн и революций
+        человек в&nbsp;эпоху<br></br>войн и&nbsp;революций
       </h5>
       {/* </div> */}
       {/* <div className="creators-info-top-row"> */}

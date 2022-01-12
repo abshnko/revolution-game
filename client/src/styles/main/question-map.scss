@@ -1,0 +1,76 @@
+.wrapper-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+
+  .back-button {
+    position: sticky;
+    top: 30px;
+    left: 50px;
+    border: 1px solid #ababab;
+    padding: 10px 15px;
+    background-color: rgb(194, 227, 255);
+    border-radius: 5px;
+  }
+
+  .questions {
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    justify-content: center;
+    .question {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin: 10px;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 5px;
+      width: 200px;
+
+      .buttons {
+        align-self: flex-end;
+        justify-self: left;
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          margin-left: 5px;
+        }
+        button:hover {
+          svg {
+            path {
+              fill: rgba(26, 110, 246, 0.5);
+            }
+          }
+        }
+        button:hover:nth-child(2) {
+          svg {
+            path {
+              fill: rgba(246, 33, 26, 0.65);
+            }
+          }
+        }
+
+        svg {
+          height: 30px;
+          width: 25px;
+        }
+      }
+
+      .options {
+        display: flex;
+
+        .option {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}

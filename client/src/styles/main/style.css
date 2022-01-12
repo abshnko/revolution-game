@@ -8,6 +8,16 @@
   src: url("../../../src/fonts/Garet-Book.woff") format("woff");
 }
 
+@font-face {
+  font-family: RedOctoberRegular;
+  src: url("../../../src/fonts/redoctober.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: RedOctoberBold;
+  src: url("../../../src/fonts/redoctober_fat.ttf");
+}
+
 body,
 html {
   font-family: GaretRegular;
@@ -221,7 +231,7 @@ html button {
 }
 
 .game-page .container .controls .year p {
-  font-family: GaretRegular;
+  font-family: RedOctoberBold;
   font-style: normal;
   font-weight: 300;
   font-size: 25px;
@@ -367,31 +377,66 @@ html button {
   }
 }
 
-.game-page .container .question-number {
+.game-page .container .question-number .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: question-number;
   font-size: 28px;
   margin-bottom: 10px;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
-.game-page .container .question-number span {
+.game-page .container .question-number .buttons span {
   color: red;
   font-family: GaretBold;
   font-size: 2.5rem;
 }
 
 @media (max-width: 1400px) {
-  .game-page .container .question-number {
+  .game-page .container .question-number .buttons {
     font-size: 22px;
     margin-bottom: 10px;
   }
 }
 
 @media (max-height: 1000px) {
-  .game-page .container .question-number {
+  .game-page .container .question-number .buttons {
     font-size: 21px;
   }
+}
+
+.game-page .container .question-number .buttons button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 10px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  margin-right: 20px;
+  font-family: GaretRegular;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.game-page .container .question-number .buttons button svg {
+  margin-left: 5px;
 }
 
 .game-page .container .options-choose-sex .question {

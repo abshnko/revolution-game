@@ -1,0 +1,178 @@
+.modal-edit-question {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.822);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+
+  .modal-content {
+    margin: 5% auto;
+    width: 60%;
+    height: 70%;
+    // height: 100vh;
+    background-color: #fefefe;
+    padding: 30px 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .header {
+      button {
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 15px 20px;
+        transition: all 0.2s;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+      }
+      .cancel-btn {
+        padding: 0 20px 0 0;
+        display: flex;
+        div {
+          align-self: center;
+        }
+      }
+
+      .save-btn {
+        background: #97f1aa;
+      }
+    }
+    .form {
+      margin-top: 20px;
+      padding: 0 50px;
+
+      .dropdown {
+        width: 400px;
+        display: block;
+
+        option {
+          width: 400px;
+        }
+      }
+
+      .confirm-btn {
+        width: 60px;
+        height: 30px;
+        margin-left: 10px;
+        padding: 0;
+        border-radius: 5px;
+        transition: all 0.2s;
+      }
+      .confirm-btn:hover {
+        border-color: red;
+      }
+      .confirm-btn:hover:nth-child(2) {
+        border-color: green;
+      }
+
+      .second-row {
+        display: flex;
+        flex-wrap: wrap;
+        .image-container {
+          .image {
+            display: flex;
+            flex-direction: column;
+
+            span {
+              font-size: 18px;
+            }
+            img {
+              width: 80px;
+              height: 80px;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+
+      label {
+        font-size: 18px;
+      }
+
+      .options-header {
+        font-size: 18px;
+        font-weight: 300;
+        margin: 10px 0 10px 0;
+      }
+      .checkbox {
+        margin-left: 20px;
+      }
+      .options {
+        display: flex;
+        margin-bottom: 20px;
+
+        .option {
+          display: flex;
+          flex-direction: column;
+          box-sizing: border-box;
+          justify-content: space-between;
+          margin-right: 20px;
+          padding: 15px 15px 5px 15px;
+          border: 1px solid #d1d1d1;
+          min-height: 200px;
+          border-radius: 5px;
+          min-width: 130px;
+          max-width: 170px;
+          .text {
+            word-wrap: break-word;
+          }
+
+          .buttons {
+            button {
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+              padding: 0;
+              position: relative;
+              margin-left: 5px;
+            }
+            button:hover {
+              svg {
+                path {
+                  fill: rgba(26, 110, 246, 0.5);
+                }
+              }
+            }
+            button:hover:nth-child(1) {
+              svg {
+                path {
+                  fill: rgba(246, 33, 26, 0.65);
+                }
+              }
+            }
+            align-self: flex-end;
+
+            svg {
+              height: 30px;
+              width: 25px;
+            }
+          }
+        }
+        button {
+          svg {
+            line {
+              color: #ababab;
+            }
+          }
+        }
+        button:hover {
+          svg {
+            line {
+              color: rgba(19, 95, 216, 0.5);
+            }
+          }
+        }
+      }
+      .infos {
+        .info {
+          display: flex;
+        }
+      }
+    }
+  }
+}

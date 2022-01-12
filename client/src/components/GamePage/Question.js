@@ -4,20 +4,37 @@ import { useEffect, useState } from "react";
 import LoseScreen from "./LoseScreen";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Fade, Transform } from "react-animation-components";
+import { AiFillEdit } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+
+import { createQuestion } from "../../actions/questions";
 
 const Question = ({
+  dispatch,
   question,
   nextClick,
   chooseDisplayedInfo,
   isLoading,
   setImgLoaded,
   lose,
+  adminMode,
+  questionState,
+  setquestionState,
 }) => {
+  const [editQuestionMode, seteditQuestionMode] = useState(false);
+
+  //   const dispatch = useDispatch();
   const [oneArrow, setOneArrow] = useState(false);
   const [twoArrows, setTwoArrows] = useState(false);
   const [zeroArrows, setZeroArrows] = useState(false);
   const [makeSmallText, setMakeSmallText] = useState(false);
 
+  const changeAltText = (info, e, index) => {
+    const newInfo = { ...info, altText: e.target.value };
+    const newArray = questionState.infos;
+    newArray[index] = newInfo;
+    setquestionState({ ...questionState, infos: newArray });
+  };
   const checkInfosForOptions = (option) => {
     if (!option.infos) {
       let number = option.text[0];
@@ -116,7 +133,7 @@ const Question = ({
     return <div className="text">{separatedText}</div>;
   };
 
-  const checkInfosForQuestion = (question) => {
+  function checkInfosForQuestion(question) {
     if (!question[0].infos) return <h2>{question[0].text}</h2>;
     let allId = question[0].infos.map((e) => e.id);
     let allText = question[0].infos.map((e) => e.altText);
@@ -138,8 +155,63 @@ const Question = ({
     for (let i = 1; i < parts.length; i += 2) {
       parts[i] = l(parts, i);
     }
-    return <h2>{parts}</h2>;
-  };
+
+    ///-------------
+    function updateQuestionText(event) {
+      event.preventDefault();
+      dispatch(createQuestion(questionState));
+    }
+    function updateAltText(event) {
+      event.preventDefault();
+    }
+
+    if (!editQuestionMode) {
+      return <h2>{parts}</h2>;
+    } else {
+      return (
+        <>
+          <form action="" onSubmit={updateQuestionText}>
+            <label htmlFor="">
+              Редактирование вопроса:
+              <input
+                style={{
+                  width: "100%",
+                  height: "200px",
+                  overflowWrap: "break-word",
+                }}
+                type="text"
+                value={questionState.text}
+                onChange={(e) =>
+                  setquestionState({ ...questionState, text: e.target.value })
+                }
+              />
+              <input type="submit" value="Submit" />
+            </label>
+          </form>
+          {questionState.infos.map((info, i) => {
+            return (
+              <form action="" onSubmit={updateAltText}>
+                <label htmlFor="">
+                  Редактирование подсвечиваемых слов, указывающих на справку:
+                  <input
+                    style={{
+                      width: "100%",
+                      height: "200px",
+                      overflowWrap: "break-word",
+                    }}
+                    type="text"
+                    value={info.altText}
+                    onChange={(e) => changeAltText(info, e, i)}
+                  />
+                  <input type="submit" value="Submit" />
+                </label>
+              </form>
+            );
+          })}
+        </>
+      );
+    }
+  }
 
   const isOverflown = ({
     clientWidth,
@@ -179,6 +251,9 @@ const Question = ({
       setMakeSmallText(true);
     }
   };
+
+  console.log(editQuestionMode);
+  console.log(questionState);
 
   useEffect(() => {
     determineArrowsNumber();

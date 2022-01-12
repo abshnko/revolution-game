@@ -6,6 +6,14 @@
   font-family: GaretRegular;
   src: url("../../../src/fonts/Garet-Book.woff") format("woff");
 }
+@font-face {
+  font-family: RedOctoberRegular;
+  src: url("../../../src/fonts/redoctober.ttf") format("ttf");
+}
+@font-face {
+  font-family: RedOctoberBold;
+  src: url("../../../src/fonts/redoctober_fat.ttf");
+}
 body,
 html {
   font-family: GaretRegular;
@@ -653,7 +661,7 @@ html {
           line-height: 200px;
         }
         p {
-          font-family: GaretRegular;
+          font-family: RedOctoberBold;
           font-style: normal;
           font-weight: 300;
           font-size: 25px;
@@ -759,21 +767,46 @@ html {
       }
     }
     .question-number {
-      grid-area: question-number;
-      font-size: 28px;
-      margin-bottom: 10px;
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
 
-      span {
-        color: red;
-        font-family: GaretBold;
-        font-size: 2.5rem;
-      }
-      @media (max-width: 1400px) {
-        font-size: 22px;
+        grid-area: question-number;
+        font-size: 28px;
         margin-bottom: 10px;
-      }
-      @media (max-height: 1000px) {
-        font-size: 21px;
+        align-items: baseline;
+
+        span {
+          color: red;
+          font-family: GaretBold;
+          font-size: 2.5rem;
+        }
+        @media (max-width: 1400px) {
+          font-size: 22px;
+          margin-bottom: 10px;
+        }
+        @media (max-height: 1000px) {
+          font-size: 21px;
+        }
+        // margin-left: 30px;
+        button {
+          display: flex;
+          margin-left: 10px;
+          flex-direction: row;
+          background-color: transparent;
+          border: none;
+          font-size: 18px;
+          margin-right: 20px;
+          font-family: GaretRegular;
+          cursor: pointer;
+          align-items: center;
+          justify-content: space-between;
+
+          svg {
+            margin-left: 5px;
+            // width: 30px;
+          }
+        }
       }
     }
 

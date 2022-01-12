@@ -13,7 +13,7 @@
   src: url("../../../src/fonts/redoctober_fat.ttf");
 }
 
-.game-page .rules {
+.rules {
   max-width: 80%;
   padding: 5rem 0;
   margin: 0 auto;
@@ -26,7 +26,7 @@
       grid-template-areas: "upper-part" "hr" "description";
 }
 
-.game-page .rules .upper-part {
+.rules .upper-part {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: upper-part;
@@ -37,7 +37,7 @@
   gap: 4rem;
 }
 
-.game-page .rules .upper-part .years div {
+.rules .upper-part .years div {
   font-size: 60px;
   margin: 0;
   line-height: 90%;
@@ -45,25 +45,25 @@
 }
 
 @media (max-width: 1400px) {
-  .game-page .rules .upper-part .years div {
+  .rules .upper-part .years div {
     font-size: 40px;
   }
 }
 
-.game-page .rules .upper-part .years p {
+.rules .upper-part .years p {
   font-size: 25px;
   line-height: 41px;
   text-align: start;
 }
 
 @media (max-width: 1400px) {
-  .game-page .rules .upper-part .years p {
+  .rules .upper-part .years p {
     font-size: 20px;
     line-height: 30px;
   }
 }
 
-.game-page .rules .upper-part .title {
+.rules .upper-part .title {
   font-size: 80px;
   line-height: 121.5%;
   text-align: center;
@@ -72,23 +72,23 @@
 }
 
 @media (max-width: 1900px) {
-  .game-page .rules .upper-part .title {
+  .rules .upper-part .title {
     font-size: 60px;
   }
 }
 
 @media (max-width: 1400px) {
-  .game-page .rules .upper-part .title {
+  .rules .upper-part .title {
     font-size: 50px;
   }
 }
 
-.game-page .rules .upper-part .start-button {
+.rules .upper-part .start-button {
   text-align: center;
   margin-top: 20px;
 }
 
-.game-page .rules .upper-part .start-button button {
+.rules .upper-part .start-button button {
   background-color: transparent;
   border: none;
   padding: 20px 40px;
@@ -98,12 +98,12 @@
   background-size: 40px 20px;
 }
 
-.game-page .rules .upper-part .start-button p {
+.rules .upper-part .start-button p {
   text-align: center;
   font-size: 17px;
 }
 
-.game-page .rules .hr {
+.rules .hr {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: hr;
@@ -113,7 +113,7 @@
   margin: 0;
 }
 
-.game-page .rules .description {
+.rules .description {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: description;
@@ -124,7 +124,7 @@
   gap: 40px;
 }
 
-.game-page .rules .description .left {
+.rules .description .left {
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: min-content;
@@ -133,13 +133,13 @@
       grid-template-areas: "h3" "p" "creators" "down";
 }
 
-.game-page .rules .description .left .alert-enter {
+.rules .description .left .alert-enter {
   opacity: 0;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
 }
 
-.game-page .rules .description .left .alert-enter-active {
+.rules .description .left .alert-enter-active {
   opacity: 1;
   -webkit-transform: translateX(0);
           transform: translateX(0);
@@ -149,11 +149,11 @@
   transition: opacity 600ms, transform 600ms, -webkit-transform 600ms;
 }
 
-.game-page .rules .description .left .alert-exit {
+.rules .description .left .alert-exit {
   opacity: 1;
 }
 
-.game-page .rules .description .left .alert-exit-active {
+.rules .description .left .alert-exit-active {
   opacity: 0;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
@@ -163,7 +163,7 @@
   transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
 }
 
-.game-page .rules .description .left h3 {
+.rules .description .left h3 {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: h3;
@@ -172,7 +172,7 @@
   margin: 0;
 }
 
-.game-page .rules .description .left p {
+.rules .description .left p {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: p;
@@ -180,7 +180,7 @@
   line-height: 130%;
 }
 
-.game-page .rules .description .left .down {
+.rules .description .left .down {
   -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: down;
@@ -189,14 +189,14 @@
       align-self: end;
 }
 
-.game-page .rules .description .left .down .small-hr {
+.rules .description .left .down .small-hr {
   height: 13px;
   border: none;
   background-color: black;
   margin: 0;
 }
 
-.game-page .rules .description .left .down .creators-button {
+.rules .description .left .down .creators-button {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: creators;
@@ -213,13 +213,13 @@
   margin-left: -15px;
 }
 
-.game-page .rules .description .left .down .creators-button:hover {
+.rules .description .left .down .creators-button:hover {
   background-color: #ff2400;
   color: white;
   margin-left: 0;
 }
 
-.game-page .rules .description .right {
+.rules .description .right {
   font-size: 27px;
   line-height: 130%;
   -ms-flex-item-align: end;
@@ -229,7 +229,7 @@
   letter-spacing: -0.02em;
 }
 
-.game-page .rules .description .right .red {
+.rules .description .right .red {
   font-family: GaretBold;
   border: 6px solid #ff2400;
   padding: 30px;
