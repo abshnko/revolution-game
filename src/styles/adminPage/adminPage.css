@@ -1,5 +1,38 @@
-html,
-body {
+.admin-page {
+  position: fixed;
+  left: 0;
+  top: 0;
   background-color: white;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.admin-page .admin-page-modal {
+  margin: 10% auto;
+  width: 30%;
+  height: 30%;
+  background-color: #fefefe;
+  padding: 30px 40px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.admin-page .admin-page-modal .authenticate-card label {
+  display: block;
+}
+
+.admin-page .admin-page-modal .authenticate-card .login-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #3baa3b;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
 }
 /*# sourceMappingURL=adminPage.css.map */

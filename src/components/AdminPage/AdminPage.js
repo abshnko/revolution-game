@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import Editing from "./EditingPage/editing";
 import "../../styles/adminPage/adminPage.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notifyAboutWrongPassword } from "../../utils/notifyers";
 
 const AdminPage = ({ questions, setAdminMode }) => {
-  const [passwordOK, setPasswordOK] = useState(true); //change to false --- JWT token
+  const [passwordOK, setPasswordOK] = useState(false); //change to false --- JWT token
   const [question, setQuestion] = useState(() => {
     const saved = localStorage.getItem("question");
     const initialValue = JSON.parse(saved);
@@ -13,34 +17,55 @@ const AdminPage = ({ questions, setAdminMode }) => {
     } else return questions;
   });
 
+  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState("");
+  const history = useHistory();
+
   useEffect(() => {
-    console.log(questions);
-    console.log(question);
+    console.log(password);
   });
-  const onClick = () => {};
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("IN HANDLE LOGIN");
+    if (login === "admin" && password === "admin") {
+      setAdminMode(true);
+      history.push("/revolution-game/game");
+      setLogin("");
+      setPassword("");
+    } else {
+      console.log("IN ELSE");
+      notifyAboutWrongPassword();
+    }
+  };
   return (
     <>
       <div className="admin-page">
-        {!passwordOK && (
-          <div className="authenticate-card">
-            <h2>Введите пароль:</h2>
-            <input type="text" />
-            <button>Войти</button>
-          </div>
-        )}
+        <div className="admin-page-modal">
+          <form className="authenticate-card" onSubmit={(e) => handleLogin(e)}>
+            <h2>Введите логин и пароль:</h2>
+            <label htmlFor="">
+              <input
+                type="text"
+                onChange={(e) => setLogin(e.target.value)}
+                value={login}
+                placeholder="логин"
+              />
+            </label>
+            <label htmlFor="">
+              <input
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                placeholder="пароль"
+              />
+            </label>
+            <button type="submit" className="login-button">
+              Войти
+            </button>
+          </form>
+        </div>
+        <ToastContainer />
       </div>
-      {passwordOK && (
-        <>
-          <button onClick={() => setAdminMode(true)}>
-            <Link to={process.env.PUBLIC_URL + "/game"}>
-              Перейти к редактированию
-            </Link>
-          </button>
-          {question.map((question) => {
-            return <div className="">{question.text.substring(0, 50)}</div>;
-          })}
-        </>
-      )}
     </>
   );
 };

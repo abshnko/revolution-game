@@ -21,3 +21,14 @@ export const notifyAboutEdit = (currentQuestionID) =>
     draggable: true,
     progress: undefined,
   });
+
+export const notifyAboutWrongPassword = () =>
+  toast.error("Неверный логин/пароль", {
+    position: "top-right",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });

@@ -19,7 +19,7 @@ import Creators from "./components/GamePage/Creators";
 
 //change data to dispatched Questions!!!!!
 function App() {
-  const [adminMode, setAdminMode] = useState(true); //CHANGE TO FALSE
+  const [adminMode, setAdminMode] = useState(false); //CHANGE TO FALSE
   const dispatch = useDispatch();
   let questions = useSelector((state) => state.questions);
   questions = questions.sort((a, b) => {
