@@ -1,0 +1,296 @@
+html,
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+select {
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  padding: 7px 10px;
+  border-color: #ababab;
+  border-radius: 5px;
+}
+
+.alert-delete-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.822);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.alert-delete-modal button {
+  background-color: transparent;
+  border: 1px solid #d1d1d1;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+}
+
+.alert-delete-modal .alert-delete-modal-content {
+  margin: 30% auto;
+  width: 30%;
+  height: 20%;
+  background-color: #fefefe;
+  padding: 30px 40px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.alert-delete-modal .alert-delete-modal-content p {
+  display: block;
+  font-size: 24px;
+}
+
+.alert-delete-modal .alert-delete-modal-content .buttons {
+  display: block;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.alert-delete-modal .alert-delete-modal-content .buttons button {
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 15px 20px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.alert-delete-modal .alert-delete-modal-content .buttons button:hover {
+  border: 1px solid red;
+}
+
+.alert-delete-modal .alert-delete-modal-content .buttons button:hover:nth-child(2) {
+  border: 1px solid #1cdd66;
+}
+
+.modal-edit-question {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.822);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  overflow: auto;
+}
+
+.modal-edit-question button {
+  background-color: transparent;
+  border: 1px solid #d1d1d1;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+}
+
+.modal-edit-question .modal-content {
+  margin: 5% auto;
+  width: 60%;
+  height: 70%;
+  background-color: #fefefe;
+  padding: 30px 40px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal-edit-question .modal-content .header button {
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 15px 20px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.modal-edit-question .modal-content .header button:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.modal-edit-question .modal-content .header .cancel-btn {
+  padding: 0 20px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal-edit-question .modal-content .header .cancel-btn div {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.modal-edit-question .modal-content .header .save-btn {
+  background: #97f1aa;
+}
+
+.modal-edit-question .modal-content .form {
+  margin-top: 20px;
+  padding: 0 50px;
+}
+
+.modal-edit-question .modal-content .form .dropdown {
+  width: 400px;
+  display: block;
+}
+
+.modal-edit-question .modal-content .form .dropdown option {
+  width: 400px;
+}
+
+.modal-edit-question .modal-content .form .confirm-btn {
+  width: 60px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 0;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.modal-edit-question .modal-content .form .confirm-btn:hover {
+  border-color: red;
+}
+
+.modal-edit-question .modal-content .form .confirm-btn:hover:nth-child(2) {
+  border-color: green;
+}
+
+.modal-edit-question .modal-content .form .second-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.modal-edit-question .modal-content .form .second-row .image-container .image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal-edit-question .modal-content .form .second-row .image-container .image span {
+  font-size: 18px;
+}
+
+.modal-edit-question .modal-content .form .second-row .image-container .image img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.modal-edit-question .modal-content .form label {
+  font-size: 18px;
+}
+
+.modal-edit-question .modal-content .form .options-header {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 10px 0 10px 0;
+}
+
+.modal-edit-question .modal-content .form .checkbox {
+  margin-left: 20px;
+}
+
+.modal-edit-question .modal-content .form .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.modal-edit-question .modal-content .form .options .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 20px;
+  padding: 15px 15px 5px 15px;
+  border: 1px solid #d1d1d1;
+  min-height: 200px;
+  border-radius: 5px;
+  min-width: 130px;
+  max-width: 170px;
+}
+
+.modal-edit-question .modal-content .form .options .option .text {
+  word-wrap: break-word;
+}
+
+.modal-edit-question .modal-content .form .options .option .buttons {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.modal-edit-question .modal-content .form .options .option .buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  margin-left: 5px;
+}
+
+.modal-edit-question .modal-content .form .options .option .buttons button:hover svg path {
+  fill: rgba(26, 110, 246, 0.5);
+}
+
+.modal-edit-question .modal-content .form .options .option .buttons button:hover:nth-child(1) svg path {
+  fill: rgba(246, 33, 26, 0.65);
+}
+
+.modal-edit-question .modal-content .form .options .option .buttons svg {
+  height: 30px;
+  width: 25px;
+}
+
+.modal-edit-question .modal-content .form .options button svg line {
+  color: #ababab;
+}
+
+.modal-edit-question .modal-content .form .options button:hover svg line {
+  color: rgba(19, 95, 216, 0.5);
+}
+
+.modal-edit-question .modal-content .form .infos .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=edit-question.css.map */
