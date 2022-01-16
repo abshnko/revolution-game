@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { browserHistory } from "react-router";
 import { createBrowserHistory } from "history";
+import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import {
   getQuestions,
@@ -34,7 +36,8 @@ function App() {
 
   return (
     <>
-      <Router history={history}>
+      {/* <Router history={history}> */}
+      <BrowserRouter>
         <Switch>
           <Route path={process.env.PUBLIC_URL + "/admin"} history={history}>
             <AdminPage questions={questions} setAdminMode={setAdminMode} />
@@ -54,7 +57,8 @@ function App() {
             <Rules />
           </Route>
         </Switch>
-      </Router>
+      </BrowserRouter>
+      {/* </Router> */}
     </>
   );
 }
