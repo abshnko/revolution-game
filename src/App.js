@@ -37,12 +37,12 @@ function App() {
   return (
     <>
       {/* <Router history={history}> */}
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
-          <Route path={process.env.PUBLIC_URL + "/admin"} history={history}>
+          <Route path="/admin" history={history}>
             <AdminPage questions={questions} setAdminMode={setAdminMode} />
           </Route>
-          <Route path={process.env.PUBLIC_URL + "/game"}>
+          <Route path="/game">
             <GamePage
               questions={questions}
               adminMode={adminMode}
@@ -50,14 +50,14 @@ function App() {
               setAdminMode={setAdminMode}
             />
           </Route>
-          <Route path={process.env.PUBLIC_URL + "/creators"}>
+          <Route path="/creators">
             <Creators adminMode={adminMode} />
           </Route>
-          <Route exact path={process.env.PUBLIC_URL + "/"}>
+          <Route exact path="/">
             <Rules />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
       {/* </Router> */}
     </>
   );

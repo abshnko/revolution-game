@@ -27,9 +27,9 @@ const AdminPage = ({ questions, setAdminMode }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     console.log("IN HANDLE LOGIN");
-    if (login === "admin" && password === "admin") {
+    if (login === "admin" && password === "admin1234") {
       setAdminMode(true);
-      history.push("/revolution-game/game");
+      history.push("/game");
       setLogin("");
       setPassword("");
     } else {

@@ -22,7 +22,7 @@ const Rules = ({ adminMode }) => {
         </div>
         <div className="title">Человек в эпоху войн и&nbsp;революций</div>
         <div className="start-button">
-          <Link to={process.env.PUBLIC_URL + "/game"}>
+          <Link to="/game">
             <button>
               <img
                 src={process.env.PUBLIC_URL + `/images/red-arrow.png`}
@@ -56,10 +56,7 @@ const Rules = ({ adminMode }) => {
           </p>
 
           <div className="down">
-            <Link
-              to={process.env.PUBLIC_URL + "/creators"}
-              style={{ textDecoration: "none" }}
-            >
+            <Link to="/creators" style={{ textDecoration: "none" }}>
               <button className="creators-button">Команда проекта</button>
             </Link>
             <hr className="small-hr" />

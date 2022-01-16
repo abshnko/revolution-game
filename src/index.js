@@ -13,7 +13,9 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      {/* <HashRouter> */}
       <App />
+      {/* </HashRouter> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
