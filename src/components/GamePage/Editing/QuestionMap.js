@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "../../../styles/main/question-map.css";
 import { ToastContainer } from "react-toastify";
 import { notifyAboutDelete } from "../../../utils/notifyers";
+// import asd from "../../../../public/images"
 
 const QuestionMap = ({
   questions,
@@ -163,7 +164,10 @@ const QuestionMap = ({
                       </div>
                       {singleQuestion.img !== "" && (
                         <img
-                          src={`./images/${singleQuestion.img}`}
+                          src={
+                            process.env.PUBLIC_URL +
+                            `/images/${singleQuestion.img}`
+                          }
                           style={
                             imgLoaded ? { width: "150px" } : { display: "none" }
                           }

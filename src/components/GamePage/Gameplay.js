@@ -5,6 +5,7 @@ import "../../styles/main/style.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { AiFillEdit } from "react-icons/ai";
 import { Fade, Transform } from "react-animation-components";
+import { css } from "@emotion/react";
 import periods from "../../periods";
 import Question from "./Question";
 import Image from "./Image";
@@ -268,11 +269,25 @@ const Gameplay = ({
     console.log(currentInfoDisplayed);
   }, [currentInfoDisplayed]);
 
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    align-self: center;
+  `;
+
   return (
     <div className="wrapper">
       <>
         {question.length === 0 ? (
-          <Loading />
+          <div
+            style={{
+              alignSelf: "center",
+              textAlign: "center",
+              marginTop: "20%",
+            }}
+          >
+            <Loading loading={isLoading} css={override} entryPoint={true} />
+          </div>
         ) : (
           <div className="container">
             <div className="timeline">
@@ -283,15 +298,17 @@ const Gameplay = ({
             </div>
             {isShowInfo && //show currently chosen info entry
               currentInfoDisplayed !== undefined && (
-                <CSSTransition in={isShowInfo} timeout={300} classNames="alert">
-                  <CurrentInfo
-                    question={question}
-                    setIsShowInfo={setIsShowInfo}
-                    INFOS={INFOS}
-                    currentInfoDisplayed={currentInfoDisplayed}
-                    //   questionState={questionState}
-                  />
-                </CSSTransition>
+                //???????непонятно с транзишном
+                // <CSSTransition in={isShowInfo} timeout={300} classNames="alert">
+                <CurrentInfo
+                  question={question}
+                  setIsShowInfo={setIsShowInfo}
+                  INFOS={INFOS}
+                  currentInfoDisplayed={currentInfoDisplayed}
+                  isShowInfo={isShowInfo}
+                  //   questionState={questionState}
+                />
+                // </CSSTransition>
               )}
             <div className="controls">
               {/*refactor */}
@@ -583,6 +600,18 @@ const Gameplay = ({
                 </>
               </CSSTransition>
             )}
+            {isLoading && (
+              <div
+                style={{
+                  alignSelf: "center",
+                  justifySelf: "center",
+                  textAlign: "center",
+                }}
+              >
+                <Loading loading={isLoading} />
+              </div>
+            )}
+
             <CSSTransition in={show} timeout={300} classNames="alert">
               <div
                 className={`${
@@ -591,7 +620,6 @@ const Gameplay = ({
               >
                 <>
                   <div className="question">
-                    {isLoading && <Loading />}
                     {!isLoading && !("isChooseSex" in question[0]) && (
                       <Question
                         question={question}
@@ -659,6 +687,7 @@ const Gameplay = ({
           </div>
         </div>
       )}
+
       {showQuestionMap && (
         <QuestionMap
           questions={questions}

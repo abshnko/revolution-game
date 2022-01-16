@@ -172,7 +172,11 @@ const Question = ({
       parts[i] = l(parts, i);
     }
 
-    return <h2>{parts}</h2>;
+    return (
+      <h2 style={question[0].options.length === 1 ? { fontSize: "35px" } : {}}>
+        {parts}
+      </h2>
+    );
   }
 
   const isOverflown = ({
@@ -286,7 +290,7 @@ const Question = ({
             )}
           </div>
         )}
-        <div className={`question-text ${makeSmallText ? " small-text" : ""}`}>
+        <div className={`question-text ${makeSmallText ? " small-text" : ""} `}>
           {checkInfosForQuestion(question)}
         </div>
         {question[0].options.length > 1 && (

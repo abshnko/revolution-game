@@ -26,6 +26,12 @@
       grid-template-areas: "upper-part" "hr" "description";
 }
 
+@media (max-height: 800px) {
+  .rules {
+    padding: 2rem 0;
+  }
+}
+
 .rules .upper-part {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -35,6 +41,9 @@
   -ms-grid-columns: 1fr 5fr 1fr;
       grid-template-columns: 1fr 5fr 1fr;
   gap: 4rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .rules .upper-part .years div {
@@ -50,6 +59,12 @@
   }
 }
 
+@media (max-height: 800px) {
+  .rules .upper-part .years div {
+    font-size: 30px;
+  }
+}
+
 .rules .upper-part .years p {
   font-size: 25px;
   line-height: 41px;
@@ -60,6 +75,14 @@
   .rules .upper-part .years p {
     font-size: 20px;
     line-height: 30px;
+  }
+}
+
+@media (max-height: 800px) {
+  .rules .upper-part .years p {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 0;
   }
 }
 
@@ -83,6 +106,12 @@
   }
 }
 
+@media (max-height: 800px) {
+  .rules .upper-part .title {
+    font-size: 40px;
+  }
+}
+
 .rules .upper-part .start-button {
   text-align: center;
   margin-top: 20px;
@@ -98,6 +127,18 @@
   background-size: 40px 20px;
 }
 
+@media (max-height: 800px) {
+  .rules .upper-part .start-button button {
+    padding: 15px 25px;
+  }
+}
+
+@media (max-height: 800px) {
+  .rules .upper-part .start-button button img {
+    width: 80%;
+  }
+}
+
 .rules .upper-part .start-button p {
   text-align: center;
   font-size: 17px;
@@ -111,6 +152,12 @@
   border: none;
   background-color: black;
   margin: 0;
+}
+
+@media (max-height: 800px) {
+  .rules .hr {
+    height: 10px;
+  }
 }
 
 .rules .description {
@@ -172,12 +219,24 @@
   margin: 0;
 }
 
+@media (max-height: 800px) {
+  .rules .description .left h3 {
+    font-size: 30px;
+  }
+}
+
 .rules .description .left p {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: p;
   font-size: 27px;
   line-height: 130%;
+}
+
+@media (max-height: 800px) {
+  .rules .description .left p {
+    font-size: 20px;
+  }
 }
 
 .rules .description .left .down {
@@ -194,6 +253,12 @@
   border: none;
   background-color: black;
   margin: 0;
+}
+
+@media (max-height: 800px) {
+  .rules .description .left .down .small-hr {
+    height: 10px;
+  }
 }
 
 .rules .description .left .down .creators-button {
@@ -213,6 +278,12 @@
   margin-left: -15px;
 }
 
+@media (max-height: 800px) {
+  .rules .description .left .down .creators-button {
+    font-size: 20px;
+  }
+}
+
 .rules .description .left .down .creators-button:hover {
   background-color: #ff2400;
   color: white;
@@ -227,6 +298,12 @@
       align-self: end;
   text-align: left;
   letter-spacing: -0.02em;
+}
+
+@media (max-height: 800px) {
+  .rules .description .right {
+    font-size: 20px;
+  }
 }
 
 .rules .description .right .red {

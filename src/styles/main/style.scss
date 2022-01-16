@@ -58,17 +58,21 @@ html {
       height: 80px;
       width: 100%;
       margin-bottom: 10px;
-      //   background-color: rgb(214, 214, 214);
 
       #react-chrono-timeline {
         display: none;
       }
+
       .timeline-item-title {
         // height: 4rem;
         font-size: 24px;
         line-height: 30px;
-        width: 4.5rem;
+        width: 4.05rem;
         overflow-wrap: break-word;
+        @media (max-height: 800px) {
+          font-size: 18px;
+          line-height: 24px;
+        }
       }
       .active {
         background-color: transparent;
@@ -82,12 +86,16 @@ html {
       .using-icon {
         width: fit-content;
         height: fit-content;
+        @media (max-height: 800px) {
+          width: 40%;
+        }
       }
 
       .timeline-main-wrapper {
         margin: 0 auto;
-        width: 80vw;
-        // width: 100%;
+        width: 90vw;
+        // background-color: green;
+        width: 100%;
       }
       .css-z1lsnn-Circle {
         cursor: default;
@@ -124,9 +132,9 @@ html {
         @media (max-width: 1400px) {
           font-size: 13px;
         }
-        // @media (max-height: 900px) {
-        //   font-size: 13px;
-        // }
+        @media (max-height: 1000px) {
+          margin-bottom: 10px;
+        }
         @media (min-width: 2500px) {
           font-size: 20px;
         }
@@ -168,9 +176,13 @@ html {
           font-size: 113px;
           line-height: 191px;
         }
+        @media (max-height: 800px) {
+          font-size: 100px;
+          line-height: 180px;
+        }
         @media (max-height: 1000px) {
-          font-size: 130px;
-          line-height: 200px;
+          font-size: 120px;
+          line-height: 180px;
         }
         p {
           font-family: RedOctoberBold;
@@ -195,9 +207,9 @@ html {
             font-size: 20px;
             line-height: 20px;
           }
-          @media (max-height: 1000px) {
-            font-size: 22px;
-            line-height: 17px;
+          @media (max-height: 900px) {
+            font-size: 18px;
+            line-height: 18px;
           }
         }
       }
@@ -236,19 +248,29 @@ html {
             width: 150px;
             height: 84px;
           }
+          @media (max-height: 800px) {
+            width: 165px;
+            height: 79px;
+          }
           @media (max-height: 1000px) {
-            width: 180px;
+            width: 185px;
             height: 99px;
+          }
+
+          img {
+            @media (max-height: 1000px) {
+              width: 80px;
+            }
+            @media (max-width: 1400px) {
+              width: 80px;
+            }
           }
         }
 
         .next-button-changed {
           background-size: 100% 100%;
         }
-        // .next-button:hover {
-        //   //   transform: scale(1.05);
-        //   background-size: 100% 100%;
-        // }
+
         p {
           font-size: 20px;
           @media (max-width: 1600px) {
@@ -260,7 +282,8 @@ html {
             // margin: 0 0 1em 0;
           }
           @media (max-height: 1000px) {
-            font-size: 17px;
+            font-size: 16px;
+            margin-top: 10px;
           }
         }
       }
@@ -274,7 +297,7 @@ html {
         background-color: black;
         margin: 0;
         @media (max-height: 1000px) {
-          height: 12px;
+          height: 10px;
         }
       }
     }
@@ -282,7 +305,6 @@ html {
       .buttons {
         display: flex;
         flex-wrap: wrap;
-
         grid-area: question-number;
         font-size: 28px;
         margin-bottom: 10px;
@@ -292,6 +314,11 @@ html {
           color: red;
           font-family: GaretBold;
           font-size: 2.5rem;
+
+          @media (max-height: 1000px) {
+            font-size: 32px;
+            margin: 0;
+          }
         }
         @media (max-width: 1400px) {
           font-size: 22px;
@@ -299,6 +326,7 @@ html {
         }
         @media (max-height: 1000px) {
           font-size: 21px;
+          margin: 0;
         }
         // margin-left: 30px;
         button {
@@ -333,7 +361,11 @@ html {
       .question {
         font-size: 30px;
         font-family: GaretRegular;
+        @media (max-height: 1000px) {
+          font-size: 24px;
+        }
       }
+
       .options {
         border: 3px solid black;
 
@@ -516,6 +548,10 @@ html {
       overflow-x: visible;
       padding-left: 50px;
       margin-left: -50px;
+
+      @media (max-height: 1000px) {
+        grid-template-columns: 65% 35%;
+      }
       .question {
         display: flex;
         flex-direction: column;
@@ -529,14 +565,18 @@ html {
             @media (min-width: 2500px) {
               font-size: 50px;
             }
+            @media (max-width: 2000px) {
+              font-size: 25px;
+            }
             @media (max-width: 1600px) {
               font-size: 30px;
             }
             @media (max-width: 1400px) {
               font-size: 20px;
             }
-            @media (max-height: 1000px) {
-              font-size: 30px;
+            @media (max-height: 900px) {
+              font-size: 20px;
+              margin: 0;
             }
           }
         }
@@ -659,6 +699,9 @@ html {
         flex-direction: column;
         .arrow {
           margin-bottom: 20px;
+          @media (max-height: 1000px) {
+            height: 110px;
+          }
         }
         // @media (max-width: 1600px) {
         //   .arrow:nth-child(2) {
@@ -888,7 +931,9 @@ html {
       //   height: 50vh;
       position: relative;
       padding: 5rem;
-      //   padding-bottom: 1rem;
+      @media (max-height: 1000px) {
+        padding: 0 2rem 0 1rem;
+      }
 
       .info-name {
         font-family: GaretBold;
@@ -897,6 +942,9 @@ html {
         h2 {
           margin: 0;
           text-align: left;
+          @media (max-height: 1000px) {
+            font-size: 25px;
+          }
         }
       }
 
@@ -905,6 +953,9 @@ html {
         height: 100%;
         overflow-y: scroll;
         // padding: 0 20px 0 0;
+        @media (max-height: 1000px) {
+          font-size: 20px;
+        }
       }
 
       hr {
