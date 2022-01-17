@@ -1,16 +1,21 @@
 import React from "react";
 import "../../styles/main/creators.css";
+import { Link } from "react-router-dom";
 
 const Creators = () => {
   return (
     <div className="creators">
-      {/* <div className="creators-title"> */}
+      <Link
+        to="/"
+        style={{ textDecoration: "none" }}
+        className="back-button-row"
+      >
+        <button className="back-button">Назад</button>
+      </Link>
       <h3 className="title">Команда проекта</h3>
       <h5 className="subtitle">
         человек в&nbsp;эпоху<br></br>войн и&nbsp;революций
       </h5>
-      {/* </div> */}
-      {/* <div className="creators-info-top-row"> */}
 
       <p className="main-creators">
         <span>Идея</span> - Сергей Соколов, к.и.н., заведующий кафедрой истории

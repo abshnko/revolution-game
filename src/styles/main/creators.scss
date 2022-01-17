@@ -3,18 +3,19 @@
   height: 100vh;
   max-width: 80%;
   margin: auto;
-  grid-template-rows: min-content auto auto min-content;
+  grid-template-rows: min-content min-content auto auto min-content;
   grid-template-columns: 1fr 1fr;
   column-gap: 100px;
-  row-gap: 50px;
+  //   row-gap: 20px;
   grid-template-areas:
+    "back-button-row ."
     "title subtitle"
     "main-creators female-line"
     "male-line tech-team"
     "line .";
 
   p {
-    font-size: 25px;
+    font-size: 23px;
     line-height: 160.5%;
     margin: 0;
   }
@@ -37,6 +38,7 @@
     max-width: 90%;
     margin: auto;
     grid-template-rows: min-content min-content min-content min-content min-content min-content min-content;
+    // grid-template-rows: auto auto auto auto auto auto auto;
     grid-template-columns: 1fr;
     column-gap: 100px;
     grid-template-areas:
@@ -48,16 +50,40 @@
       "tech-team"
       "line";
   }
+
+  .back-button-row {
+    grid-area: back-button-row;
+    .back-button {
+      display: inline;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      font-family: GaretRegular;
+      margin-bottom: 5px;
+      transition: linear 0.2s;
+      padding: 10px 15px;
+      margin-left: -15px;
+      @media (max-height: 800px) {
+        font-size: 20px;
+      }
+    }
+    .back-button:hover {
+      background-color: #ff2400;
+      color: white;
+      margin-left: 0;
+    }
+  }
   .title {
     grid-area: title;
-    padding-top: 50px;
+    padding-top: 20px;
     font-size: 41px;
     line-height: 130%;
     font-family: GaretBold;
   }
   .subtitle {
     grid-area: subtitle;
-    padding-top: 50px;
+    padding-top: 20px;
     font-size: 25px;
     line-height: 121.5%;
     font-family: RedOctoberBold;
@@ -72,6 +98,7 @@
 
   .main-creators {
     grid-area: main-creators;
+    padding-top: 40px;
     line-height: 160.5%;
     span {
       font-family: GaretBold;
@@ -81,6 +108,8 @@
   }
   .female-line {
     grid-area: female-line;
+    padding-top: 40px;
+
     .female-line-text {
       margin-top: 10px;
     }
