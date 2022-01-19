@@ -109,7 +109,7 @@ const Timeline = ({ latestPeriod, questionCounter }) => {
             ? "190"
             : clientWidth >= 1440
             ? "170"
-            : clientWidth >= 1366
+            : clientWidth >= 1360
             ? "170"
             : "130"
         }
