@@ -11,9 +11,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../styles/main/style.css";
 
-import Rules from "./Rules";
+// import Rules from "./Rules";
 import Gameplay from "./Gameplay";
-import Creators from "./Creators";
+// import Creators from "./Creators";
 
 function GamePage({ questions, adminMode, setAdminMode }) {
   const initialState = {
@@ -39,21 +39,6 @@ function GamePage({ questions, adminMode, setAdminMode }) {
   const [showModalQuestion, setShowModalQuestion] = useState(false);
   const [alertDeleteQuestion, setAlertDeleteQuestion] = useState(false);
   const [idForDelete, setIdForDelete] = useState(null);
-
-  //   const [currentOptionID, setCurrentOptionID] = useState(null);
-  //   const [currentInfoID, setCurrentInfoID] = useState(null);
-
-  //  const questions = useSelector((store) => store.questions);
-
-  //   const [showModalOptions, setShowModalOptions] = useState(false);
-  //   const [showInfos, setShowInfos] = useState(false);
-  //   const optionToUpdate = currentOptionID
-  //     ? question.options.find((option) => option.id === currentOptionID)
-  //     : null;
-
-  //   const [alertDeleteInfos, setAlertDeleteInfos] = useState(false);
-  //   const [imgLoaded, setImgLoaded] = useState(false);
-  //   const [line, setLine] = useState("unset");
 
   return (
     <>

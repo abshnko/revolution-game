@@ -3,8 +3,6 @@ import { Chrono } from "react-chrono";
 import { useEffect } from "react";
 import circle from "../../images/circle-24.png";
 import current from "../../images/current.png";
-import ReactDOMServer from "react-dom/server";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Timeline = ({ latestPeriod, questionCounter }) => {
   const [counter, setCounter] = useState(() => {
@@ -56,11 +54,9 @@ const Timeline = ({ latestPeriod, questionCounter }) => {
           //   allPeriods[j].title = newP;
           //   allPeriods[j].title = latestPeriod;
           const allPeriodsCopy = [...allPeriods];
-          console.log(allPeriodsCopy);
           allPeriodsCopy[j].title = latestPeriod;
           setAllPeriods(allPeriodsCopy);
           setCounter(counter + 1);
-          console.log(counter);
           break;
         }
       }
@@ -90,10 +86,8 @@ const Timeline = ({ latestPeriod, questionCounter }) => {
   //     return document.getElementsByTagName("body")[0].clientWidth;
   //   };
   const clientWidth = document.getElementsByTagName("body")[0].clientWidth;
-  console.log(clientWidth);
 
   useEffect(() => {
-    console.log("IN USE EFFECT TIMELINE");
     addNewPeriod();
     // localStorage.setItem("periods", JSON.stringify(allPeriods));
     // localStorage.setItem("period-counter", JSON.stringify(counter));

@@ -1,7 +1,6 @@
 import React from "react";
-import ClipLoader from "react-spinners/ClipLoader";
 
-function Image({ question, setImgLoaded, isLoading, imgLoaded, adminMode }) {
+function Image({ question, setImgLoaded, isLoading }) {
   const showUploadedImage = question[0].img.includes("data:");
   return (
     <div className="img-container">
@@ -14,7 +13,6 @@ function Image({ question, setImgLoaded, isLoading, imgLoaded, adminMode }) {
                 ? question[0].img
                 : process.env.PUBLIC_URL + `/images/${question[0].img}`
             }
-            // src={question[0].img}
             style={!isLoading ? {} : { display: "none" }}
             alt="img here"
             onLoad={() => setImgLoaded(true)}

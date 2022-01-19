@@ -1,21 +1,16 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import LoseScreen from "./LoseScreen";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Fade, Transform } from "react-animation-components";
-import { AiFillEdit } from "react-icons/ai";
+import Arrow from "../../utils/svgs/Arrow";
+import { isOverflown, heightIsOverNpx } from "../../utils/resolutionFunctions";
 
 const Question = ({
   question,
   nextClick,
-  //   chooseDisplayedInfo,
   setCurrentInfoDisplayed,
-  currentInfoDisplayed,
   setIsShowInfo,
   isLoading,
   setImgLoaded,
-  lose,
-  isShowInfo,
 }) => {
   const [oneArrow, setOneArrow] = useState(false);
   const [twoArrows, setTwoArrows] = useState(false);
@@ -26,7 +21,6 @@ const Question = ({
     if ("infos" in question[0] && question[0].infos.length > 0) {
       const infos = question[0].infos.filter((info) => info.id === id);
       if (infos.length > 0) {
-        console.log(infos[0]);
         setCurrentInfoDisplayed(infos[0]);
         setIsShowInfo(true);
       }
@@ -40,8 +34,6 @@ const Question = ({
         }
       }
     });
-    console.log("CURRENT INFO: ", currentInfoDisplayed);
-    console.log("ISSHOWINFO: ", isShowInfo);
   };
 
   const checkInfosForOptions = (option) => {
@@ -153,8 +145,6 @@ const Question = ({
 
     const l = (parts, i) => {
       //для верной передачи цифр
-      //   console.log("INDEX: ", i, "");
-      //   console.log(allId[Math.floor(i / 2)]);
       return (
         <a
           className="info-link"
@@ -178,19 +168,6 @@ const Question = ({
       </h2>
     );
   }
-
-  const isOverflown = ({
-    clientWidth,
-    clientHeight,
-    scrollWidth,
-    scrollHeight,
-  }) => {
-    return scrollHeight > clientHeight || scrollWidth > clientWidth;
-  };
-
-  const heightIsOverNpx = ({ clientHeight }, number) => {
-    return clientHeight >= number;
-  };
 
   const determineArrowsNumber = () => {
     const main = document.getElementsByClassName("main")[0];
@@ -225,201 +202,129 @@ const Question = ({
 
   return (
     <>
-      {/* <TransitionGroup component={null}>
-        <CSSTransition
-          in={!isLoading}
-          key={question[0].id}
-          timeout={500}
-          classNames="alert"
-        > */}
-      <>
-        {/* <div className="id-testing">current: {question[0].id}</div> */}{" "}
-        {/*testing */}
-        {question[0].options.length === 1 && (
-          <div className="arrows">
-            {!zeroArrows && oneArrow && (
-              <svg
-                className="arrow"
-                width="87"
-                height="157"
-                viewBox="0 0 87 157"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M85.1192 93.312C86.2457 94.1102 86.5118 95.6706 85.7135 96.7972L44.3733 155.138C43.8986 155.808 43.1253 156.202 42.3044 156.192C41.4835 156.183 40.7196 155.771 40.2606 155.09L0.927173 96.7493C0.15533 95.6045 0.457683 94.0507 1.60251 93.2789C2.74733 92.507 4.3011 92.8094 5.07295 93.9542L39.8335 145.512L39.8335 3C39.8335 1.61929 40.9528 0.499998 42.3335 0.499998C43.7142 0.499998 44.8335 1.61929 44.8335 3L44.8335 145.84L81.6339 93.9064C82.4322 92.7798 83.9926 92.5137 85.1192 93.312Z"
-                  fill="#FF2400"
-                />
-              </svg>
-            )}
-            {!zeroArrows && twoArrows && (
-              <>
-                <svg
-                  className="arrow"
-                  width="87"
-                  height="157"
-                  viewBox="0 0 87 157"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M85.1192 93.312C86.2457 94.1102 86.5118 95.6706 85.7135 96.7972L44.3733 155.138C43.8986 155.808 43.1253 156.202 42.3044 156.192C41.4835 156.183 40.7196 155.771 40.2606 155.09L0.927173 96.7493C0.15533 95.6045 0.457683 94.0507 1.60251 93.2789C2.74733 92.507 4.3011 92.8094 5.07295 93.9542L39.8335 145.512L39.8335 3C39.8335 1.61929 40.9528 0.499998 42.3335 0.499998C43.7142 0.499998 44.8335 1.61929 44.8335 3L44.8335 145.84L81.6339 93.9064C82.4322 92.7798 83.9926 92.5137 85.1192 93.312Z"
-                    fill="#FF2400"
-                  />
-                </svg>
-                <svg
-                  className="arrow"
-                  width="87"
-                  height="157"
-                  viewBox="0 0 87 157"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M85.1192 93.312C86.2457 94.1102 86.5118 95.6706 85.7135 96.7972L44.3733 155.138C43.8986 155.808 43.1253 156.202 42.3044 156.192C41.4835 156.183 40.7196 155.771 40.2606 155.09L0.927173 96.7493C0.15533 95.6045 0.457683 94.0507 1.60251 93.2789C2.74733 92.507 4.3011 92.8094 5.07295 93.9542L39.8335 145.512L39.8335 3C39.8335 1.61929 40.9528 0.499998 42.3335 0.499998C43.7142 0.499998 44.8335 1.61929 44.8335 3L44.8335 145.84L81.6339 93.9064C82.4322 92.7798 83.9926 92.5137 85.1192 93.312Z"
-                    fill="#FF2400"
-                  />
-                </svg>
-              </>
-            )}
-          </div>
-        )}
-        <div className={`question-text ${makeSmallText ? " small-text" : ""} `}>
-          {checkInfosForQuestion(question)}
+      {question[0].options.length === 1 && (
+        <div className="arrows">
+          {!zeroArrows && oneArrow && <Arrow />}
+          {!zeroArrows && twoArrows && (
+            <>
+              <Arrow />
+              <Arrow />
+            </>
+          )}
         </div>
-        {question[0].options.length > 1 && (
-          <>
-            <div className="options">
-              <div className="option-container">
-                {question[0].options.map((option) => {
-                  if ("nextJump" in option) {
-                    if ("jumpFromHere" in option) {
-                      var jumpFromHere =
-                        localStorage.getItem("jump-from-here") ||
-                        option.jumpFromHere;
-                      //   localStorage.setItem(
-                      //     "jump-from-here",
-                      //     JSON.stringify(jumpFromHere)
-                      //   );
-                    }
-                    const nextJump =
-                      parseInt(localStorage.getItem("next-jump")) ||
-                      option.nextJump;
-                    // localStorage.setItem("next-jump", JSON.stringify(nextJump));
-                    const next = option.next;
-                    return (
-                      <>
-                        {/*testing*/}
-                        {/* <div className="next-option-testing">
-                      nextJump: {option.nextJump}
-                    </div> */}
-                        <button
-                          className={`option ${
-                            option.isActive ? "active" : ""
-                          }`}
-                          key={option.id}
-                          onClick={() =>
-                            nextClick(
-                              option.id,
-                              option.isActive,
-                              next,
-                              nextJump,
-                              jumpFromHere
-                            )
-                          }
-                        >
-                          {checkInfosForOptions(option)}
-                          {"img" in option && option.img !== "" && (
-                            <img
-                              className="option-img"
-                              //   src={
-                              //     process.env.PUBLIC_URL + `/images/${option.img}`
-                              //   }
-                              src={
-                                option.img.includes("data:")
-                                  ? option.img
-                                  : process.env.PUBLIC_URL +
-                                    `/images/${option.img}`
-                              }
-                              style={!isLoading ? {} : { display: "none" }}
-                              alt=""
-                              onLoad={() => setImgLoaded(true)}
-                            />
-                          )}
-                        </button>
-                      </>
-                    );
-                  } else {
-                    if ("jumpFromHere" in option) {
-                      jumpFromHere =
-                        localStorage.getItem("jump-from-here") ||
-                        option.jumpFromHere;
-                      localStorage.setItem(
-                        "jump-from-here",
-                        JSON.stringify(jumpFromHere)
-                      );
-                    }
-                    const next = option.next;
-                    return (
-                      <>
-                        {/*testing*/}
-                        {/* <div className="next-option-testing">
-                      next: {option.next}
-                    </div> */}
-                        <button
-                          className={`option ${
-                            option.isActive ? "active" : ""
-                          }`}
-                          key={option.id}
-                          onClick={() =>
-                            nextClick(
-                              option.id,
-                              option.isActive,
-                              next,
-                              0,
-                              jumpFromHere
-                            )
-                          }
-                        >
-                          {checkInfosForOptions(option)}
-                          {"img" in option && option.img !== "" ? (
-                            <img
-                              className="option-img"
-                              src={
-                                option.img.includes("data:")
-                                  ? option.img
-                                  : process.env.PUBLIC_URL +
-                                    `/images/${option.img}`
-                              }
-                              style={!isLoading ? {} : { display: "none" }}
-                              alt="img here"
-                              onLoad={() => setImgLoaded(true)}
-                            />
-                          ) : null}
-                        </button>
-                      </>
+      )}
+      <div className={`question-text ${makeSmallText ? " small-text" : ""} `}>
+        {checkInfosForQuestion(question)}
+      </div>
+      {question[0].options.length > 1 && (
+        <>
+          <div className="options">
+            <div className="option-container">
+              {question[0].options.map((option) => {
+                if ("nextJump" in option) {
+                  if ("jumpFromHere" in option) {
+                    var jumpFromHere =
+                      localStorage.getItem("jump-from-here") ||
+                      option.jumpFromHere;
+                    //   localStorage.setItem(
+                    //     "jump-from-here",
+                    //     JSON.stringify(jumpFromHere)
+                    //   );
+                  }
+                  const nextJump =
+                    parseInt(localStorage.getItem("next-jump")) ||
+                    option.nextJump;
+                  // localStorage.setItem("next-jump", JSON.stringify(nextJump));
+                  const next = option.next;
+                  return (
+                    <>
+                      <button
+                        className={`option ${option.isActive ? "active" : ""}`}
+                        key={option.id}
+                        onClick={() =>
+                          nextClick(
+                            option.id,
+                            option.isActive,
+                            next,
+                            nextJump,
+                            jumpFromHere
+                          )
+                        }
+                      >
+                        {checkInfosForOptions(option)}
+                        {"img" in option && option.img !== "" && (
+                          <img
+                            className="option-img"
+                            src={
+                              option.img.includes("data:")
+                                ? option.img
+                                : process.env.PUBLIC_URL +
+                                  `/images/${option.img}`
+                            }
+                            style={!isLoading ? {} : { display: "none" }}
+                            alt=""
+                            onLoad={() => setImgLoaded(true)}
+                          />
+                        )}
+                      </button>
+                    </>
+                  );
+                } else {
+                  if ("jumpFromHere" in option) {
+                    jumpFromHere =
+                      localStorage.getItem("jump-from-here") ||
+                      option.jumpFromHere;
+                    localStorage.setItem(
+                      "jump-from-here",
+                      JSON.stringify(jumpFromHere)
                     );
                   }
-                })}
-              </div>
+                  const next = option.next;
+                  return (
+                    <>
+                      <button
+                        className={`option ${option.isActive ? "active" : ""}`}
+                        key={option.id}
+                        onClick={() =>
+                          nextClick(
+                            option.id,
+                            option.isActive,
+                            next,
+                            0,
+                            jumpFromHere
+                          )
+                        }
+                      >
+                        {checkInfosForOptions(option)}
+                        {"img" in option && option.img !== "" ? (
+                          <img
+                            className="option-img"
+                            src={
+                              option.img.includes("data:")
+                                ? option.img
+                                : process.env.PUBLIC_URL +
+                                  `/images/${option.img}`
+                            }
+                            style={!isLoading ? {} : { display: "none" }}
+                            alt="img here"
+                            onLoad={() => setImgLoaded(true)}
+                          />
+                        ) : null}
+                      </button>
+                    </>
+                  );
+                }
+              })}
             </div>
-          </>
-        )}
-        {"lose" in question[0] && <LoseScreen question={question} />}
-        {question[0].options.length === 1 && (
-          <div className="down-line">
-            <hr />
           </div>
-        )}
-      </>
-      {/* </CSSTransition>
-      </TransitionGroup> */}
+        </>
+      )}
+      {"lose" in question[0] && <LoseScreen question={question} />}
+      {question[0].options.length === 1 && (
+        <div className="down-line">
+          <hr />
+        </div>
+      )}
     </>
   );
 };

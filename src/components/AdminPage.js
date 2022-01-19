@@ -1,39 +1,23 @@
-import React, { useState, useEffect } from "react";
-import Editing from "./EditingPage/editing";
-import "../../styles/adminPage/adminPage.css";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import "../styles/adminPage/adminPage.css";
 import { useHistory } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { notifyAboutWrongPassword } from "../../utils/notifyers";
+import { notifyAboutWrongPassword } from "../utils/notifyers";
 
-const AdminPage = ({ questions, setAdminMode }) => {
-  const [passwordOK, setPasswordOK] = useState(false); //change to false --- JWT token
-  const [question, setQuestion] = useState(() => {
-    const saved = localStorage.getItem("question");
-    const initialValue = JSON.parse(saved);
-    if (initialValue !== null) {
-      return initialValue;
-    } else return questions;
-  });
-
+const AdminPage = ({ setAdminMode }) => {
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState("");
   const history = useHistory();
 
-  useEffect(() => {
-    console.log(password);
-  });
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("IN HANDLE LOGIN");
     if (login === "admin" && password === "admin1234") {
       setAdminMode(true);
       history.push("/game");
       setLogin("");
       setPassword("");
     } else {
-      console.log("IN ELSE");
       notifyAboutWrongPassword();
     }
   };

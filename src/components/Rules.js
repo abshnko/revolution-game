@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../../styles/main/rules.css";
+import "../styles/main/rules.css";
 import { CSSTransition } from "react-transition-group";
 import { Link } from "react-router-dom";
 
-const Rules = ({ adminMode }) => {
+const Rules = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -33,9 +33,6 @@ const Rules = ({ adminMode }) => {
 
           <p>начать игру</p>
         </div>
-        {/* <div className="start-button">
-          <Link to={process.env.PUBLIC_URL + "/admin"}>admin</Link>
-        </div> */}
       </div>
       <hr className="hr" />
       <div className="description">

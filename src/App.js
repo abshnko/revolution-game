@@ -5,29 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 // import { browserHistory } from "react-router";
 import { createBrowserHistory } from "history";
 import { HashRouter } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
 
-import {
-  getQuestions,
-  createQuestion,
-  updateQuestion,
-  deleteQuestion,
-} from "./actions/questions";
+import { getQuestions } from "./actions/questions";
 import GamePage from "./components/GamePage/GamePage";
-import AdminPage from "./components/AdminPage/AdminPage";
-import data from "./data";
-import Rules from "./components/GamePage/Rules";
-import Creators from "./components/GamePage/Creators";
+import AdminPage from "./components/AdminPage";
+import Rules from "./components/Rules";
+import Creators from "./components/Creators";
 
-//change data to dispatched Questions!!!!!
 function App() {
-  const [adminMode, setAdminMode] = useState(false); //CHANGE TO FALSE
+  const [adminMode, setAdminMode] = useState(false);
   const dispatch = useDispatch();
   let questions = useSelector((state) => state.questions);
   questions = questions.sort((a, b) => {
     return a.id - b.id;
   });
-  console.log(questions);
   const history = createBrowserHistory();
 
   useEffect(() => {
