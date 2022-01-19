@@ -22,6 +22,8 @@ const QuestionMap = ({
 }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [idForDelete, setIdForDelete] = useState(null);
+  //   const showUploadedImage = singleQuestion.img.includes("data:");
+
   //   const [allNexts, setAllNexts] = useState([]);
   let allNexts = [];
   const allNextsTemp = questions.map((question) => {
@@ -164,9 +166,15 @@ const QuestionMap = ({
                       </div>
                       {singleQuestion.img !== "" && (
                         <img
+                          //   src={
+                          //     process.env.PUBLIC_URL +
+                          //     `/images/${singleQuestion.img}`
+                          //   }
                           src={
-                            process.env.PUBLIC_URL +
-                            `/images/${singleQuestion.img}`
+                            singleQuestion.img.includes("data:")
+                              ? singleQuestion.img
+                              : process.env.PUBLIC_URL +
+                                `/images/${singleQuestion.img}`
                           }
                           style={
                             imgLoaded ? { width: "150px" } : { display: "none" }

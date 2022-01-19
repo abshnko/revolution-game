@@ -1,15 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {
-  getQuestions,
-  createQuestion,
-  updateQuestion,
-  deleteQuestion,
-} from "../../../actions/questions";
-import { useSelector } from "react-redux";
+import { createQuestion, updateQuestion } from "../../../actions/questions";
 import AddOptions from "../Editing/AddOptions";
 import FileBase from "react-file-base64";
+import axios from "axios";
+
 import "../../../styles/main/edit-question.css";
 
 import AddInfosQuestion from "../Editing/AddInfosQuestion";
@@ -46,10 +41,23 @@ const EditQuestion = ({
 
   const [alertDeleteInfos, setAlertDeleteInfos] = useState(false);
   const [line, setLine] = useState("unset");
-  console.log(showModalQuestion);
+  const [uploadedImage, setUploadedImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // if (uploadedImage) {
+    //   const data = new FormData();
+    //   data.append("file", uploadedImage);
+    //   axios
+    //     .post("https://revolution-game.herokuapp.com/upload", data, {
+    //       // receive two parameter endpoint url ,form data
+    //     })
+    //     .then((res) => {
+    //       // then print response status
+    //       console.log(res.statusText);
+    //     });
+    // }
+
     if (currentQuestionID) {
       dispatch(updateQuestion(currentQuestionID, questionInitialState));
     } else {
@@ -101,29 +109,6 @@ const EditQuestion = ({
 
   return (
     <div>
-      {/* {alertDeleteQuestion && (
-        <div className="alert-delete-modal">
-          <div className="alert-delete-modal-content">
-            <p>
-              Вы уверены, что хотите удалить вопрос?
-              <div className="buttons">
-                <button
-                  onClick={() => {
-                    dispatch(deleteQuestion(idForDelete));
-                    setIdForDelete(null);
-                    setAlertDeleteQuestion(false);
-                  }}
-                >
-                  Да
-                </button>
-                <button onClick={() => setAlertDeleteQuestion(false)}>
-                  Нет
-                </button>
-              </div>
-            </p>
-          </div>
-        </div>
-      )} */}
       {showModalQuestion && (
         <div className="modal-edit-question">
           <div className="modal-content">
@@ -262,10 +247,18 @@ const EditQuestion = ({
                       <div className="image">
                         <span>Текущее изображение:</span>
                         <img
+                          //ПОМЕНЯТЬ
                           //   src={
-                          //     process.env.PUBLIC_URL + `/images/${question.img}`
+                          //     process.env.PUBLIC_URL +
+                          //     `/images/${questionInitialState.img}`
                           //   }
-                          src={`./images/${questionInitialState.img}`}
+                          //   src={`./images/${questionInitialState.img}`}
+                          src={
+                            questionInitialState.img.includes("data:")
+                              ? questionInitialState.img
+                              : process.env.PUBLIC_URL +
+                                `/images/${questionInitialState.img}`
+                          }
                           alt=""
                           style={{
                             width: "100px",
@@ -286,6 +279,17 @@ const EditQuestion = ({
                         })
                       }
                     />
+                    {/* <form
+                      method="post"
+                      enctype="multipart/form-data"
+                      action="/upload"
+                    >
+                      <input
+                        type="file"
+                        name="file"
+                        onChange={(e) => setUploadedImage(e.target.files[0])}
+                      />
+                    </form> */}
                   </div>
                   <label htmlFor="lose">
                     Это последний вопрос в ветке?
