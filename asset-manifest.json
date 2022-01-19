@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/revolution-game/static/css/main.00656437.chunk.css",
-    "main.js": "/revolution-game/static/js/main.6269a3c5.chunk.js",
-    "main.js.map": "/revolution-game/static/js/main.6269a3c5.chunk.js.map",
+    "main.js": "/revolution-game/static/js/main.6127d9c2.chunk.js",
+    "main.js.map": "/revolution-game/static/js/main.6127d9c2.chunk.js.map",
     "runtime-main.js": "/revolution-game/static/js/runtime-main.f3073411.js",
     "runtime-main.js.map": "/revolution-game/static/js/runtime-main.f3073411.js.map",
     "static/css/2.f4c56af9.chunk.css": "/revolution-game/static/css/2.f4c56af9.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.f4c56af9.chunk.css",
     "static/js/2.cf0ff330.chunk.js",
     "static/css/main.00656437.chunk.css",
-    "static/js/main.6269a3c5.chunk.js"
+    "static/js/main.6127d9c2.chunk.js"
   ]
 }
