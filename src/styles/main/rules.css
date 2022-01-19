@@ -261,42 +261,19 @@
   }
 }
 
-.rules .description .left .down .creators-button {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  grid-area: creators;
-  display: inline;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 25px;
-  font-family: GaretRegular;
-  margin-bottom: 5px;
-  -webkit-transition: linear 0.2s;
-  transition: linear 0.2s;
-  padding: 15px;
-  margin-left: -15px;
-}
-
-@media (max-height: 800px) {
-  .rules .description .left .down .creators-button {
-    font-size: 20px;
-  }
-}
-
-.rules .description .left .down .creators-button:hover {
-  background-color: #ff2400;
-  color: white;
-  margin-left: 0;
-}
-
 .rules .description .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   font-size: 27px;
   line-height: 130%;
-  -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
-  text-align: left;
   letter-spacing: -0.02em;
 }
 
@@ -304,6 +281,43 @@
   .rules .description .right {
     font-size: 20px;
   }
+}
+
+.rules .description .right .creators-link {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.rules .description .right .creators-link .creators-button {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: creators;
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: GaretRegular;
+  margin-bottom: 5px;
+  -webkit-transition: linear 0.2s;
+  transition: linear 0.2s;
+  padding: 10px 15px;
+  margin-right: -15px;
+}
+
+@media (max-height: 800px) {
+  .rules .description .right .creators-link .creators-button {
+    font-size: 20px;
+  }
+}
+
+.rules .description .right .creators-link .creators-button:hover {
+  background-color: #ff2400;
+  color: white;
+  margin-right: 0;
 }
 
 .rules .description .right .red {

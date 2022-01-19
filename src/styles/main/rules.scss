@@ -186,19 +186,35 @@
             height: 10px;
           }
         }
-
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 27px;
+      line-height: 130%;
+      //   align-self: end;
+      //   text-align: left;
+      letter-spacing: -0.02em;
+      @media (max-height: 800px) {
+        font-size: 20px;
+      }
+      .creators-link {
+        width: fit-content;
+        align-self: flex-end;
         .creators-button {
           grid-area: creators;
-          display: inline;
+          display: inline-block;
           background-color: transparent;
           border: none;
           cursor: pointer;
-          font-size: 25px;
+          font-size: 20px;
           font-family: GaretRegular;
           margin-bottom: 5px;
           transition: linear 0.2s;
-          padding: 15px;
-          margin-left: -15px;
+          padding: 10px 15px;
+          margin-right: -15px;
           @media (max-height: 800px) {
             font-size: 20px;
           }
@@ -206,18 +222,8 @@
         .creators-button:hover {
           background-color: #ff2400;
           color: white;
-          margin-left: 0;
+          margin-right: 0;
         }
-      }
-    }
-    .right {
-      font-size: 27px;
-      line-height: 130%;
-      align-self: end;
-      text-align: left;
-      letter-spacing: -0.02em;
-      @media (max-height: 800px) {
-        font-size: 20px;
       }
       .red {
         font-family: GaretBold;

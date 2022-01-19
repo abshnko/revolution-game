@@ -4,6 +4,7 @@
   height: 100vh;
   max-width: 80%;
   margin: auto;
+  margin-top: 20px;
   -ms-grid-rows: min-content min-content auto auto min-content;
       grid-template-rows: -webkit-min-content -webkit-min-content auto auto -webkit-min-content;
       grid-template-rows: min-content min-content auto auto min-content;

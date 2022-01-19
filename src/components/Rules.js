@@ -53,21 +53,31 @@ const Rules = () => {
           </p>
 
           <div className="down">
-            <Link to="/creators" style={{ textDecoration: "none" }}>
-              <button className="creators-button">Команда проекта</button>
-            </Link>
             <hr className="small-hr" />
           </div>
         </div>
         <div className="right">
-          <h4 className="red">
-            Главная цель – выжить любой ценой и&nbsp;дожить до&nbsp;1953 года!
-          </h4>
-          <p>
-            Отталкивайтесь от своих знаний по&nbsp;истории России. Делайте
-            зачастую идеологически верный выбор и&nbsp;переживите столь
-            непростое время! Удачи!
-          </p>
+          <Link
+            to="/creators"
+            style={{ textDecoration: "none" }}
+            className="creators-link"
+          >
+            <button className="creators-button">
+              Команда
+              <br />
+              проекта
+            </button>
+          </Link>
+          <div>
+            <h4 className="red">
+              Главная цель – выжить любой ценой и&nbsp;дожить до&nbsp;1953 года!
+            </h4>
+            <p>
+              Отталкивайтесь от своих знаний по&nbsp;истории России. Делайте
+              зачастую идеологически верный выбор и&nbsp;переживите столь
+              непростое время! Удачи!
+            </p>
+          </div>
         </div>
       </div>
     </div>
