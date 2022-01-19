@@ -39,7 +39,8 @@ const CurrentInfo = ({
           </div>
           <div className="right-column">
             <div className="img">
-              {currentInfoDisplayed.img !== "" ? (
+              {"img" in currentInfoDisplayed &&
+              currentInfoDisplayed.img !== "" ? (
                 <>
                   {!imgLoaded &&
                     setTimeout(() => {
@@ -47,8 +48,10 @@ const CurrentInfo = ({
                     }, 1000)}
                   <img
                     src={
-                      process.env.PUBLIC_URL +
-                      `/images/${currentInfoDisplayed.img}`
+                      currentInfoDisplayed.img.includes("data:")
+                        ? currentInfoDisplayed.img
+                        : process.env.PUBLIC_URL +
+                          `/images/${currentInfoDisplayed.img}`
                     }
                     alt=""
                     onLoad={() => {

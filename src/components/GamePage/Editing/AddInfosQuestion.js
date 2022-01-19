@@ -101,14 +101,43 @@ const AddInfosQuestion = ({
                 }}
               />
             </label>
-            <div className="image">
+            {/* <div className="image">
               Изображение:
               <FileBase
                 type="file"
                 multiple={false}
                 onDone={({ base64 }) => setInfo({ ...info, img: base64 })}
               />
-            </div>
+            </div> */}
+            {"img" in info && info.img !== "" && (
+              <div className="image">
+                Изображение:
+                <img
+                  src={
+                    info.img.includes("data:")
+                      ? info.img
+                      : process.env.PUBLIC_URL + `/images/${info.img}`
+                  }
+                  alt="img here"
+                  style={{
+                    width: "100px",
+                  }}
+                />
+                <button onClick={() => setInfo({ ...info, img: "" })}>
+                  Удалить
+                </button>
+              </div>
+            )}
+            {(!("img" in info) || ("img" in info && info.img === "")) && (
+              <span style={{ marginTop: "20px", display: "block" }}>
+                Выбрать изображение (опционально)
+              </span>
+            )}
+            <FileBase
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) => setInfo({ ...info, img: base64 })}
+            />
             <button type="button" onClick={() => handleSubmitInfos()}>
               {infoToUpdate ? "Сохранить" : "Добавить"}
             </button>

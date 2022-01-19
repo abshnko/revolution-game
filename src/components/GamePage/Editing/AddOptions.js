@@ -133,23 +133,30 @@ const AddOptions = ({
               </select>
             </label>
             <div className="image">
-              {"img" in option && (
-                <div className="image">
+              {"img" in option && option.img !== "" && (
+                <div className="image" style={{ marginTop: "20px" }}>
                   <span>Текущее изображение:</span>
                   <img
-                    //   src={
-                    //     process.env.PUBLIC_URL + `/images/${question.img}`
-                    //   }
-                    src={`./images/${option.img}`}
-                    alt=""
+                    src={
+                      option.img.includes("data:")
+                        ? option.img
+                        : process.env.PUBLIC_URL + `/images/${option.img}`
+                    }
+                    alt="img here"
                     style={{
                       width: "100px",
                     }}
                   />
+                  <button onClick={() => setOption({ ...option, img: "" })}>
+                    Удалить
+                  </button>
                 </div>
               )}
-              {!("img" in option) && (
-                <span>Выбрать изображение (опционально)</span>
+              {(!("img" in option) ||
+                ("img" in option && option.img === "")) && (
+                <span style={{ marginTop: "20px", display: "block" }}>
+                  Выбрать изображение (опционально)
+                </span>
               )}
               <FileBase
                 type="file"
@@ -157,7 +164,10 @@ const AddOptions = ({
                 onDone={({ base64 }) => setOption({ ...option, img: base64 })}
               />
             </div>
-            <label htmlFor="infos">
+            <label
+              htmlFor="infos"
+              style={{ marginTop: "20px", display: "block" }}
+            >
               У ответа будет справочная информация?
               <input
                 type="checkbox"

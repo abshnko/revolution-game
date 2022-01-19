@@ -247,12 +247,6 @@ const EditQuestion = ({
                       <div className="image">
                         <span>Текущее изображение:</span>
                         <img
-                          //ПОМЕНЯТЬ
-                          //   src={
-                          //     process.env.PUBLIC_URL +
-                          //     `/images/${questionInitialState.img}`
-                          //   }
-                          //   src={`./images/${questionInitialState.img}`}
                           src={
                             questionInitialState.img.includes("data:")
                               ? questionInitialState.img
@@ -264,6 +258,16 @@ const EditQuestion = ({
                             width: "100px",
                           }}
                         />
+                        <button
+                          onClick={() =>
+                            setQuestionInitialState({
+                              ...questionInitialState,
+                              img: "",
+                            })
+                          }
+                        >
+                          Удалить
+                        </button>
                       </div>
                     )}
                     {questionInitialState.img === "" && (

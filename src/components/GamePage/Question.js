@@ -338,8 +338,14 @@ const Question = ({
                           {"img" in option && option.img !== "" && (
                             <img
                               className="option-img"
+                              //   src={
+                              //     process.env.PUBLIC_URL + `/images/${option.img}`
+                              //   }
                               src={
-                                process.env.PUBLIC_URL + `/images/${option.img}`
+                                option.img.includes("data:")
+                                  ? option.img
+                                  : process.env.PUBLIC_URL +
+                                    `/images/${option.img}`
                               }
                               style={!isLoading ? {} : { display: "none" }}
                               alt=""
@@ -386,7 +392,10 @@ const Question = ({
                             <img
                               className="option-img"
                               src={
-                                process.env.PUBLIC_URL + `/images/${option.img}`
+                                option.img.includes("data:")
+                                  ? option.img
+                                  : process.env.PUBLIC_URL +
+                                    `/images/${option.img}`
                               }
                               style={!isLoading ? {} : { display: "none" }}
                               alt="img here"
