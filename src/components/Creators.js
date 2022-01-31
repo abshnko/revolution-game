@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/main/creators.css";
+import "../styles/main/creators.scss";
 import { Link } from "react-router-dom";
 
 const Creators = () => {
@@ -12,6 +12,7 @@ const Creators = () => {
       >
         <button className="back-button">Назад</button>
       </Link>
+      <div className=""></div>
       <h3 className="title">Команда проекта</h3>
       <h5 className="subtitle">
         человек в&nbsp;эпоху<br></br>войн и&nbsp;революций
@@ -37,7 +38,7 @@ const Creators = () => {
       </div>
       {/* </div> */}
       {/* <div className="creators-info-bottom-row"></div> */}
-      <div className="male-line">
+      <div className="male-line mt-5">
         <span>Текст мужской ветки:</span>
         <p className="male-line-text">
           Андрей Кулинский, магистрант «Отечественной истории» УрФУ (2020–2022)
@@ -49,7 +50,7 @@ const Creators = () => {
           Дмитрий Макаров, магистрант «Отечественной истории» УрФУ (2020–2022)
         </p>
       </div>
-      <div className="tech-team">
+      <div className="tech-team mt-5">
         <span>Техническая разработка:</span>
         <p className="tech-team-text">
           Егор Ларионов, тимлид <br></br>
@@ -63,6 +64,7 @@ const Creators = () => {
       <div className="line">
         <hr />
       </div>
+      <div className=""></div>
     </div>
   );
 };

@@ -1,19 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  getQuestions,
-  createQuestion,
-  updateQuestion,
-  deleteQuestion,
-} from "../../actions/questions";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { deleteQuestion } from "../../actions/questions";
 import { useSelector } from "react-redux";
-import "../../styles/main/style.css";
-
-// import Rules from "./Rules";
 import Gameplay from "./Gameplay";
-// import Creators from "./Creators";
 
 function GamePage({ questions, adminMode, setAdminMode }) {
   const initialState = {

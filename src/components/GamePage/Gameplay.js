@@ -1,9 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "../../styles/main/style.css";
+import "../../styles/main/style.scss";
 import { CSSTransition } from "react-transition-group";
 import { css } from "@emotion/react";
-// import periods from "../../periods";
 import Question from "./Question";
 import Image from "./Image";
 import CurrentInfo from "./CurrentInfo";
@@ -199,7 +198,7 @@ const Gameplay = ({
             <Loading loading={isLoading} css={override} entryPoint={true} />
           </div>
         ) : (
-          <div className="container">
+          <div className="container-game">
             <div className="timeline">
               <Timeline
                 latestPeriod={question[0].period}
@@ -208,7 +207,7 @@ const Gameplay = ({
             </div>
             {isShowInfo && //show currently chosen info entry
               currentInfoDisplayed !== undefined && (
-                //???????непонятно с транзишном - сделать нормальный
+                //??? непонятно с транзишном - сделать нормальный
                 // <CSSTransition in={isShowInfo} timeout={300} classNames="alert">
                 <CurrentInfo
                   question={question}
@@ -380,7 +379,9 @@ const Gameplay = ({
               <div
                 className={`${
                   !("isChooseSex" in question[0]) ? "main" : "hidden"
-                }${question[0].options.length > 1 ? " main-multiple" : ""}`}
+                }${question[0].options.length > 1 ? " main-multiple" : ""}${
+                  question[0].options.length === 2 ? " main-small-options" : ""
+                }`}
               >
                 <>
                   <div className="question">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LoseScreen from "./LoseScreen";
 import Arrow from "../../utils/svgs/Arrow";
 import { isOverflown, heightIsOverNpx } from "../../utils/resolutionFunctions";
+import "../../styles/main/question.scss";
 
 const Question = ({
   question,
@@ -43,9 +44,8 @@ const Question = ({
       var text = option.text.split(/.(.+)/)[1];
       text = text.split(/.(.+)/)[1];
       const header = text.split(/[.,,,:,;,!,?](.+)/);
-      console.log(header[0]);
       const high = <div className="highlighted">{header[0]}</div>;
-      const rest = header[1];
+      const rest = <p className="option-text">{header[1]}</p>;
       const all = (
         <div className="header">
           {n}
@@ -64,7 +64,6 @@ const Question = ({
         <a
           className="info-link"
           onClick={() => {
-            console.log(allId[Math.floor(i / 2)]);
             chooseDisplayedInfo(allId[Math.floor(i / 2)]);
           }}
         >
@@ -81,7 +80,6 @@ const Question = ({
       let header = allButNumber.split(/[.,,,:,;,!,?](.+)/)[0]; //HEADER
       let theRest = allButNumber.split(/[.,,,:,;,!,?](.+)/)[1]; //REST
       let checkHeader = header.split(new RegExp(`(${allText.join("|")})`));
-      console.log(checkHeader);
       let checkRest;
       if (theRest !== undefined) {
         checkRest = theRest.split(new RegExp(`(${allText.join("|")})`));
@@ -107,11 +105,12 @@ const Question = ({
           </div>
         );
         if (theRest !== undefined) {
-          checkHeader.push(theRest);
+          checkHeader.push(<p className="option-text">{theRest}</p>);
         }
         let final = [all, checkHeader[checkHeader.length - 1]];
         return [final];
       }
+      //IF LINK IN TEXT
       if (checkRest.length > 2) {
         for (let i = 1; i < checkRest.length; i += 2) {
           checkRest[i] = l(checkRest, i);
@@ -123,7 +122,7 @@ const Question = ({
             {firstPart}
           </div>
         );
-        let final = [all, checkRest];
+        let final = [all, <p className="option-text">{checkRest}</p>];
         return [final];
       }
     };
@@ -134,12 +133,14 @@ const Question = ({
     }
 
     const separatedText = separateParts(option.text);
-    // console.log(separatedText);
+    console.log(separatedText);
     return <div className="text">{separatedText}</div>;
   };
 
   function checkInfosForQuestion(question) {
-    if (!question[0].infos) return <h2>{question[0].text}</h2>;
+    if (!question[0].infos) {
+      return <h2>{question[0].text}</h2>;
+    }
     let allId = question[0].infos.map((e) => e.id);
     let allText = question[0].infos.map((e) => e.altText);
 
@@ -157,7 +158,6 @@ const Question = ({
       );
     };
     let parts = question[0].text.split(new RegExp(`(${allText.join("|")})`));
-    console.log(parts);
     for (let i = 1; i < parts.length; i += 2) {
       parts[i] = l(parts, i);
     }
@@ -239,7 +239,8 @@ const Question = ({
                   return (
                     <>
                       <button
-                        className={`option ${option.isActive ? "active" : ""}`}
+                        className={`option ${option.isActive ? "active" : ""} 
+                        `}
                         key={option.id}
                         onClick={() =>
                           nextClick(

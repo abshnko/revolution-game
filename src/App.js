@@ -1,10 +1,7 @@
 import { React, useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { createBrowserHistory } from "history";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { browserHistory } from "react-router";
 import { createBrowserHistory } from "history";
-import { HashRouter } from "react-router-dom";
 
 import { getQuestions } from "./actions/questions";
 import GamePage from "./components/GamePage/GamePage";
@@ -28,27 +25,33 @@ function App() {
   return (
     <>
       {/* <Router history={history}> */}
-      <HashRouter>
-        <Switch>
-          <Route path="/admin" history={history}>
-            <AdminPage questions={questions} setAdminMode={setAdminMode} />
-          </Route>
-          <Route path="/game">
-            <GamePage
-              questions={questions}
-              adminMode={adminMode}
-              history={history}
-              setAdminMode={setAdminMode}
-            />
-          </Route>
-          <Route path="/creators">
-            <Creators adminMode={adminMode} />
-          </Route>
-          <Route exact path="/">
-            <Rules />
-          </Route>
-        </Switch>
-      </HashRouter>
+      <Router basename="revolution-game/">
+        <Routes>
+          <Route
+            path="/admin"
+            history={history}
+            element={
+              <AdminPage questions={questions} setAdminMode={setAdminMode} />
+            }
+          ></Route>
+          <Route
+            path="/game"
+            element={
+              <GamePage
+                questions={questions}
+                adminMode={adminMode}
+                history={history}
+                setAdminMode={setAdminMode}
+              />
+            }
+          ></Route>
+          <Route
+            path="/creators"
+            element={<Creators adminMode={adminMode} />}
+          ></Route>
+          <Route exact path="/" element={<Rules />}></Route>
+        </Routes>
+      </Router>
       {/* </Router> */}
     </>
   );
