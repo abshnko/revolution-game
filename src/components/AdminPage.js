@@ -3,17 +3,17 @@ import "../styles/adminPage/adminPage.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notifyAboutWrongPassword } from "../utils/notifyers";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const AdminPage = ({ setAdminMode }) => {
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState("");
-  const navigate = useNavigate();
+  const history = useHistory();
   const handleLogin = (e) => {
     e.preventDefault();
     if (login === "admin" && password === "admin1234") {
       setAdminMode(true);
-      navigate("/game");
+      history.push("/game");
       setLogin("");
       setPassword("");
     } else {

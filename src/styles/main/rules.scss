@@ -29,6 +29,9 @@
   .upper-part-wrap {
     margin-top: 2rem;
     grid-area: upper-part-wrap;
+    @media (max-height: 800px) {
+      margin-top: 0;
+    }
     .upper-part {
       grid-area: upper-part;
       display: grid;
@@ -80,7 +83,7 @@
           font-size: 50px;
         }
         @media (max-height: 800px) {
-          font-size: 40px;
+          font-size: 50px;
         }
       }
       .start-button {
