@@ -1,25 +1,17 @@
 {
   "files": {
-    "main.css": "/revolution-game/static/css/main.6f6f094a.chunk.css",
-    "main.js": "/revolution-game/static/js/main.8919fd13.chunk.js",
-    "main.js.map": "/revolution-game/static/js/main.8919fd13.chunk.js.map",
-    "runtime-main.js": "/revolution-game/static/js/runtime-main.f3073411.js",
-    "runtime-main.js.map": "/revolution-game/static/js/runtime-main.f3073411.js.map",
-    "static/css/2.f4c56af9.chunk.css": "/revolution-game/static/css/2.f4c56af9.chunk.css",
-    "static/js/2.cf0ff330.chunk.js": "/revolution-game/static/js/2.cf0ff330.chunk.js",
-    "static/js/2.cf0ff330.chunk.js.map": "/revolution-game/static/js/2.cf0ff330.chunk.js.map",
+    "main.css": "/revolution-game/static/css/main.76a6e0f0.css",
+    "main.js": "/revolution-game/static/js/main.6f814529.js",
+    "static/media/Garet-Heavy.woff": "/revolution-game/static/media/Garet-Heavy.aec913e99f42ab2eea39.woff",
+    "static/media/Garet-Book.woff": "/revolution-game/static/media/Garet-Book.92b5d25ed839302e7dc4.woff",
+    "static/media/redoctober.ttf": "/revolution-game/static/media/redoctober.9c2292c9b5bec6ef835f.ttf",
+    "static/media/redoctober_fat.ttf": "/revolution-game/static/media/redoctober_fat.083e6bcbd59080cb74f5.ttf",
     "index.html": "/revolution-game/index.html",
-    "static/css/2.f4c56af9.chunk.css.map": "/revolution-game/static/css/2.f4c56af9.chunk.css.map",
-    "static/css/main.6f6f094a.chunk.css.map": "/revolution-game/static/css/main.6f6f094a.chunk.css.map",
-    "static/js/2.cf0ff330.chunk.js.LICENSE.txt": "/revolution-game/static/js/2.cf0ff330.chunk.js.LICENSE.txt",
-    "static/media/style.css": "/revolution-game/static/media/Garet-Book.92b5d25e.woff",
-    "static/media/rules.css": "/revolution-game/static/media/redoctober_fat.083e6bcb.ttf"
+    "main.76a6e0f0.css.map": "/revolution-game/static/css/main.76a6e0f0.css.map",
+    "main.6f814529.js.map": "/revolution-game/static/js/main.6f814529.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.f3073411.js",
-    "static/css/2.f4c56af9.chunk.css",
-    "static/js/2.cf0ff330.chunk.js",
-    "static/css/main.6f6f094a.chunk.css",
-    "static/js/main.8919fd13.chunk.js"
+    "static/css/main.76a6e0f0.css",
+    "static/js/main.6f814529.js"
   ]
 }
